@@ -23,7 +23,7 @@ import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bu
 import Subheader from 'material-ui/Subheader';
 
 //routas
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 //Estilos
 //import {blue300, indigo900} from 'material-ui/styles/colors';
@@ -48,8 +48,15 @@ class MainMenu extends Component {
           open: item.state.open,
         });
       };
+
+    componentDidMount(){
+        const polizas = new RegExp('polizas')
+        console.log(polizas.test(window.location.pathname));
+    }
     
     render(){
+        const polizas = new RegExp('polizas');
+
         return(
         <div >
             <Drawer
@@ -78,34 +85,36 @@ class MainMenu extends Component {
                   
                 <Subheader>Atajos Rápidos</Subheader>
                     <ListItem
-                        containerElement={<Link className="no-link" to="/polizas/new" />}
+                        containerElement={<NavLink activeStyle={{color:'black'}} className="no-link" to="/polizas/new" />}
                         primaryText="Capturar Poliza"
-                        style={this.state.active ? styles.blanco: {color:'white'}}
+                        style={this.state.active ? styles.blanco: {color:'grey'}}
                         leftIcon={<ContentSend />}
 
                     />
                 <ListItem
-                   primaryText="Reportes" 
+                    containerElement={<NavLink activeStyle={{color:'black'}} className="no-link" to="/reportes" />}
+                    primaryText="Reportes"
                    style={{color:'grey'}} 
                    leftIcon={<ContentDrafts />} />
                     <Divider />
 
                     <Subheader>Secciones</Subheader>
                 <ListItem
-                  style={{backgroundColor:'grey', color:'lightgrey'}}
-                  primaryText="Polizas"
-                  leftIcon={<ContentInbox />}
-                  initiallyOpen={false}
-                  primaryTogglesNestedList={true}
-                  nestedItems={[
-                        <ListItem
-                          containerElement={
-                                      <Link to="/polizas" />
-                                  }
-                          key={1}
-                          primaryText="Alertas"
-                          leftIcon={<ActionGrade />}
-                        />,
+                    containerElement={<NavLink activeStyle={{color:'black'}} className="no-link" to="/polizas" />}
+                    style={{backgroundColor:'grey', color:'lightgrey'}}
+                      primaryText="Polizas"
+                      leftIcon={<ContentInbox />}
+                      initiallyOpen={polizas.test(window.location.pathname)}
+                      primaryTogglesNestedList={true}
+                      nestedItems={[
+                            <ListItem
+                              containerElement={
+                                          <Link to="/polizas" />
+                                      }
+                              key={1}
+                              primaryText="Alertas"
+                              leftIcon={<ActionGrade />}
+                            />,
                     <ListItem
                      
                       key={2}

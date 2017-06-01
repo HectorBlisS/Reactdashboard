@@ -16,8 +16,14 @@ injectTapEventPlugin();
 
 
 
+// const Main = () => (
+//     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
+//         <App />
+//     </MuiThemeProvider>
+// );
+
 const Main = () => (
-    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
+    <MuiThemeProvider >
         <App />
     </MuiThemeProvider>
 );

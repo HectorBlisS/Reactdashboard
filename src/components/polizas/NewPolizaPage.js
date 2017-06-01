@@ -6,6 +6,16 @@ import {cyan500} from 'material-ui/styles/colors';
 
 
 class NewPolizaPage extends Component {
+    state = {
+      course: {
+          title:'test',
+          errors: {
+              title:''
+          },
+          saving: false
+      }
+    };
+
     render(){
         return(
             <div>
@@ -15,7 +25,11 @@ class NewPolizaPage extends Component {
                         style={{color:'white'}}
                         text="Polizas > Nueva poliza" />
                 </Toolbar>
-                <PolizaForm/>
+                <PolizaForm
+                    course={this.state.course}
+                    errors={this.state.errors}
+
+                />
             </div>
 
         );
