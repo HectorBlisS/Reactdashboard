@@ -31,6 +31,7 @@ class App extends Component {
            >
             <NavBar 
                 handleToggle={this.handleToggle}
+                active={this.state.activeMenu}
             />
             <Routes />
         </div>  

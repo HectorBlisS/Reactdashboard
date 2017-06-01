@@ -2,14 +2,21 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import './NavBar.css';
 import logo from '../../assets/logodipra.png';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import IconButton from 'material-ui/IconButton';
+
+
 
 const NavBar = (props) => {
-    const { handleToggle } = props;
+    const { handleToggle, active } = props;
     return(
          <AppBar
             style={{backgroundColor:'#607D8B'}}
             onTouchTap={handleToggle}
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            iconElementLeft={
+                active ? 
+                <IconButton><NavigationClose /></IconButton> : ''
+            }
             title={
                 
                     <img 

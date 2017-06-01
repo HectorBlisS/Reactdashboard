@@ -77,11 +77,13 @@ class MainMenu extends Component {
                   
                   
                 <Subheader>Atajos Rápidos</Subheader>
-                <ListItem                
-                containerElement={<Link to="/" />}
-                primaryText="Capturar Poliza" 
-                style={this.state.active ? styles.blanco: {color:'white'}}
-                leftIcon={<ContentSend />} />
+                    <ListItem
+                        containerElement={<Link className="no-link" to="/polizas/new" />}
+                        primaryText="Capturar Poliza"
+                        style={this.state.active ? styles.blanco: {color:'white'}}
+                        leftIcon={<ContentSend />}
+
+                    />
                 <ListItem
                    primaryText="Reportes" 
                    style={{color:'grey'}} 
