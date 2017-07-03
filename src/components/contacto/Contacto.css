@@ -1,0 +1,32 @@
+.contacto{
+	background-image: url('https://images.pexels.com/photos/21014/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb');
+	height: auto;
+	background-size: cover;
+}
+.ubicacion{
+	display: inline-flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+}
+.map{
+	left:50px;
+}
+.direccion{
+	width: 300px;
+	height: 250px;
+	margin: 40px 50px;	
+	border-radius: 10px;
+	background-color: white;
+}
+.direccion h3{
+	color: #57658E;
+}
+.direccion span{
+	color: #57658E;
+	font-size: 13px;
+	cursor:pointer;
+}
+.lupa{
+	margin: 0 2px;
+}

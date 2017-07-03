@@ -1,0 +1,21 @@
+.box_cot{
+	background-color: white;
+	width: 350px;
+	position: absolute;
+	top:30%;
+	left: 60%;
+	border-radius: 15px;
+	box-shadow: 0 1px 6px rgba(0,0,0,.12), 0 1px 4px rgba(0,0,0,.12);
+}
+.recuadro{
+	width: 	100%;
+}
+.formas{
+	width: 70%;
+	border-radius: 3px;
+	border:1px solid #ccc ;
+	padding:3px;
+}
+.btn_form{
+	margin:20px auto;
+}

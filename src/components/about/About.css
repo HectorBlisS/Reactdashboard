@@ -1,0 +1,128 @@
+.back_about{
+	padding-bottom: 30px;
+	padding-top: 40px;
+}
+.logo{
+	width: 40%;
+	margin-left: 5%;
+	}
+
+.img_logo{
+	width: 85%;
+	margin-left: 15%;
+}
+.box_about{
+		
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+}
+.nosotros{
+	width: 45%;
+	margin-left: 5%;
+ font-family:Nova;
+ font-size: 18px;
+
+}
+hr{
+	width: 50%;
+}
+.icon_about{
+	color:white;
+}
+.contenedor{
+	display: inline-flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+.content{
+	flex-grow: 1;
+	width: 220px;
+	height: 270px;
+	margin-bottom: 50px;
+	margin-left: 50px;
+	transition: all 1s ease;
+
+
+}
+.circle_process{
+	width: 120px;
+	height: 120px;
+	border:1px solid #57658E;
+	background-color: #57658E;
+	border-radius: 60px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 1s ease;
+
+}
+.icon_p{
+	margin: 20% auto;
+}
+.paso{
+	display: block;
+	margin-top:20px;
+}
+.space{
+	width: 90%;
+	padding-top: 50px;
+margin-left:5%;}
+
+.box_process{
+	height: 270px;	
+	overflow: hidden;
+	margin-bottom: 50px;
+	position: relative;
+}
+	.img_process{
+	width: 100%;
+	margin-top: -300px;
+}
+.btn_tuto{
+	position: absolute;
+	top:35%;
+	width: 15%;
+	left:42.5%;
+
+}
+h3, h2, h4{
+	font-family: NovaBold;
+
+}
+p{
+	font-family: Nova;
+}
+.content:hover{
+	transform: translateY(-30px);
+}
+.content:hover .circle_process{
+	border:1px dotted #57658E;
+	background-color: white;
+	cursor:pointer;
+}
+.content:hover .icon_about{
+	color:#57658E;
+}
+@media(max-width: 750px){
+	.logo{
+		width: 100%;
+		margin: 50px 0;
+	}
+	.img_logo{
+		width: 60%;
+	}
+	.nosotros{
+		width: 100%;
+		margin-bottom: 50px;
+		
+	}
+.content{
+		margin-left: 0;
+	}
+}
+@media(max-width: 380px){
+
+}

@@ -1,0 +1,10 @@
+.back_reclutar{
+	background-image:url('https://images.pexels.com/photos/401684/pexels-photo-401684.jpeg?w=940&h=650&auto=compress&cs=tinysrgb') ;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 250px;
+}
+.icon_play{
+	margin-top: 3%;
+}
