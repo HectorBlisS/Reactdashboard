@@ -16,6 +16,8 @@ import {
   Route
 } from 'react-router-dom';
 import PolizasPage from './components/polizas/PolizasPage';
+import Integrate from './components/integrate/Integrate';
+import UserProfile from './components/userprofile/UserProfile';
 // <Route path='/roster' component={Roster}/>
 
 
@@ -34,6 +36,8 @@ const Routes = () => (
       <Route path='/extras' component={Extras}/>
       <Route path='/contacto' component={Contacto}/>
       <Route path='/form' component={FormContacto}/>
+      <Route path='/integrate' component={Integrate}/>
+      <Route path='/perfil' component={UserProfile}/>
     </Switch>
 );
 

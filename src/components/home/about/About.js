@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './About.css';
-import Logo_dipra from '../../assets/logo.png';
+import Logo_dipra from '../../../assets/logo.png';
 import FontIcon from 'material-ui/FontIcon';
 import FontAwesome from 'react-fontawesome';
 

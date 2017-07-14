@@ -60,7 +60,7 @@ class MainBar extends Component{
                     <img className='log' src={logo}/>
                 </Link>
                 <div className="links">
-                    <Link className='pestana' to='/form'>
+                    <Link className='pestana' to='/integrate'>
                         <button>
                             Quieres convertirte en asesor?
                         </button> 
@@ -69,7 +69,7 @@ class MainBar extends Component{
                         id="explorar"
                         style={styles.elLink}
                         to="/servicios" >
-                        Servicios
+                        Promociones
                     </Link>
                     <Link className='pestana'
                         id="explorar"
