@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Creditos.css'
 import FontAwesome from 'react-fontawesome';
-import Intro from '../intro/Intro';
+import Intro from '../../intro/Intro';
 import {Link} from 'react-router-dom';
-import Nav from '../nav/Nav';
+import Nav from '../../nav/Nav';
 
 
 class Creditos extends Component{
