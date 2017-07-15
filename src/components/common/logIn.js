@@ -24,9 +24,25 @@ const style = {
 class LogIn extends Component{
   constructor(props) {
    super(props);
-   this.state = {open: false};
+   this.state = {
+       open: false,
+       auth: {}
+   };
  }
  handleToggle = () => this.setState({open: !this.state.open});
+    
+    onChange = (e) => {
+        console.log(e)
+        const field = e.target.name;
+        let auth = this.state.auth;
+        auth[field] = e.target.value;
+        this.setState({auth});
+    }
+
+    login = () => {
+        console.log(this.state.auth);
+    };
+
   render(){
     return(
       <div className="logInBack">
@@ -34,20 +50,28 @@ class LogIn extends Component{
           <Paper zDepth={1} style={style}>
             <h1>Inicia Sesión</h1>
             <TextField
+             name="username"
               type="email"
               hintText="micorrreo@miempresa.com"
               floatingLabelText="Correo"
               fullWidth={true}
+              onChange={this.onChange}
             /><br />
             <TextField
+             name="password"
               type="password"
               hintText="********"
               floatingLabelText="Contraseña"
               fullWidth={true}
+              onChange={this.onChange}
             /><br /><br />
-          <RaisedButton label="Entrar" fullWidth={true}
+          <RaisedButton 
+            label="Entrar" 
+            fullWidth={true}
             backgroundColor='#607D8B'
-            labelColor='#fff'/>
+            labelColor='#fff'
+            onTouchTap={this.login}
+            />
           <br/><br/>
           <a href="#" className="linkPass" 
             onClick={this.handleToggle}>¿Olvidaste la Contraseña?</a>
