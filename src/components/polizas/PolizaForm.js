@@ -7,22 +7,14 @@ import SelectInput from '../common/SelectInput';
 import {GridList, GridTile} from 'material-ui/GridList';
 import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
-import {
-    Paper,
-    Toolbar,
-    ToolbarTitle,
-    ToolbarGroup,
-    RaisedButton,
-    TextField,
-    Divider,
-    RadioButton,
-    RadioButtonGroup,
-    Toggle
-} from 'material-ui';
+import {Paper,Toolbar,ToolbarTitle,ToolbarGroup,RaisedButton,TextField,
+  Divider,RadioButton,RadioButtonGroup,Toggle} from 'material-ui';
 
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
+import api from '../../Api/Django';
+import toastr from 'toastr';
 
 const style = {
   check:{
@@ -50,6 +42,15 @@ class PolizaForm extends React.Component{
    guardar=()=>{
      console.log(this.state.poliza)
    }
+   enviarPoliza=()=>{
+     api.newPolicy(this.state.poliza).then(r=>{
+       toastr.success('Tu poliza se a registrado con éxito')
+       console.log(r)
+     }).catch(e=>{
+       toastr.error('Hubo un problema, Intenta más tarde')
+       console.log(e)
+     })
+   }
    handleDates =(e,val)=>{
      let field = this.state.lafecha
      let poliza = this.state.poliza;
@@ -67,7 +68,9 @@ class PolizaForm extends React.Component{
               <ToolbarTitle
                   text="Datos Generales del Contratante"
               />
-            <button onClick={this.guardar}>lol</button>
+            <div style={{paddingTop:'1%'}}>
+              <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
+            </div>
             </Toolbar>
             {/*1st razon social y tipo de persona*/}
             <GridList
@@ -559,6 +562,9 @@ class PolizaForm extends React.Component{
               <ToolbarTitle
                   text="Información Adicional Para Personas Físicas"
               />
+              <div style={{paddingTop:'1%'}}>
+                <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
+              </div>
             </Toolbar>
             <GridList
               cellHeight='auto'
@@ -695,6 +701,9 @@ class PolizaForm extends React.Component{
                   <ToolbarTitle
                       text="Ocupación o Actividad (Obligatorio)"
                   />
+                  <div style={{paddingTop:'1%'}}>
+                    <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
+                  </div>
                 </Toolbar>
                 <GridList
                   cellHeight='auto'
@@ -858,7 +867,14 @@ class PolizaForm extends React.Component{
                 </GridList>
 
 
-
+                <Toolbar>
+                  <ToolbarTitle
+                      text="Envía tu Poliza si haz terminado"
+                  />
+                  <div style={{paddingTop:'1%'}}>
+                    <RaisedButton  onTouchTap={this.enviarPoliza} label="Enviar" />
+                  </div>
+                </Toolbar>
 
 
 
