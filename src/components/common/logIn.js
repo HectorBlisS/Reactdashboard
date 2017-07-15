@@ -5,6 +5,8 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import Close from 'material-ui/svg-icons/content/clear';
+import api from '../../Api/Django';
+import toastr from 'toastr';
 
 
 const style = {
@@ -32,7 +34,6 @@ class LogIn extends Component{
  handleToggle = () => this.setState({open: !this.state.open});
     
     onChange = (e) => {
-        console.log(e)
         const field = e.target.name;
         let auth = this.state.auth;
         auth[field] = e.target.value;
@@ -41,6 +42,20 @@ class LogIn extends Component{
 
     login = () => {
         console.log(this.state.auth);
+        api.tokenLogin(this.state.auth)
+        .then(r=>{
+            console.log(r);
+            localStorage.setItem('userToken', JSON.stringify(r.token));
+            toastr.success("Sesión Iniciada");
+        })
+        .catch(e=>{
+            console.log(e.response);
+            if (e.response.data.non_field_errors){
+                toastr.error(e.response.data.non_field_errors);
+            } else {
+                toastr.error("No se pudo iniciar sesión, intenta de nuevo")
+            }
+        })
     };
 
   render(){

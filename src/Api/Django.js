@@ -3,7 +3,18 @@ import axios from 'axios';
 import FormData from 'form-data'
 
 
-let polizasUrl = 'http://localhost:8000/api/polizas/';
+let debug = true;
+
+let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/polizas/';
+let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
+
+if (debug){
+    polizasUrl = 'http://localhost:8000/api/polizas/';
+    loginUrl = 'http://localhost:8000/auth/token-auth/';
+}
+
+
+
 
 
 const api = {
@@ -55,6 +66,30 @@ const api = {
 
           });
       },
-}
+    
+    tokenLogin: (auth) => {
+      
+         return new Promise(function (resolve, reject) {
+              const instance = axios.create({
+                  baseURL: loginUrl,
+//                  timeout: 2000,
+                  headers: {'Content-Type': 'application/json',
+                     }
+              });
+              instance.post('', auth)
+                  .then(function (response) {
+                          resolve(response.data);
+                  })
+                  .catch(function (error) {
+                      console.log(error.response);
+                      reject(error);
+                  });
+
+
+          });
+        
+    },
+    
+} // api
 
 export default api;
