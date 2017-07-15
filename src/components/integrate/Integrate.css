@@ -1,0 +1,46 @@
+.text_asesor{
+	width: 50%;
+	text-align: left;
+	padding: 2% 5% 5% 5%;
+}
+.img_asesor{
+	width: 50%;
+	padding: 5% 2%;
+}
+.flex{
+	display: inline-flex;
+}
+.barra{
+	width: 100%;
+	height: 45px;
+	background-color: black;
+	margin-bottom: 40px;
+}
+.inp{
+	width: 40%;
+	border-radius: 3px;
+	border:1px solid #999 ;
+
+
+}
+.edo{
+	width: 40%;
+	border-radius: 3px;
+	padding:7px;
+	border:1px solid #999 ;
+}
+.form_asesor{
+	margin-bottom: 40px;
+}
+.form_asesor button{
+	width: 10%;
+	padding: 3px 5px;
+	    background-color: #57658E;
+	opacity: .8;
+	border-radius: 2px;
+	border:none;
+	color:white;
+	font-size: 15px;
+	margin-top: 40px;
+	transition: all 1s ease;
+}

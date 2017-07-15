@@ -2,12 +2,13 @@
 	background-image: url('https://images.pexels.com/photos/21014/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb');
 	height: auto;
 	background-size: cover;
+
 }
 .ubicacion{
 	display: inline-flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
-
+		padding-top: 50px;
 }
 .map{
 	left:50px;

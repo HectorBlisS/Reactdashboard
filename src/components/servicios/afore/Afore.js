@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import './Afore.css'
 import FontAwesome from 'react-fontawesome';
-import Intro from '../intro/Intro';
+import Intro from '../../intro/Intro';
+import {Link} from 'react-router-dom';
+import Nav from '../../nav/Nav';
 
 class Afore extends Component{
 	render (){
 		return(
 			<div className='productos'>
+				<Nav />
 				<Intro />
+
 				<div className='box_product'>
-					<div className='left text_serv'>
+					<div className='lef text_serv'>
 						<h3 className='tittle_sv'>AFORE</h3>
 						<p className='text_sv'>Recuerda que la mejor AFORE sera aquella
 						 que tenga los mejores rendimientos historicos, aquella que
@@ -27,7 +31,9 @@ class Afore extends Component{
 						   las SIEFORES e ir creando tu estrategia conforme vayas
 						    aumentando de edad y por lo tanto vayas cambiando de SIEFORE.</p>
 						 <div >
+						 <Link to='/form'>
 						<p className='link_contacto'><FontAwesome name='plus-circle' className='plus' size='1.5x'/>CONTACTA TU ASESOR MÁS CERCANO</p>
+						</Link>
 						</div>
 					</div>
 					 <div className='img_serv'>

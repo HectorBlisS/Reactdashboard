@@ -9,6 +9,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
+import '../node_modules/toastr/build/toastr.min.css';
 
 
 injectTapEventPlugin();
@@ -41,5 +42,3 @@ const WithRouter = () => (
 ReactDOM.render(<WithRouter />, document.getElementById('root'));
 
 registerServiceWorker();
-
-
