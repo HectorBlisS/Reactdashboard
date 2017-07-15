@@ -26,19 +26,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div 
-            className={this.state.activeMenu ? 'apachurrado' : 'no-apachurrado'}
-           >
-            <NavBar 
-                handleToggle={this.handleToggle}
-                active={this.state.activeMenu}
-            />
             <Routes />
-        </div>  
-        <MainMenu
-            active={this.state.activeMenu}
-            handleToggle={this.handleToggle} /> 
-              
+   
+           
       </div>
     );
   }

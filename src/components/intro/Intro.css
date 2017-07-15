@@ -1,0 +1,17 @@
+.intro{
+	background-image: url('https://images.pexels.com/photos/41141/pexels-photo-41141.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
+	background-size: cover;
+	height: 30vh;
+	background-position: center;
+}
+.tittle_service{
+	padding-top: 7%;
+	margin: 0;
+	color:white;
+	font-size: 45px;
+}
+.intro hr{
+	height: 2px;
+   border: 0;
+   background-color: white;
+}

@@ -10,7 +10,7 @@ class PolizasPage extends Component {
         return(
             <div>
 
-                <Route path={`${this.props.match.url}/new`} component={NewPolizaPage} />
+                <NewPolizaPage/>
 
             </div>
         );
@@ -18,7 +18,7 @@ class PolizasPage extends Component {
 }
 
 PolizasPage.propTypes = {
-  data: PropTypes.func  
+  data: PropTypes.func
 };
 
 export default PolizasPage;

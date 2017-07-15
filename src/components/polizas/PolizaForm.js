@@ -31,42 +31,77 @@ const style = {
 
 }
 
-const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
+
+class PolizaForm extends React.Component{
+
+  constructor(){
+    super();
+    this.state={
+      poliza:{}
+    }
+  }
+
+  handleText = (event, index) => {
+     let field = event.target.name
+     let poliza = this.state.poliza;
+     poliza[field] = event.target.value
+     this.setState({poliza});
+   }
+   guardar=()=>{
+     console.log(this.state.poliza)
+   }
+   handleDates =(e,val)=>{
+     let field = this.state.lafecha
+     let poliza = this.state.poliza;
+     poliza[field] = val
+     console.log(this.state.lafecha,val)
+   }
+  testing=(e)=>{
+    this.setState({lafecha:e.target.name})
+    //console.log(e.target.name,e.target.value)
+  }
+  render(){
     return (
         <Paper style={styles.margenes}>
             <Toolbar>
               <ToolbarTitle
                   text="Datos Generales del Contratante"
               />
+            <button onClick={this.guardar}>lol</button>
             </Toolbar>
             {/*1st razon social y tipo de persona*/}
             <GridList
               cellHeight='auto'
               cols={12}
               style={{padding:'1%'}}>
-              <GridTile cols={4}>
+              <GridTile cols={2}>
                 Tipo de persona
               </GridTile>
-              <GridTile cols={8}>
+              <GridTile cols={10}>
                 Razón Social
               </GridTile>
               <GridTile cols={2}>
 
-                <Checkbox
-                  label="Fisica"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="tpersona"  >
+                 <RadioButton
+                   value="fisica"
+                   label="Física"
+                   style={styles.radioButton}
+                 />
+                 <RadioButton
+                   value="moral"
+                   label="Moral"
+                   style={styles.radioButton}
+                 />
+
+               </RadioButtonGroup>
               </GridTile>
 
-              <GridTile cols={2}>
 
-                <Checkbox
-                  label="Moral"
-                  style={{paddingTop:'5%'}}
-                />
-              </GridTile>
-              <GridTile cols={8}>
+              <GridTile cols={10}>
                 <TextField
+                  onChange={this.handleText}
+                  name="rsocial"
                   hintText="Hint Text"
                   fullWidth={true}
                 />
@@ -77,82 +112,100 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
               cellHeight='auto'
               cols={12}
               style={{padding:'1%'}}>
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 Apellido Paterno
               </GridTile>
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 Apellido Materno
               </GridTile>
-              <GridTile cols={4}>
+              <GridTile cols={2}>
                 Estado Civil
               </GridTile>
 
 
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 <TextField
+                  onChange={this.handleText}
+                  name="apaterno"
                   hintText="Hint Text"
                   fullWidth={true}
                 />
               </GridTile>
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 <TextField
+                  onChange={this.handleText}
+                  name="amaterno"
                   hintText="Hint Text"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={2}>
-                <Checkbox
-                  label="Soltero"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="ecivil"  >
+                 <RadioButton
+                   value="casado"
+                   label="Casado"
+                   style={styles.radioButton}
+                 />
+                 <RadioButton
+                   value="soltero"
+                   label="Soltero"
+                   style={styles.radioButton}
+                 />
+
+               </RadioButtonGroup>
+
               </GridTile>
-              <GridTile cols={2}>
-                <Checkbox
-                  label="Casado"
-                  style={{paddingTop:'5%'}}
-                />
-              </GridTile>
+
             </GridList>
             {/*3rd Name*/}
             <GridList
               cellHeight='auto'
               cols={12}
               style={{padding:'1%'}}>
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 Primer Nombre
               </GridTile>
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 Segundo Nombre
               </GridTile>
-              <GridTile cols={4}>
+              <GridTile cols={2}>
                 Género
               </GridTile>
 
 
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 <TextField
+                  onChange={this.handleText}
+                  name="pnombre"
                   hintText="Hint Text"
                   fullWidth={true}
                 />
               </GridTile>
-              <GridTile cols={4}>
+              <GridTile cols={5}>
                 <TextField
+                  onChange={this.handleText}
+                  name="snombre"
                   hintText="Hint Text"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={2}>
-                <Checkbox
-                  label="Masculino"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="genero"  >
+                 <RadioButton
+                   value="masculino"
+                   label="Masculino"
+                   style={styles.radioButton}
+                 />
+                 <RadioButton
+                   value="femenino"
+                   label="Femenino"
+                   style={styles.radioButton}
+                 />
+
+               </RadioButtonGroup>
+
               </GridTile>
-              <GridTile cols={2}>
-                <Checkbox
-                  label="Femenino"
-                  style={{paddingTop:'5%'}}
-                />
-              </GridTile>
+
             </GridList>
             {/*4th rfc cuurp  edad birth*/}
             <GridList
@@ -175,24 +228,36 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="rfc"
                   hintText="Full width"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="curp"
                   hintText="Full width"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  onChange={this.handleText}
+                  name="edad"
                   hintText="20"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={3}>
-                <DatePicker hintText="Portrait Dialog" />
+                <DatePicker
+                  locale="en-US"
+                  onChange={this.handleDates}
+                  onTouchTap={this.testing}
+                  autoOk={true}
+                  hintText="Portrait Dialog"
+                  name="fnacimiento"/>
               </GridTile>
 
 
@@ -215,18 +280,24 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="tipoid"
                   hintText="Full width"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="numid"
                   hintText="Full width"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="fiel"
                   hintText="FIEL"
                   fullWidth={true}
                 />
@@ -250,18 +321,24 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="estado"
                   hintText="Full width"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="pais"
                   hintText="Full width"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  onChange={this.handleText}
+                  name="nacionalidad"
                   hintText="lol"
                   fullWidth={true}
                 />
@@ -273,29 +350,46 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
               cols={16}
               style={{padding:'1%'}}>
               <GridTile cols={16}>
-                Estado de Nacimiento
+                Si es extranjero indique su Calidad Migratoria, en términos de la Ley de Migración
               </GridTile>
 
               <GridTile cols={5}>
-                <Checkbox
-                  label="Residente Temporal"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="rtemp"  >
+                 <RadioButton
+                   value="rtemporal"
+                   label="Residente Temporal"
+                   style={styles.radioButton}
+                 />
+
+
+               </RadioButtonGroup>
               </GridTile>
               <GridTile cols={5}>
-                <Checkbox
-                  label="Residente Permanente"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="rperm"  >
+                 <RadioButton
+                   value="rpermanente"
+                   label="Residente Permanente"
+                   style={styles.radioButton}
+                 />
+
+
+               </RadioButtonGroup>
               </GridTile>
               <GridTile cols={2}>
-                <Checkbox
-                  label="Otro"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="resotro"  >
+                 <RadioButton
+                   value="otro"
+                   label="Otro"
+                   style={styles.radioButton}
+                 />
+
+
+               </RadioButtonGroup>
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  name="otroext"
+                  onChange={this.handleText}
                   hintText="lol"
                   fullWidth={true}
                 />
@@ -325,30 +419,40 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
               <GridTile cols={5}>
                 <TextField
+                  name="calle"
+                  onChange={this.handleText}
                   hintText="lol"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={3}>
                   <TextField
+                    name="edificio"
+                    onChange={this.handleText}
                     hintText="lol"
                     fullWidth={true}
                   />
                 </GridTile>
                 <GridTile cols={1}>
                     <TextField
+                      name="noext"
+                      onChange={this.handleText}
                       hintText="lol"
                       fullWidth={true}
                     />
                   </GridTile>
                   <GridTile cols={1}>
                       <TextField
+                        name="noint"
+                        onChange={this.handleText}
                         hintText="lol"
                         fullWidth={true}
                       />
                 </GridTile>
                 <GridTile cols={2}>
                     <TextField
+                      name="cp"
+                      onChange={this.handleText}
                       hintText="lol"
                       fullWidth={true}
                     />
@@ -377,24 +481,32 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
               <GridTile cols={3}>
                 <TextField
+                  name="colonia"
+                  onChange={this.handleText}
                   hintText="lol"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={3}>
                   <TextField
+                    name="municipio"
+                    onChange={this.handleText}
                     hintText="lol"
                     fullWidth={true}
                   />
                 </GridTile>
                 <GridTile cols={3}>
                     <TextField
+                      name="ciudad"
+                      onChange={this.handleText}
                       hintText="lol"
                       fullWidth={true}
                     />
                   </GridTile>
                   <GridTile cols={3}>
                       <TextField
+                        name="estado"
+                        onChange={this.handleText}
                         hintText="lol"
                         fullWidth={true}
                       />
@@ -419,18 +531,24 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
               <GridTile cols={3}>
                   <TextField
+                    name="telefono"
+                    onChange={this.handleText}
                     hintText="lol"
                     fullWidth={true}
                   />
                 </GridTile>
                 <GridTile cols={5}>
                     <TextField
+                      name="correo"
+                      onChange={this.handleText}
                       hintText="lol"
                       fullWidth={true}
                     />
                   </GridTile>
                   <GridTile cols={4}>
                       <TextField
+                        name="fmercantil"
+                        onChange={this.handleText}
                         hintText="lol"
                         fullWidth={true}
                       />
@@ -451,40 +569,49 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
               ¿Desempeña o ha desempeñado alguna función pública en México o el Extranjero?
               </GridTile>
 
-              <GridTile cols={4}>
+              <GridTile cols={2}>
 
               </GridTile>
-              <GridTile cols={5}>
+              <GridTile cols={6}>
               ¿Qué Cargo?
               </GridTile>
-              <GridTile cols={3}>
+              <GridTile cols={4}>
                 Fecha en que lo dejó
               </GridTile>
 
 
-              <GridTile cols={2}>
-                <Checkbox
-                  label="Si"
-                  style={{paddingTop:'5%'}}
-                />
-                </GridTile>
+
+
                 <GridTile cols={2}>
-                  <Checkbox
-                    label="No"
-                    style={{paddingTop:'5%'}}
-                  />
+                  <RadioButtonGroup onChange={this.handleText}  name="fpublico"  >
+                   <RadioButton
+                     value="si"
+                     label="Si"
+                     style={styles.radioButton}
+                   />
+                   <RadioButton
+                     value="no"
+                     label="No"
+                     style={styles.radioButton}
+                   />
+
+                 </RadioButtonGroup>
                   </GridTile>
-                  <GridTile cols={5}>
+                  <GridTile cols={6}>
                       <TextField
+                        name="micargo"
+                        onChange={this.handleText}
                         hintText="lol"
                         fullWidth={true}
                       />
               </GridTile>
-              <GridTile cols={3}>
-                  <TextField
-                    hintText="lol"
-                    fullWidth={true}
-                  />
+              <GridTile cols={4}>
+                <DatePicker
+                  onChange={this.handleDates}
+                  onTouchTap={this.testing}
+                  autoOk={true}
+                  hintText="Portrait Dialog"
+                  name="fcargo"/>
               </GridTile>
             </GridList>
             <Divider/>
@@ -497,38 +624,46 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
               ¿Es familiar de alguien que desempeña alguna función pública en México o el Extranjero?
               </GridTile>
 
-              <GridTile cols={4}>
+              <GridTile cols={2}>
               </GridTile>
-              <GridTile cols={5}>
+              <GridTile cols={6}>
               ¿Qué Cargo?
               </GridTile>
-              <GridTile cols={3}>
+              <GridTile cols={4}>
                 Fecha en que lo dejó
               </GridTile>
 
               <GridTile cols={2}>
-                <Checkbox
-                  label="Si"
-                  style={{paddingTop:'5%'}}
-                />
+                <RadioButtonGroup onChange={this.handleText} name="parpublico"  >
+                 <RadioButton
+                   value="si"
+                   label="Si"
+                   style={styles.radioButton}
+                 />
+                 <RadioButton
+                   value="no"
+                   label="No"
+                   style={styles.radioButton}
+                 />
+
+               </RadioButtonGroup>
                 </GridTile>
-                <GridTile cols={2}>
-                  <Checkbox
-                    label="No"
-                    style={{paddingTop:'5%'}}
-                  />
-                  </GridTile>
-                  <GridTile cols={5}>
+
+                  <GridTile cols={6}>
                       <TextField
+                        name="sucargo"
+                        onChange={this.handleText}
                         hintText="lol"
                         fullWidth={true}
                       />
               </GridTile>
-              <GridTile cols={3}>
-                  <TextField
-                    hintText="lol"
-                    fullWidth={true}
-                  />
+              <GridTile cols={4}>
+                <DatePicker
+                  onChange={this.handleDates}
+                  onTouchTap={this.testing}
+                  autoOk={true}
+                  hintText="Portrait Dialog"
+                  name="fsucargo"/>
               </GridTile>
 
 
@@ -537,6 +672,8 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
               </GridTile>
               <GridTile cols={3}>
                   <TextField
+                    name="parentesco"
+                    onChange={this.handleText}
                     hintText="lol"
                     fullWidth={true}
                   />
@@ -546,6 +683,8 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
               </GridTile>
               <GridTile cols={5}>
                   <TextField
+                    name="familiar"
+                    onChange={this.handleText}
                     hintText="lol"
                     fullWidth={true}
                   />
@@ -586,26 +725,35 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
                   </GridTile>
 
                   <GridTile cols={3}>
-                    <Checkbox
-                      label="Militar"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Piloto"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Profesor"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Notario"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Ministro Religioso"
-                      style={style.check}
-                    />
+                    <RadioButtonGroup onChange={this.handleText} name="asalariado"  >
+                     <RadioButton
+                       value="Militar"
+                       label="Militar"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Piloto"
+                       label="Piloto"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Profesor"
+                       label="Profesor"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Notario"
+                       label="Notario"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Ministro Religioso"
+                       label="Ministro Religioso"
+                       style={styles.radioButton}
+                     />
+
+                   </RadioButtonGroup>
+
                   <br/>
 
                   Especifique Institución
@@ -613,27 +761,37 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
                   <GridTile cols={3}
                     >
-                    <Checkbox
-                      label="Agricultor"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Médico"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Empleado Privado"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Empleado Público"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Otro"
-                      style={style.check}
-                    />
+                    <RadioButtonGroup onChange={this.handleText} name="asalariado" >
+                     <RadioButton
+                       value="Agricultor"
+                       label="Agricultor"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="medico"
+                       label="Médico"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="empleadopri"
+                       label="Empleado Privado"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="empleadopub"
+                       label="Empleado Público"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Otro"
+                       label="Otro"
+                       style={styles.radioButton}
+                     />
+
+                   </RadioButtonGroup>
                     <TextField
+                      name="institucion"
+                      onChange={this.handleText}
                       hintText="lol"
                       fullWidth={true}
                     />
@@ -642,11 +800,22 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
                   <GridTile cols={3}
                     >
-                    <Checkbox
-                      label="Empresario"
-                      style={style.check}
-                    />
+                    <RadioButtonGroup onChange={this.handleText} name="bhonorarios"  >
+                     <RadioButton
+                       value="si"
+                       label="Si"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="no"
+                       label="No"
+                       style={styles.radioButton}
+                     />
+
+                   </RadioButtonGroup>
                     <TextField
+                      name="honorarios"
+                      onChange={this.handleText}
                       hintText="lol"
                       fullWidth={true}
 
@@ -655,21 +824,30 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
                   </GridTile>
 
                   <GridTile cols={3}>
-                    <Checkbox
-                      label="Empresario"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Comerciante"
-                      style={style.check}
-                    />
-                    <Checkbox
-                      label="Comisionista"
-                      style={style.check}
-                    />
+                    <RadioButtonGroup onChange={this.handleText} name="actempresarial"  >
+                     <RadioButton
+                       value="Empresario"
+                       label="Empresario"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Comerciante"
+                       label="Comerciante"
+                       style={styles.radioButton}
+                     />
+                     <RadioButton
+                       value="Comisionista"
+                       label="Comisionista"
+                       style={styles.radioButton}
+                     />
+
+
+                   </RadioButtonGroup>
                   <br/>
                   Indique
                   <TextField
+                    name="aempresarial"
+                    onChange={this.handleText}
                     hintText="lol"
                     fullWidth={true}
                   />
@@ -686,7 +864,8 @@ const PolizaForm = ({course, allAuthors, onSave, onChange, saving, errors}) => {
 
         </Paper>
     );
-};
+  }
+}
 
 const styles = {
   margenes: {

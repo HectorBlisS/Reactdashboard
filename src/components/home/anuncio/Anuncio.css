@@ -1,0 +1,39 @@
+.cart{
+	background-color:white;
+	position: absolute;
+	width: 270px;
+	height: 350px;
+	top:22%;
+	left:65%;
+	color:#57658E;
+	
+}
+.features{
+	margin-top: 30px;
+}
+.features button{
+	margin-top: 20px;
+	background-color: #57658E;
+	border:none;
+	border-radius: 3px;
+	padding: 4px 6px;
+	color:white;
+}
+.nick_name{
+	margin-bottom: 15px;
+	margin-top: 25px;
+}
+.flecha{
+	color:#57658E;
+}
+@media(max-width: 890px){
+	.cart{
+		left:55%;
+	}
+}
+@media(max-width: 650px){
+	.cart{
+		display: none;
+	}
+	
+}

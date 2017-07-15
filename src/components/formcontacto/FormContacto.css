@@ -1,0 +1,71 @@
+.back_form{
+	background-image: url('https://images.pexels.com/photos/401684/pexels-photo-401684.jpeg?w=940&h=650&auto=compress&cs=tinysrgb');
+	background-size: cover;
+	height: 100vh;
+}
+.cover{
+	background-color:rgba(0,0,0,.7);
+	width: 100%;
+	height: 100%;
+	color:white;
+}
+
+.recuadro{
+	width: 	100%;
+}
+.data{
+	display: inline-flex;
+	width: 60%;
+}
+.campo{
+	width: 100%;
+}
+.forms{
+	width: 60%;
+	border-radius: 3px;
+	border:1px solid white ;
+	padding:7px;
+	background-color: transparent;
+	color:white;
+}
+.left{
+	margin-left: 19px;
+}
+
+.formas{
+	width: 80%;
+	border-radius: 3px;
+	border:1px solid white ;
+	background-color: transparent;
+	color:white;
+}
+.btn_form{
+	margin:20px auto;
+}
+.option{
+	width: 100%;
+	
+}
+.contenido{
+	padding-top: 100px;
+}
+.saludo{
+	font-size: 60px;
+	margin: 0;
+}
+.mensaje{
+	font-size: 20px;
+	margin-bottom: 60px;
+}
+.btn_form{
+	border:1px solid white;
+	background-color: transparent;
+	opacity: .8;
+	border-radius: 3px;
+	padding:4px 9px;
+	color:white;
+	cursor: pointer;
+}
+/*input::placeholder{
+	color:white;
+}*/
