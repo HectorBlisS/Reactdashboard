@@ -16,7 +16,7 @@ const style = {
   display: 'inline-block',
   padding:'3% 3% 3% 3%',
   style2:{
-    height: '100%',
+    height: '120%',
     width: '60%',
     textAlign: 'center',
     display: 'inline-block',
@@ -31,6 +31,13 @@ class LogIn extends Component{
        auth: {}
    };
  }
+    
+    componentWillMount(){
+        if(localStorage.getItem('userToken')){
+            this.props.history.push("/perfil")
+        }
+    }
+    
  handleToggle = () => this.setState({open: !this.state.open});
     
     onChange = (e) => {
@@ -47,6 +54,7 @@ class LogIn extends Component{
             console.log(r);
             localStorage.setItem('userToken', JSON.stringify(r.token));
             toastr.success("Sesión Iniciada");
+            this.props.history.push('/perfil');
         })
         .catch(e=>{
             console.log(e.response);
@@ -111,7 +119,7 @@ class LogIn extends Component{
           <br/>
 
             <Close  onClick={this.handleToggle}
-                style={{position:'absolute',top:-20,right:-20}}/>
+                style={{cursor:'pointer',position:'absolute',top:-20,right:-20}}/>
           </div>
           </Paper>
         </div>

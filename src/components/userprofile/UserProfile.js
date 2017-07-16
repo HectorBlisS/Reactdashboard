@@ -33,6 +33,13 @@ class UserProfile extends Component {
       slideIndex: 0,
     };
   }
+    
+    componentWillMount(){
+        const user = JSON.parse(localStorage.getItem('userToken'));
+        if (!user){
+            this.props.history.push('/login');
+        }
+    }
 
   handleChange = (value) => {
     this.setState({
@@ -45,7 +52,7 @@ class UserProfile extends Component {
         return(
             <div>
           		<div className='barra'>
-					<Nav />
+					<Nav history={this.props.history} />
 				</div>
           		<div className='datos_user'>
           			<div className='photo_user'>
