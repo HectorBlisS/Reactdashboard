@@ -17,7 +17,7 @@ class HomePage extends Component {
             <div>
             	<div className='back'>
                 	<div className='cover'>
-                        <Nav />
+                        <Nav history={this.props.history} />
                     	<div className='name'>
                             <h1 className='name_dipra'>Dirección en Prevención de Riesgos y Asesoría financiera</h1>
         				</div>
