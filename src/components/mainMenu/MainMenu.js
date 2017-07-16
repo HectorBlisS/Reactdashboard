@@ -38,11 +38,11 @@ const styles = {
 }
 
 class MainMenu extends Component {
-    
+
     state = {
         open: false,
     };
-    
+
     handleNestedListToggle = (item) => {
         this.setState({
           open: item.state.open,
@@ -53,7 +53,7 @@ class MainMenu extends Component {
         const polizas = new RegExp('polizas')
         console.log(polizas.test(window.location.pathname));
     }
-    
+
     render(){
         const polizas = new RegExp('polizas');
 
@@ -62,7 +62,7 @@ class MainMenu extends Component {
             <Drawer
             open={this.props.active}
             style={{textAlign:'left'}}>
-            
+
                 <AppBar
                     style={{backgroundColor:'#607D8B'}}
                     iconStyleLeft={{color: 'red'}}
@@ -72,17 +72,17 @@ class MainMenu extends Component {
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                   />
 
-               
-               
+
+
               <List >
-               
+
                 <ListItem
                     primaryText="Héctor BlisS"
                     leftAvatar={<Avatar src={avatar}/>}
                     rightIcon={<CommunicationChatBubble />}
                   />
-                  
-                  
+
+
                 <Subheader>Atajos Rápidos</Subheader>
                     <ListItem
                         containerElement={<NavLink activeStyle={{color:'black'}} className="no-link" to="/polizas/new" />}
@@ -94,7 +94,7 @@ class MainMenu extends Component {
                 <ListItem
                     containerElement={<NavLink activeStyle={{color:'black'}} className="no-link" to="/reportes" />}
                     primaryText="Reportes"
-                   style={{color:'grey'}} 
+                   style={{color:'grey'}}
                    leftIcon={<ContentDrafts />} />
                     <Divider />
 
@@ -116,7 +116,7 @@ class MainMenu extends Component {
                               leftIcon={<ActionGrade />}
                             />,
                     <ListItem
-                     
+
                       key={2}
                       primaryText="Marcadas"
                       leftIcon={<ContentSend />}
@@ -174,17 +174,17 @@ class MainMenu extends Component {
                 />
 
                     <Divider />
-                <ListItem 
+                <ListItem
                    primaryText="Clientes"           leftIcon={<ContentInbox />}
                    style={{backgroundColor:'grey', color:'lightgrey'}}
                     />
 
 
               </List>
-               
-               
+
+
             </Drawer>
-            
+
           </div>
         );
     }
