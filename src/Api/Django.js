@@ -25,9 +25,9 @@ const api = {
         return new Promise(function (resolve, reject) {
             const instance = axios.create({
                 baseURL: polizasUrl,
-                timeout: 2000,
+                //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + userToken}
+                    'Authorization': 'Token' + userToken}
             });
             instance.get()
                 .then(function (response) {
@@ -49,9 +49,9 @@ const api = {
           return new Promise(function (resolve, reject) {
               const instance = axios.create({
                   baseURL: polizasUrl,
-                  timeout: 2000,
+                  //timeout: 2000,
                   headers: {'Content-Type': 'application/json',
-                      'Authorization': 'Bearer ' + userToken}
+                      'Authorization': 'Token ' + userToken}
               });
               instance.post('', poliza)
                   .then(function (response) {
@@ -66,9 +66,9 @@ const api = {
 
           });
       },
-    
+
     tokenLogin: (auth) => {
-      
+
          return new Promise(function (resolve, reject) {
               const instance = axios.create({
                   baseURL: loginUrl,
@@ -87,9 +87,10 @@ const api = {
 
 
           });
-        
+
     },
-    
+
+
 } // api
 
 export default api;

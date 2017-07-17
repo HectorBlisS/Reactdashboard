@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import './Nav.css';
 import {Link} from 'react-router-dom';
-import {Avatar, Popover} from 'material-ui';
+import {Avatar, Popover, MenuItem , Menu} from 'material-ui';
 import logo from '../../assets/logodipra.png';
 // import {signOut} from '../../../Api/firebase';
+
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 
 class MainBar extends Component{
@@ -39,9 +43,9 @@ class MainBar extends Component{
 
     componentDidMount(){
         window.addEventListener('scroll',this.onScroll);
-        const user = JSON.parse(localStorage.getItem('userInfo'));
+        const user = JSON.parse(localStorage.getItem('userToken'));
         if(user){
-            console.log('yes');
+            console.log('yes', user);
             this.setState({user:user});
         } else{
             console.log('ño');
@@ -76,7 +80,7 @@ class MainBar extends Component{
                         to="/contacto" >
                         Contacto
                     </Link>
-                    <span style={{color:'white'}}>{" | "}</span>
+                    <span style={{color:'white'}}>{"  "}</span>
                     {!user && <Link
                         style={styles.elLink}
                         to="/login" >
@@ -84,13 +88,30 @@ class MainBar extends Component{
                     </Link>}
 
                     {
-                        user && <Link to='/perfil'>
-                            <Avatar
-                            style={{float:'right', cursor:'pointer'}}
-                            src={user.photoURL}
-                            onTouchTap={this.handleTouchTap}
-                        />
-                        </Link>
+                    
+
+                        user &&  <IconMenu
+                                  iconButtonElement={<IconButton
+                                  iconStyle={{color:'white'}}
+                                  ><MoreVertIcon /></IconButton>}
+                                  anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                                  targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                                >
+                                  <MenuItem 
+                                  name="perfil"
+                                  primaryText="Mi Perfil"
+                                  onTouchTap={()=>this.props.history.push("/perfil")}
+                                   />
+                                  <MenuItem 
+                                  name="logout"
+                                  primaryText="Cerrar sesión"
+                                  onTouchTap={()=>{
+                                 localStorage.removeItem('userToken');
+                                        this.setState({user:null});
+                                this.props.history.push('/');
+                                                  }}
+                                    />
+                                </IconMenu>
                     }
 
                     <div>
