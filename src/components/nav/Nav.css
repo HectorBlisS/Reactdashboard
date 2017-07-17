@@ -6,7 +6,6 @@
 	width: 160px;
     float:left;
 	margin:0;
-	padding-top: 12px;
  
 }
 
@@ -17,7 +16,7 @@
     background-color: transparent;
     transition: all 1s ease;
     z-index: 999;
-    
+    padding-top: 8px;
 }
 
 .bar-container {
@@ -38,7 +37,7 @@ button{
 .links {
     float: right;
     margin-right: 110px;
-    padding-top: 0px;
+    padding-top: 5px;
     font-family: Nova;
 }
 .pestana{
