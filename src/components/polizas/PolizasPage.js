@@ -61,7 +61,7 @@ class PolizasPage extends Component {
           }
       />
     <div style={this.state.open?{padding:'5.4% 0 0 18%', transition:'all .5s ease' }:{paddingTop:'5.4%', transition:'all .5s ease'}}>
-        <PolizaSections/>
+        <PolizaSections match={this.props.match}/>
       </div>
       <Drawer
           width={200}
@@ -72,23 +72,22 @@ class PolizasPage extends Component {
 
           >
           <Subheader>Menú</Subheader>
-              <NavLink to="/polizas/" style={{textDecoration:'none'}}>
-                <MenuItem leftIcon={<List/>}>
-                    Polizas
-                </MenuItem>
-              </NavLink>
 
-              <NavLink to="/polizas/new/" style={{textDecoration:'none'}}>
-                <MenuItem leftIcon={<Description/>}>
-                  Nueva Poliza
-                </MenuItem>
-              </NavLink>
-
-              <NavLink to="/polizas/agentes/" style={{textDecoration:'none'}}>
-                <MenuItem leftIcon={<Personitas/>}>
-                    Asesores
-                </MenuItem>
-              </NavLink>
+            <NavLink to="/polizas/new" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<Description/>}>
+                Nueva Poliza
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/polizas/list" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<List/>}>
+                  Polizas
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/polizas/asesores" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<Personitas/>}>
+                  Asesores
+              </MenuItem>
+            </NavLink>
 
       </Drawer>
     </div>
