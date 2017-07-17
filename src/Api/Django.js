@@ -42,6 +42,30 @@ const api = {
 
         });
     },
+    getPolicy: (id) => {
+
+          const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+          return new Promise(function (resolve, reject) {
+              const instance = axios.create({
+                  baseURL: polizasUrl,
+                  //timeout: 2000,
+                  headers: {'Content-Type': 'application/json',
+                      'Authorization': 'Token' + userToken}
+              });
+              instance.get(id+'/')
+                  .then(function (response) {
+
+                          resolve(response.data);
+                  })
+                  .catch(function (error) {
+                      console.log(error.response);
+                      reject(error);
+                  });
+
+
+          });
+      },
     newPolicy: (poliza) => {
 
           const userToken = JSON.parse(localStorage.getItem('userToken'));
