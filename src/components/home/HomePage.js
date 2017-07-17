@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './HomePage.css';
-import Cotizador from './cotizador/Cotizador';
 import About from './about/About';
 import Servicios from '../servicios/Servicios';
 import Publi from '../publi/Publi';

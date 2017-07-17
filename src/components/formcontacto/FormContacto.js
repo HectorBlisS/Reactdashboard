@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './FormContacto.css'
-import FontAwesome from 'react-fontawesome';
 
 
 class FormContacto extends Component{

@@ -8,7 +8,6 @@ import Creditos from './components/servicios/creditos/Creditos';
 import Salud from './components/servicios/salud/Salud';
 import Extras from './components/servicios/extras/Extras';
 import Contacto from './components/contacto/Contacto';
-import All from './components/all/All';
 import FormContacto from './components/formcontacto/FormContacto';
 import {
   Switch,

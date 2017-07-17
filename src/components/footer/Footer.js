@@ -8,15 +8,15 @@ class Footer extends Component{
 		return(
 			<div className='footer'>
 				<div className='partners'>
-					<img className='marca' src='http://es.vector.me/files/images/4/5/45409/inbursa.png' />
-					<img className='marca' src='http://tumejorpoliza.com/wp-content/uploads/2014/01/qualitas-290x300.png' />
-					<img className='marca' src='https://ahorraseguros.mx/El-Aguila/images/aguila-logo.png' />
-					<img className='marca' src='https://www.segurosfalabella.cl/image/image_gallery?uuid=6c809e4c-52a5-49bf-b0fb-e3d900e7c636&groupId=22401&t=1496759321601' />
+					<img className='marca' src='http://es.vector.me/files/images/4/5/45409/inbursa.png' alt='partners' />
+					<img className='marca' src='http://tumejorpoliza.com/wp-content/uploads/2014/01/qualitas-290x300.png' alt='partners' />
+					<img className='marca' src='https://ahorraseguros.mx/El-Aguila/images/aguila-logo.png' alt='partners'/>
+					<img className='marca' src='https://www.segurosfalabella.cl/image/image_gallery?uuid=6c809e4c-52a5-49bf-b0fb-e3d900e7c636&groupId=22401&t=1496759321601' alt='partners'/>
 				</div>
 				<div>
-					<img className='marca' src='http://www.axa-assistance.com.mx/documents/4938746/5426284/Logo+Axa+Assistance+-+English/5cd42a28-41e1-4152-9960-6cce2440bc1d?t=1479473248000' />
-					<img className='marca' src='https://seeklogo.com/images/G/gnp-logo-51CC4B06FB-seeklogo.com.png' />
-					<img className='marca' src='https://www.topdoctors.mx/files/Mutua/image/577d83d2-f238-460b-a335-2d839e4504ad.png' />
+					<img className='marca' src='http://www.axa-assistance.com.mx/documents/4938746/5426284/Logo+Axa+Assistance+-+English/5cd42a28-41e1-4152-9960-6cce2440bc1d?t=1479473248000' alt='partners'/>
+					<img className='marca' src='https://seeklogo.com/images/G/gnp-logo-51CC4B06FB-seeklogo.com.png' alt='partners'/>
+					<img className='marca' src='https://www.topdoctors.mx/files/Mutua/image/577d83d2-f238-460b-a335-2d839e4504ad.png' alt='partners'/>
 				</div>
 				<hr/>
 				<div className='footer_box'>

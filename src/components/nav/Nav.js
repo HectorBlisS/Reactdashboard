@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './Nav.css';
 import {Link} from 'react-router-dom';
-import {Avatar, MenuItem, Menu, Popover} from 'material-ui';
-import FlatButton from 'material-ui/FlatButton';
+import {Avatar, Popover, MenuItem , Menu} from 'material-ui';
 import logo from '../../assets/logodipra.png';
 // import {signOut} from '../../../Api/firebase';
 
@@ -73,7 +72,7 @@ class MainBar extends Component{
                         id="explorar"
                         style={styles.elLink}
                         to="/servicios" >
-                        Promociones
+                        App Móvil
                     </Link>
                     <Link className='pestana'
                         id="explorar"
@@ -89,6 +88,8 @@ class MainBar extends Component{
                     </Link>}
 
                     {
+                    
+
                         user &&  <IconMenu
                                   iconButtonElement={<IconButton
                                   iconStyle={{color:'white'}}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './About.css';
 import Logo_dipra from '../../../assets/logo.png';
-import FontIcon from 'material-ui/FontIcon';
 import FontAwesome from 'react-fontawesome';
 
 class About extends Component{
@@ -11,7 +10,7 @@ class About extends Component{
 			<div className='back_about'>
 				<div className='box_about'>
 					<div className='logo'>
-						<img className='img_logo' src={Logo_dipra} />
+						<img className='img_logo' src={Logo_dipra} alt='logo'/>
 					</div>
 					<div className='nosotros'>
 						<p>Somos AFORE una empresa con más de 20 años 
