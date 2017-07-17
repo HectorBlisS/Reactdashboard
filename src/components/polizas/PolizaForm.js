@@ -26,10 +26,14 @@ const style = {
 
 class PolizaForm extends React.Component{
 
+
+
   constructor(){
     super();
     this.state={
-      poliza:{}
+      poliza:{
+        
+      }
     }
   }
 

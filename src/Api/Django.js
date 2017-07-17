@@ -51,7 +51,7 @@ const api = {
                   baseURL: polizasUrl,
                   //timeout: 2000,
                   headers: {'Content-Type': 'application/json',
-                      'Authorization': 'Token' + userToken}
+                      'Authorization': 'Token ' + userToken}
               });
               instance.post('', poliza)
                   .then(function (response) {
@@ -66,9 +66,9 @@ const api = {
 
           });
       },
-    
+
     tokenLogin: (auth) => {
-      
+
          return new Promise(function (resolve, reject) {
               const instance = axios.create({
                   baseURL: loginUrl,
@@ -87,10 +87,10 @@ const api = {
 
 
           });
-        
+
     },
-    
-    
+
+
 } // api
 
 export default api;
