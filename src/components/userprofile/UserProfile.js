@@ -6,7 +6,8 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Footer from '../footer/Footer';
-
+import api from '../../Api/Django';
+import toastr from 'toastr';
  
 const styles = {
   headline: {
@@ -27,6 +28,7 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       slideIndex: 0,
+        user:{profile:''}
     };
   }
     
@@ -34,6 +36,13 @@ class UserProfile extends Component {
         const user = JSON.parse(localStorage.getItem('userToken'));
         if (!user){
             this.props.history.push('/login');
+        } else {
+            api.getProfile()
+            .then(r=>{
+                this.setState({user:r});
+                console.log(r);
+            })
+            .catch(e=>toastr.error("algo falló"));
         }
     }
 
@@ -44,7 +53,7 @@ class UserProfile extends Component {
   };
 
     render(){
-
+        const {user} = this.state;
         return(
             <div className='back_perfil'>
           		<div className='barra'>
@@ -52,11 +61,11 @@ class UserProfile extends Component {
 				</div>
           		<div className='datos_user'>
           			<div className='photo_user'>
-          				<img className='photo_user' src='https://scontent.fmex10-1.fna.fbcdn.net/v/t1.0-9/12227223_877633965665326_4250458589751884486_n.jpg?oh=dedbf979981603b6b21376db98e9c6a2&oe=5A0131B1' alt='user'/>
+          				<img className='photo_user' src={user.profile.photo} alt='user'/>
           			</div>
           			<div className='data_user'>
-          				<h4>Brenda Ortega Ortega</h4>
-          				<p>Hidalgo, Mexico</p>
+          				<h4>{user.first_name}</h4>
+          				<p>{user.email}</p>
           				<div>
           				     <FontAwesome name='car' className='minicon_service' size='2x'/>
           				     <FontAwesome name='car' className='minicon_service' size='2x'/>

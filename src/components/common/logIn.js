@@ -33,7 +33,8 @@ class LogIn extends Component{
        register:false,
        auth: {},
        nuevo:{username:null,email:'',pass1:'',pass2:'', photo:'https://cdn2.iconfinder.com/data/icons/electronics/512/Professional_Camera-512.png'},
-       passwordError:null
+       passwordError:null,
+       id:null
    };
  }
     
@@ -76,6 +77,7 @@ checkPasswords = (e) => {
             let nuevo = this.state.nuevo;
             nuevo.email = user.email;
             nuevo.username = user.displayName;
+            nuevo.photo = user.photoURL;
             this.setState({nuevo});
         })
             .catch((error)=>{
@@ -104,7 +106,25 @@ checkPasswords = (e) => {
             toastr.success("Cuenta creada con éxito.");
             localStorage.setItem('userInfo', JSON.stringify(r));
             console.log(r);
-            api.updateUser(r.id, {profile:{photo:this.state.nuevo.photo}})
+            this.setState({id:r.id})
+            // Pedimos el token
+            api.tokenLogin(nuevo)
+            .then(r=>{
+                localStorage.setItem('userToken', JSON.stringify(r.token));
+                console.log(this.state.id);
+                api.updateProfile( {photo:this.state.nuevo.photo})
+                .then(r=>{
+                    toastr.success("Perfil actualizado");
+                    this.props.history.push('/perfil');
+                })
+                .catch(e=>{
+                    console.log(e);
+                    toastr.error("error");
+                });
+                
+            })
+            .catch();
+//            api.updateUser(r.id, {profile:{photo:this.state.nuevo.photo}})
         })
         .catch(e=>{
             toastr.error("No se pudo crear.");
@@ -203,7 +223,7 @@ checkPasswords = (e) => {
             <h1>Crea Tu cuenta</h1>
             <p>Puedes importar tu información desde redes sociales.</p>
 <form onSubmit={this.createAccount}>
-           
+    <Avatar src={this.state.nuevo.photo}/>  
     <h3>{this.state.nuevo.username}</h3>
            
             <TextField
@@ -244,11 +264,11 @@ checkPasswords = (e) => {
            fullWidth={true}
             backgroundColor='#607D8B'
             labelColor='#fff'
-            loading={true}
             />
 </form>
           <br/>
              <RaisedButton
+              disabled={true}
                id="facebook"
                 onTouchTap={()=>this.importFirebase("facebook")}
               label="Importar desde Facebook"
