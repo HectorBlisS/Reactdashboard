@@ -54,7 +54,7 @@ class Contacto extends Component {
 					        >
 					        
 					        <div name="shipSpeed">
-					         <iframe classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
+					         <iframe title='map' classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
 					        </div>
 					        </Dialog>
 
@@ -77,7 +77,7 @@ class Contacto extends Component {
 					        >
 					        
 					        <div name="shipSpeed">
-					         <iframe classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
+					         <iframe title='map' classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
 					        </div>
 					        </Dialog>
 
@@ -100,7 +100,7 @@ class Contacto extends Component {
 					        >
 					        
 					        <div name="shipSpeed">
-					         <iframe classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
+					         <iframe title='map' classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
 					        </div>
 					        </Dialog>
 
@@ -122,7 +122,7 @@ class Contacto extends Component {
 					        >
 					        
 					        <div name="shipSpeed">
-					         <iframe classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
+					         <iframe  title='map' classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
 					        </div>
 					        </Dialog>
 
@@ -144,7 +144,7 @@ class Contacto extends Component {
 					        >
 					        
 					        <div name="shipSpeed">
-					         <iframe classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
+					         <iframe title='map' classNampe='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.4730993053727!2d-98.74064648513199!3d20.114300986500908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d109fd60d3eda3%3A0x83e77ffb87d8efc7!2sAv+R%C3%ADo+Amajac+231%2C+Terrazas%2C+42098+Pachuca+de+Soto%2C+Hgo.!5e0!3m2!1ses-419!2smx!4v1499111629069" width="100%" height="430" frameborder="0" style={{border:0}} allowfullscreen></iframe>
 					        </div>
 					        </Dialog>
 

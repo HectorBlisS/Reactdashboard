@@ -36,12 +36,12 @@ class Banco extends Component{
 						</div>
 					</div>
 					 <div className='img_serv'>
-					  <img className='img_req' src='https://images.pexels.com/photos/163016/crash-test-collision-60-km-h-distraction-163016.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' />
+					  <img className='img_req' src='https://images.pexels.com/photos/163016/crash-test-collision-60-km-h-distraction-163016.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'  alt='servicio'/>
 					</div>
 				</div>
 				<div className='box_product'>
 					<div className='img_servi'>
-					  <img className='img_req' src='https://images.pexels.com/photos/163016/crash-test-collision-60-km-h-distraction-163016.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' />
+					  <img className='img_req' src='https://images.pexels.com/photos/163016/crash-test-collision-60-km-h-distraction-163016.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'  alt='servicio'/>
 					</div>
 					<div className='lef text_servi'>
 						<h3 className='tittle_sv'>Seguro de auto</h3>

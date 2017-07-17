@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Integrate.css';
-import {Link} from 'react-router-dom';
 import Nav from '../nav/Nav';
 import Footer from '../footer/Footer';
 
@@ -42,7 +41,7 @@ class Integrate extends Component{
 						<h3>¡CUMPLIR CON TUS EXPECTATIVAS ECONÓMICAS! Y TENER UNA CALIDAD DE VIDA.</h3>
 					</div>
 					<div className='img_asesor'>
-						<img src='https://images.pexels.com/photos/429247/pexels-photo-429247.jpeg?h=350&auto=compress&cs=tinysrgb'/>
+						<img src='https://images.pexels.com/photos/429247/pexels-photo-429247.jpeg?h=350&auto=compress&cs=tinysrgb' alt='asesor'/>
 					</div>
 				</div>
 				<div className='form_asesor'>

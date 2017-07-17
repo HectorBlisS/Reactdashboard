@@ -61,7 +61,7 @@ class Noti extends Component{
 				             No obstante, si no tienes las finanzas de tu hogar en orden, 
 				             sólo estás agregando más caos y estrés a tu vida... 
 				             te des cuenta o no. </p>
-				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='noticia'/>
 				      
 				         <p>1. Edúcate
 							Tómate el tiempo para leer acerca de finanzas personales. Cada semana, agenda citas "de dinero" contigo mismo y dedica algunas horas a administrar tus finanzas personales y leer libros, revistas, sitios o blogs de finanzas. Cuanto más sepas acerca de tus propias finanzas, mayor confianza tendrás al administrar tu dinero en el largo plazo.
@@ -92,7 +92,7 @@ class Noti extends Component{
 
 							7. Invierte fuera de tu negocio
 							Aunque es muy importante que siempre inviertas en ti y en tu negocio, no debes tener “todos los huevos en la misma canasta”. La diversificación es extremadamente importante ya que disminuirá tu riesgo de inversión en el largo plazo. Trabaja con un planeador financiero para crear un portafolio de inversiones a largo plazo que incluya acciones, bonos y Cetes que se alineen con tus propias metas financieras y a tu tolerancia al riesgo. </p>
-				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='noticia'/>
 
 				        </div>
 				        </Dialog>
@@ -119,7 +119,7 @@ class Noti extends Component{
 				             No obstante, si no tienes las finanzas de tu hogar en orden, 
 				             sólo estás agregando más caos y estrés a tu vida... 
 				             te des cuenta o no. </p>
-				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='noticia'/>
 				      
 				         <p>1. Edúcate
 							Tómate el tiempo para leer acerca de finanzas personales. Cada semana, agenda citas "de dinero" contigo mismo y dedica algunas horas a administrar tus finanzas personales y leer libros, revistas, sitios o blogs de finanzas. Cuanto más sepas acerca de tus propias finanzas, mayor confianza tendrás al administrar tu dinero en el largo plazo.
@@ -150,7 +150,7 @@ class Noti extends Component{
 
 							7. Invierte fuera de tu negocio
 							Aunque es muy importante que siempre inviertas en ti y en tu negocio, no debes tener “todos los huevos en la misma canasta”. La diversificación es extremadamente importante ya que disminuirá tu riesgo de inversión en el largo plazo. Trabaja con un planeador financiero para crear un portafolio de inversiones a largo plazo que incluya acciones, bonos y Cetes que se alineen con tus propias metas financieras y a tu tolerancia al riesgo. </p>
-				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='noticia'/>
 
 				        </div>
 				        </Dialog>
@@ -176,7 +176,7 @@ class Noti extends Component{
 				             No obstante, si no tienes las finanzas de tu hogar en orden, 
 				             sólo estás agregando más caos y estrés a tu vida... 
 				             te des cuenta o no. </p>
-				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='noticia'/>
 				      
 				         <p>1. Edúcate
 							Tómate el tiempo para leer acerca de finanzas personales. Cada semana, agenda citas "de dinero" contigo mismo y dedica algunas horas a administrar tus finanzas personales y leer libros, revistas, sitios o blogs de finanzas. Cuanto más sepas acerca de tus propias finanzas, mayor confianza tendrás al administrar tu dinero en el largo plazo.
@@ -207,7 +207,7 @@ class Noti extends Component{
 
 							7. Invierte fuera de tu negocio
 							Aunque es muy importante que siempre inviertas en ti y en tu negocio, no debes tener “todos los huevos en la misma canasta”. La diversificación es extremadamente importante ya que disminuirá tu riesgo de inversión en el largo plazo. Trabaja con un planeador financiero para crear un portafolio de inversiones a largo plazo que incluya acciones, bonos y Cetes que se alineen con tus propias metas financieras y a tu tolerancia al riesgo. </p>
-				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+				           <img className='img_noti' src='https://images.pexels.com/photos/308663/pexels-photo-308663.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='noticia'/>
 
 				        </div>
 				        </Dialog>

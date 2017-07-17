@@ -11,7 +11,7 @@ class Servicios extends Component{
 					<div className='servicio flip'>
 						<div className='front afore'>
 							<span className='etiqueta'>AFORE</span>
-							<img src='https://images.pexels.com/photos/128867/coins-currency-investment-insurance-128867.jpeg?h=350&auto=compress&cs=tinysrgb'/>
+							<img src='https://images.pexels.com/photos/128867/coins-currency-investment-insurance-128867.jpeg?h=350&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 					
 						<div className='reverse'>
@@ -26,7 +26,7 @@ class Servicios extends Component{
 					<div className='servicio flip'>
 						<div className='bancos front'>
 							<span className='etiqueta'>Banco</span>
-							<img src='https://images.pexels.com/photos/34577/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+							<img src='https://images.pexels.com/photos/34577/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
 							<p>Somos una empresa con más de 20 años 
@@ -41,7 +41,7 @@ class Servicios extends Component{
 					<div className='servicio flip'>
 						<div className='front'>
 						<span className='etiqueta'>Crédito</span>
-							<img src='https://images.pexels.com/photos/164501/pexels-photo-164501.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+							<img src='https://images.pexels.com/photos/164501/pexels-photo-164501.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
 							<p>Somos una empresa con más de 20 años 
@@ -57,7 +57,7 @@ class Servicios extends Component{
 					<div className='servicio flip'>
 						<div className='  front'>
 							<span className='etiqueta'>Seguros</span>
-							<img src='https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+							<img src='https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
 							<p>Somos una empresa con más de 20 años 
@@ -71,7 +71,7 @@ class Servicios extends Component{
 					<div className='servicio flip'>
 						<div className='  front'>
 						<span className='etiqueta'>Gastos Médicos</span>
-							<img src='https://images.pexels.com/photos/167300/pexels-photo-167300.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+							<img src='https://images.pexels.com/photos/167300/pexels-photo-167300.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
 							<p>Somos una empresa con más de 20 años 
@@ -85,7 +85,7 @@ class Servicios extends Component{
 					<div className='servicio flip'>
 						<div className='  front'>
 						<span className='etiqueta'>Especiales</span>
-							<img src='https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'/>
+							<img src='https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
 							<p>Somos una empresa con más de 20 años 
