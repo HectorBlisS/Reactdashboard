@@ -7,10 +7,14 @@ let debug = true;
 
 let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/polizas/';
 let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
+let usersUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/profiles/'
+let selfProfileUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/myprofile/'
 
 if (debug){
     polizasUrl = 'http://localhost:8000/api/polizas/';
     loginUrl = 'http://localhost:8000/auth/token-auth/';
+    usersUrl = 'http://localhost:8000/api/profiles/';
+    selfProfileUrl = 'http://localhost:8000/api/myprofile/';
 }
 
 
@@ -101,6 +105,54 @@ const api = {
                      }
               });
               instance.post('', auth)
+                  .then(function (response) {
+                          resolve(response.data);
+                  })
+                  .catch(function (error) {
+                      console.log(error.response);
+                      reject(error);
+                  });
+
+
+          });
+
+    },
+    
+    createUser: (nuevo) => {
+
+         return new Promise(function (resolve, reject) {
+              const instance = axios.create({
+                  baseURL: usersUrl,
+//                  timeout: 2000,
+                  headers: {'Content-Type': 'application/json',
+                     }
+              });
+              instance.post('', nuevo)
+                  .then(function (response) {
+                          resolve(response.data);
+                  })
+                  .catch(function (error) {
+                      console.log(error.response);
+                      reject(error);
+                  });
+
+
+          });
+
+    },
+    
+    updateUser: (id, data) => {
+        
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+         return new Promise(function (resolve, reject) {
+              const instance = axios.create({
+                  baseURL: usersUrl,
+//                  timeout: 2000,
+                  headers: {'Content-Type': 'application/json',
+                      'Authorization': 'Token ' + userToken}
+              });
+              instance.patch(id + '/', data)
                   .then(function (response) {
                           resolve(response.data);
                   })
