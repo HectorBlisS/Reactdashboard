@@ -3,7 +3,7 @@ import axios from 'axios';
 import FormData from 'form-data'
 
 
-let debug = true;
+let debug = false;
 
 let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/polizas/';
 let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
