@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import api from '../../Api/Django';
 import 'moment/locale/es';
 import moment from 'moment';
+import {Link} from 'react-router-dom';
+import Popover from 'material-ui/Popover';
 import {
   Table,
   TableBody,
@@ -16,6 +18,7 @@ class PolizaList extends Component{
   constructor(){
     super()
     this.state={
+
       polizas:[]
     }
   }
@@ -33,12 +36,17 @@ class PolizaList extends Component{
     moment.locale('es')
     for (let p in this.state.polizas){
       let fecha = this.state.polizas[p].fecha_poliza
+      let fecha2=moment(fecha).startOf().fromNow();
       fecha=moment(fecha).format('LL')
+
       let polizas = this.state.polizas;
       polizas[p]['fecha_poliza'] = fecha
+      polizas[p]['fecha_poliza2'] = fecha2
       this.setState({polizas});
     }
   }
+
+
   render(){
 
 
@@ -46,7 +54,7 @@ class PolizaList extends Component{
       <div>
       <Table>
         <TableHeader>
-          <TableRow >
+          <TableRow>
             <TableHeaderColumn>ID</TableHeaderColumn>
             <TableHeaderColumn>Asesor</TableHeaderColumn>
             <TableHeaderColumn>Tipo de Poliza</TableHeaderColumn>
@@ -57,11 +65,17 @@ class PolizaList extends Component{
           {this.state.polizas.map(poliza=>{
             return(
               <TableRow key={poliza.id}>
-                <TableRowColumn>{poliza.id}</TableRowColumn>
+                <TableRowColumn>
+                  <Link
+                    style={{textDecoration:'none', color:'black'}}
+                    to={"/polizas/detail/"+poliza.id}>{poliza.id}</Link>
+                </TableRowColumn>
                 <TableRowColumn>{poliza.asesor.username}</TableRowColumn>
                 <TableRowColumn>Poliza de Auto</TableRowColumn>
-                <TableRowColumn>
-                  {poliza.fecha_poliza}
+                <TableRowColumn onMouseOver={this.handlePop}>
+                  {poliza.fecha_poliza}<br/>
+                <span  style={{color:'#9e9e9e'}}>{poliza.fecha_poliza2}</span>
+
                 </TableRowColumn>
               </TableRow>
             );

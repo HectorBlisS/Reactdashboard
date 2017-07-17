@@ -50,10 +50,15 @@ class PolizasPage extends Component {
                   >
                       <Link
                           style={{textDecoration:'none'}}
-                          to="/userprofile/wall">
-                          <MenuItem primaryText="Tu perfil" />
+                          to="/perfil">
+                          <MenuItem primaryText="Perfil" />
                       </Link>
-                      <MenuItem primaryText="Tus proyectos" />
+                      <Link
+                          style={{textDecoration:'none'}}
+                          to="/">
+                          <MenuItem primaryText="Inicio" />
+                      </Link>
+
                   </IconMenu>
 
               </ToolbarGroup>
