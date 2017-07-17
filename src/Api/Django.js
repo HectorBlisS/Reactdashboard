@@ -5,7 +5,7 @@ import FormData from 'form-data'
 
 let debug = false;
 
-let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/polizas/';
+let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/polizas/';
 let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
 let usersUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/profiles/'
 let selfProfileUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/myprofile/'
@@ -117,7 +117,7 @@ const api = {
           });
 
     },
-    
+
     createUser: (nuevo) => {
 
          return new Promise(function (resolve, reject) {
@@ -140,9 +140,9 @@ const api = {
           });
 
     },
-    
+
     updateUser: (id, data) => {
-        
+
         const userToken = JSON.parse(localStorage.getItem('userToken'));
 
          return new Promise(function (resolve, reject) {
@@ -165,9 +165,9 @@ const api = {
           });
 
     },
-    
+
      updateProfile: (data) => {
-        
+
         const userToken = JSON.parse(localStorage.getItem('userToken'));
 
          return new Promise(function (resolve, reject) {
@@ -190,9 +190,9 @@ const api = {
           });
 
     },
-    
+
     getProfile: () => {
-        
+
         const userToken = JSON.parse(localStorage.getItem('userToken'));
 
          return new Promise(function (resolve, reject) {
