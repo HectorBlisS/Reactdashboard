@@ -15,9 +15,10 @@ class Servicios extends Component{
 						</div>
 					
 						<div className='reverse'>
-							<p>La afore te brinda el servicio de resguardar
-							 de manera segura tus recursos y de hacerlos crecer
-							  mediante inversiones.</p>
+							<p>La Afore te brinda el servicio de resguardar
+							 de manera segura y transparente tus recursos y de hacerlos crecer
+							  mediante inversiones.
+							  </p>
 							 <Link to='/afore'>
 								<button> Ver más...</button>
 							</Link>
@@ -29,9 +30,8 @@ class Servicios extends Component{
 							<img src='https://images.pexels.com/photos/34577/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
-							<p>Somos una empresa con más de 20 años 
-							de experiencia en el sector financiero en México,
-							 experta en brindar asesoría
+							<p>Conozca en profundidad la oferta de las entidades
+							 de crédito, requisitos y beneficios, y utilice cada producto según sus necesidades.
 							 </p>
 							 <Link to='/banco'>
 							 	<button> Ver más...</button>
@@ -44,9 +44,9 @@ class Servicios extends Component{
 							<img src='https://images.pexels.com/photos/164501/pexels-photo-164501.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
-							<p>Somos una empresa con más de 20 años 
-							de experiencia en el sector financiero en México,
-							 ancieros para nuestro principal </p>
+							<p>Obtén de forma rápida y sencilla un Crédito Personal
+							 sin ir a la sucursal, disfruta de tasas preferenciales 
+							 y ahorra intereses con prepagos a tu crédito. </p>
 						 <Link to='/credito'>
 						 <button> Ver más...</button>
 						 </Link>
@@ -60,9 +60,9 @@ class Servicios extends Component{
 							<img src='https://images.pexels.com/photos/305070/pexels-photo-305070.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
-							<p>Somos una empresa con más de 20 años 
-							de experiencia en el sector financiero en México,
-							 ancieros para nuestro principal cliente, </p>
+							<p>Es un medio para la cobertura de los riesgos al
+							 transferirlos a una aseguradora que se va a encargar de 
+							 indemnizar el perjuicio producido. </p>
 							<Link to='/seguros'>
 								<button> Ver más...</button>
 							</Link>
@@ -74,9 +74,9 @@ class Servicios extends Component{
 							<img src='https://images.pexels.com/photos/167300/pexels-photo-167300.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
-							<p>Somos una empresa con más de 20 años 
-							de experiencia en el sector financiero en México,
-							 ancieros para nuestro principal cliente,</p>
+							<p>Seguro que da respaldo económico para la
+							 atención médica de un accidente o enfermedad,evitando
+							  en lo posible repercusiones económicas. </p>
 							 <Link to='/gastos'>
 							 	<button> Ver más...</button>
 							 </Link>
@@ -88,9 +88,7 @@ class Servicios extends Component{
 							<img src='https://images.pexels.com/photos/70573/fireman-firefighter-rubble-9-11-70573.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='servicio'/>
 						</div>
 						<div className='reverse'>
-							<p>Somos una empresa con más de 20 años 
-							de experiencia en el sector financiero en México,
-							 ancieros para nuestro principal cliente</p>
+							<p>Adquiere un seguro que cubrá tus espectativas y necesidades, sin pagar lo que no necesitas. O revisa el resto de nuestros servicios. </p>
 								 
 							<Link to='/extras'>
 								<button className='ver'> Ver más...</button>

@@ -80,7 +80,7 @@ class MainBar extends Component{
                         to="/contacto" >
                         Contacto
                     </Link>
-                    <span style={{color:'white'}}>{"  "}</span>
+                    <span  className='pestana' style={{color:'white'}}>{"  "}</span>
                     {!user && <Link
                         style={styles.elLink}
                         to="/login" >
