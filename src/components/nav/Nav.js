@@ -80,8 +80,8 @@ class MainBar extends Component{
                         to="/contacto" >
                         Contacto
                     </Link>
-                    <span style={{color:'white'}}>{"  "}</span>
-                    {!user && <Link
+                    <span   style={{color:'white'}}>{"  "}</span>
+                    {!user && <Link className='pestana'
                         style={styles.elLink}
                         to="/login" >
                         Iniciar
@@ -90,13 +90,14 @@ class MainBar extends Component{
                     {
                     
 
-                        user &&  <IconMenu
+                        user &&  
+                               
+                                <IconMenu
                                   iconButtonElement={<IconButton
                                   iconStyle={{color:'white'}}
                                   ><MoreVertIcon /></IconButton>}
-                                  anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-                                  targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                                >
+                                  style={{display:'relative', top:0, rigth:0}}>
+                               
                                   <MenuItem 
                                   name="perfil"
                                   primaryText="Mi Perfil"

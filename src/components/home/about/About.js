@@ -13,7 +13,7 @@ class About extends Component{
 						<img className='img_logo' src={Logo_dipra} alt='logo'/>
 					</div>
 					<div className='nosotros'>
-						<p>Somos AFORE una empresa con más de 20 años 
+						<p>Somos una empresa con más de 20 años 
 						de experiencia en el sector financiero en México,
 						 experta en brindar asesoría financiera de forma
 						 profesional a personas físicas y morales, 

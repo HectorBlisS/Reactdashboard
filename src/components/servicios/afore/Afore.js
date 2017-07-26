@@ -4,13 +4,14 @@ import FontAwesome from 'react-fontawesome';
 import Intro from '../../intro/Intro';
 import {Link} from 'react-router-dom';
 import Nav from '../../nav/Nav';
+import Footer from '../../footer/Footer';
 
 class Afore extends Component{
 	render (){
 		return(
 			<div className='productos'>
 				<Nav />
-				<Intro />
+				<Intro text="Afore"/>
 
 				<div className='box_product'>
 					<div className='lef text_serv'>
@@ -40,6 +41,7 @@ class Afore extends Component{
 					  <img className='img_req' src='https://images.pexels.com/photos/163016/crash-test-collision-60-km-h-distraction-163016.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'  alt='servicio'/>
 					</div>
 				</div>
+				<Footer />
 			</div>
 		);
 	}

@@ -10,7 +10,7 @@ class Footer extends Component{
 				<div className='partners'>
 					<img className='marca' src='http://es.vector.me/files/images/4/5/45409/inbursa.png' alt='partners' />
 					<img className='marca' src='http://tumejorpoliza.com/wp-content/uploads/2014/01/qualitas-290x300.png' alt='partners' />
-					<img className='marca' src='https://ahorraseguros.mx/El-Aguila/images/aguila-logo.png' alt='partners'/>
+					<img className='marca' src='https://www.hdi.com.mx/wp-content/uploads/2015/10/logo-hdi-184px.png' alt='partners'/>
 					<img className='marca' src='https://www.segurosfalabella.cl/image/image_gallery?uuid=6c809e4c-52a5-49bf-b0fb-e3d900e7c636&groupId=22401&t=1496759321601' alt='partners'/>
 				</div>
 				<div>
