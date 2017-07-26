@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PolizaForm from './PolizaForm';
+import ClienteForm from './ClienteForm';
 
 
 
@@ -19,7 +19,7 @@ class NewPolizaPage extends Component {
         return(
             <div>
 
-                <PolizaForm
+                <ClienteForm
                     course={this.state.course}
                     errors={this.state.errors}
 

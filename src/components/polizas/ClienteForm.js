@@ -1,6 +1,4 @@
-/**
- * Created by BlisS on 22/03/17.
- */
+/*Formulario de Nuevo Cliente*/
 import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
@@ -9,7 +7,8 @@ import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
 import {Paper,Toolbar,ToolbarTitle,ToolbarGroup,RaisedButton,TextField,
   Divider,RadioButton,RadioButtonGroup,Toggle} from 'material-ui';
-
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
@@ -24,15 +23,16 @@ const style = {
 }
 
 
-class PolizaForm extends React.Component{
+class ClienteForm extends React.Component{
 
 
 
   constructor(){
     super();
     this.state={
+      value:'',
       poliza:{
-        
+
       }
     }
   }
@@ -65,6 +65,13 @@ class PolizaForm extends React.Component{
     this.setState({lafecha:e.target.name})
     //console.log(e.target.name,e.target.value)
   }
+  handleChange = (event, index, value) => {
+    let field = 'ocupacion'
+    let poliza = this.state.poliza;
+    poliza[field] = value
+
+    this.setState({value,poliza});
+  }
   render(){
     return (
         <Paper style={styles.margenes}>
@@ -81,12 +88,24 @@ class PolizaForm extends React.Component{
               cellHeight='auto'
               cols={12}
               style={{padding:'1%'}}>
+              <GridTile cols={3}>
+                ID de Cliente
+              </GridTile>
               <GridTile cols={2}>
                 Tipo de persona
               </GridTile>
-              <GridTile cols={10}>
+              <GridTile cols={7}>
                 Razón Social
               </GridTile>
+
+              <GridTile cols={3}>
+                <TextField
+                  onChange={this.handleText}
+                  name="idcliente"
+                  hintText="12345678"
+                  fullWidth={true}
+                />
+            </GridTile>
               <GridTile cols={2}>
 
                 <RadioButtonGroup onChange={this.handleText} name="tpersona"  >
@@ -105,11 +124,11 @@ class PolizaForm extends React.Component{
               </GridTile>
 
 
-              <GridTile cols={10}>
+              <GridTile cols={7}>
                 <TextField
                   onChange={this.handleText}
                   name="rsocial"
-                  hintText="Hint Text"
+                  hintText="Empresa S.A. de C.V."
                   fullWidth={true}
                 />
               </GridTile>
@@ -134,7 +153,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="apaterno"
-                  hintText="Hint Text"
+                  hintText="López"
                   fullWidth={true}
                 />
               </GridTile>
@@ -142,7 +161,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="amaterno"
-                  hintText="Hint Text"
+                  hintText="Hernández"
                   fullWidth={true}
                 />
               </GridTile>
@@ -184,7 +203,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="pnombre"
-                  hintText="Hint Text"
+                  hintText="Maria"
                   fullWidth={true}
                 />
               </GridTile>
@@ -192,7 +211,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="snombre"
-                  hintText="Hint Text"
+                  hintText="José"
                   fullWidth={true}
                 />
               </GridTile>
@@ -237,7 +256,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="rfc"
-                  hintText="Full width"
+                  hintText="AAA555AAA555"
                   fullWidth={true}
                 />
               </GridTile>
@@ -245,7 +264,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="curp"
-                  hintText="Full width"
+                  hintText="AABB554433CCBBAA55"
                   fullWidth={true}
                 />
               </GridTile>
@@ -263,7 +282,7 @@ class PolizaForm extends React.Component{
                   onChange={this.handleDates}
                   onTouchTap={this.testing}
                   autoOk={true}
-                  hintText="Portrait Dialog"
+                  hintText="01/01/2017"
                   name="fnacimiento"/>
               </GridTile>
 
@@ -289,7 +308,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="tipoid"
-                  hintText="Full width"
+                  hintText="INE"
                   fullWidth={true}
                 />
               </GridTile>
@@ -297,7 +316,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="numid"
-                  hintText="Full width"
+                  hintText="AABBCC44556677A444"
                   fullWidth={true}
                 />
               </GridTile>
@@ -330,7 +349,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="estado"
-                  hintText="Full width"
+                  hintText="Hidalgo"
                   fullWidth={true}
                 />
               </GridTile>
@@ -338,14 +357,14 @@ class PolizaForm extends React.Component{
                 <TextField
                   onChange={this.handleText}
                   name="pais"
-                  hintText="Full width"
+                  hintText="México"
                   fullWidth={true}
                 />
               </GridTile>
               <GridTile cols={4}>
                 <TextField
                   onChange={this.handleText}
-                  name="nacionalidad"
+                  name="Mexicana"
                   hintText="lol"
                   fullWidth={true}
                 />
@@ -397,7 +416,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   name="otroext"
                   onChange={this.handleText}
-                  hintText="lol"
+                  hintText=""
                   fullWidth={true}
                 />
               </GridTile>
@@ -428,7 +447,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   name="calle"
                   onChange={this.handleText}
-                  hintText="lol"
+                  hintText="Calle"
                   fullWidth={true}
                 />
               </GridTile>
@@ -436,7 +455,7 @@ class PolizaForm extends React.Component{
                   <TextField
                     name="edificio"
                     onChange={this.handleText}
-                    hintText="lol"
+                    hintText="A"
                     fullWidth={true}
                   />
                 </GridTile>
@@ -444,7 +463,7 @@ class PolizaForm extends React.Component{
                     <TextField
                       name="noext"
                       onChange={this.handleText}
-                      hintText="lol"
+                      hintText="111"
                       fullWidth={true}
                     />
                   </GridTile>
@@ -452,7 +471,7 @@ class PolizaForm extends React.Component{
                       <TextField
                         name="noint"
                         onChange={this.handleText}
-                        hintText="lol"
+                        hintText="222"
                         fullWidth={true}
                       />
                 </GridTile>
@@ -460,7 +479,7 @@ class PolizaForm extends React.Component{
                     <TextField
                       name="cp"
                       onChange={this.handleText}
-                      hintText="lol"
+                      hintText="42090"
                       fullWidth={true}
                     />
                 </GridTile>
@@ -490,7 +509,7 @@ class PolizaForm extends React.Component{
                 <TextField
                   name="colonia"
                   onChange={this.handleText}
-                  hintText="lol"
+                  hintText="Piracantos"
                   fullWidth={true}
                 />
               </GridTile>
@@ -498,7 +517,7 @@ class PolizaForm extends React.Component{
                   <TextField
                     name="municipio"
                     onChange={this.handleText}
-                    hintText="lol"
+                    hintText="Pachuca de Soto"
                     fullWidth={true}
                   />
                 </GridTile>
@@ -506,7 +525,7 @@ class PolizaForm extends React.Component{
                     <TextField
                       name="ciudad"
                       onChange={this.handleText}
-                      hintText="lol"
+                      hintText="Pachuca"
                       fullWidth={true}
                     />
                   </GridTile>
@@ -514,7 +533,7 @@ class PolizaForm extends React.Component{
                       <TextField
                         name="estado"
                         onChange={this.handleText}
-                        hintText="lol"
+                        hintText="Hidalgo"
                         fullWidth={true}
                       />
               </GridTile>
@@ -540,7 +559,7 @@ class PolizaForm extends React.Component{
                   <TextField
                     name="telefono"
                     onChange={this.handleText}
-                    hintText="lol"
+                    hintText="7777777777"
                     fullWidth={true}
                   />
                 </GridTile>
@@ -548,7 +567,7 @@ class PolizaForm extends React.Component{
                     <TextField
                       name="correo"
                       onChange={this.handleText}
-                      hintText="lol"
+                      hintText="correo@dominio"
                       fullWidth={true}
                     />
                   </GridTile>
@@ -556,152 +575,152 @@ class PolizaForm extends React.Component{
                       <TextField
                         name="fmercantil"
                         onChange={this.handleText}
-                        hintText="lol"
+                        hintText="Folio Mercantil"
                         fullWidth={true}
                       />
               </GridTile>
             </GridList>
         {/*Acaba los datos generales*/}
-            <Toolbar>
-              <ToolbarTitle
-                  text="Información Adicional Para Personas Físicas"
-              />
-              <div style={{paddingTop:'1%'}}>
-                <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
-              </div>
-            </Toolbar>
-            <GridList
-              cellHeight='auto'
-              cols={12}
-              style={{padding:'1%'}}>
-
-              <GridTile cols={12}>
-              ¿Desempeña o ha desempeñado alguna función pública en México o el Extranjero?
-              </GridTile>
-
-              <GridTile cols={2}>
-
-              </GridTile>
-              <GridTile cols={6}>
-              ¿Qué Cargo?
-              </GridTile>
-              <GridTile cols={4}>
-                Fecha en que lo dejó
-              </GridTile>
-
-
-
-
-                <GridTile cols={2}>
-                  <RadioButtonGroup onChange={this.handleText}  name="fpublico"  >
-                   <RadioButton
-                     value="si"
-                     label="Si"
-                     style={styles.radioButton}
-                   />
-                   <RadioButton
-                     value="no"
-                     label="No"
-                     style={styles.radioButton}
-                   />
-
-                 </RadioButtonGroup>
-                  </GridTile>
-                  <GridTile cols={6}>
-                      <TextField
-                        name="micargo"
-                        onChange={this.handleText}
-                        hintText="lol"
-                        fullWidth={true}
-                      />
-              </GridTile>
-              <GridTile cols={4}>
-                <DatePicker
-                  onChange={this.handleDates}
-                  onTouchTap={this.testing}
-                  autoOk={true}
-                  hintText="Portrait Dialog"
-                  name="fcargo"/>
-              </GridTile>
-            </GridList>
-            <Divider/>
-            <GridList
-              cellHeight='auto'
-              cols={12}
-              style={{padding:'1%'}}>
-
-              <GridTile cols={12}>
-              ¿Es familiar de alguien que desempeña alguna función pública en México o el Extranjero?
-              </GridTile>
-
-              <GridTile cols={2}>
-              </GridTile>
-              <GridTile cols={6}>
-              ¿Qué Cargo?
-              </GridTile>
-              <GridTile cols={4}>
-                Fecha en que lo dejó
-              </GridTile>
-
-              <GridTile cols={2}>
-                <RadioButtonGroup onChange={this.handleText} name="parpublico"  >
-                 <RadioButton
-                   value="si"
-                   label="Si"
-                   style={styles.radioButton}
-                 />
-                 <RadioButton
-                   value="no"
-                   label="No"
-                   style={styles.radioButton}
-                 />
-
-               </RadioButtonGroup>
-                </GridTile>
-
-                  <GridTile cols={6}>
-                      <TextField
-                        name="sucargo"
-                        onChange={this.handleText}
-                        hintText="lol"
-                        fullWidth={true}
-                      />
-              </GridTile>
-              <GridTile cols={4}>
-                <DatePicker
-                  onChange={this.handleDates}
-                  onTouchTap={this.testing}
-                  autoOk={true}
-                  hintText="Portrait Dialog"
-                  name="fsucargo"/>
-              </GridTile>
-
-
-              <GridTile cols={2}>
-                  Parentesco
-              </GridTile>
-              <GridTile cols={3}>
-                  <TextField
-                    name="parentesco"
-                    onChange={this.handleText}
-                    hintText="lol"
-                    fullWidth={true}
-                  />
-              </GridTile>
-              <GridTile cols={2}>
-                  Nombre Completo
-              </GridTile>
-              <GridTile cols={5}>
-                  <TextField
-                    name="familiar"
-                    onChange={this.handleText}
-                    hintText="lol"
-                    fullWidth={true}
-                  />
-              </GridTile>
-            </GridList>
+          { /* // <Toolbar>
+            //   <ToolbarTitle
+            //       text="Información Adicional Para Personas Físicas"
+            //   />
+            //   <div style={{paddingTop:'1%'}}>
+            //     <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
+            //   </div>
+            // </Toolbar>
+            // <GridList
+            //   cellHeight='auto'
+            //   cols={12}
+            //   style={{padding:'1%'}}>
+            //
+            //   <GridTile cols={12}>
+            //   ¿Desempeña o ha desempeñado alguna función pública en México o el Extranjero?
+            //   </GridTile>
+            //
+            //   <GridTile cols={2}>
+            //
+            //   </GridTile>
+            //   <GridTile cols={6}>
+            //   ¿Qué Cargo?
+            //   </GridTile>
+            //   <GridTile cols={4}>
+            //     Fecha en que lo dejó
+            //   </GridTile>
+            //
+            //
+            //
+            //
+            //     <GridTile cols={2}>
+            //       <RadioButtonGroup onChange={this.handleText}  name="fpublico"  >
+            //        <RadioButton
+            //          value="si"
+            //          label="Si"
+            //          style={styles.radioButton}
+            //        />
+            //        <RadioButton
+            //          value="no"
+            //          label="No"
+            //          style={styles.radioButton}
+            //        />
+            //
+            //      </RadioButtonGroup>
+            //       </GridTile>
+            //       <GridTile cols={6}>
+            //           <TextField
+            //             name="micargo"
+            //             onChange={this.handleText}
+            //             hintText="lol"
+            //             fullWidth={true}
+            //           />
+            //   </GridTile>
+            //   <GridTile cols={4}>
+            //     <DatePicker
+            //       onChange={this.handleDates}
+            //       onTouchTap={this.testing}
+            //       autoOk={true}
+            //       hintText="Portrait Dialog"
+            //       name="fcargo"/>
+            //   </GridTile>
+            // </GridList>
+            // <Divider/>
+            // <GridList
+            //   cellHeight='auto'
+            //   cols={12}
+            //   style={{padding:'1%'}}>
+            //
+            //   <GridTile cols={12}>
+            //   ¿Es familiar de alguien que desempeña alguna función pública en México o el Extranjero?
+            //   </GridTile>
+            //
+            //   <GridTile cols={2}>
+            //   </GridTile>
+            //   <GridTile cols={6}>
+            //   ¿Qué Cargo?
+            //   </GridTile>
+            //   <GridTile cols={4}>
+            //     Fecha en que lo dejó
+            //   </GridTile>
+            //
+            //   <GridTile cols={2}>
+            //     <RadioButtonGroup onChange={this.handleText} name="parpublico"  >
+            //      <RadioButton
+            //        value="si"
+            //        label="Si"
+            //        style={styles.radioButton}
+            //      />
+            //      <RadioButton
+            //        value="no"
+            //        label="No"
+            //        style={styles.radioButton}
+            //      />
+            //
+            //    </RadioButtonGroup>
+            //     </GridTile>
+            //
+            //       <GridTile cols={6}>
+            //           <TextField
+            //             name="sucargo"
+            //             onChange={this.handleText}
+            //             hintText="lol"
+            //             fullWidth={true}
+            //           />
+            //   </GridTile>
+            //   <GridTile cols={4}>
+            //     <DatePicker
+            //       onChange={this.handleDates}
+            //       onTouchTap={this.testing}
+            //       autoOk={true}
+            //       hintText="Portrait Dialog"
+            //       name="fsucargo"/>
+            //   </GridTile>
+            //
+            //
+            //   <GridTile cols={2}>
+            //       Parentesco
+            //   </GridTile>
+            //   <GridTile cols={3}>
+            //       <TextField
+            //         name="parentesco"
+            //         onChange={this.handleText}
+            //         hintText="lol"
+            //         fullWidth={true}
+            //       />
+            //   </GridTile>
+            //   <GridTile cols={2}>
+            //       Nombre Completo
+            //   </GridTile>
+            //   <GridTile cols={5}>
+            //       <TextField
+            //         name="familiar"
+            //         onChange={this.handleText}
+            //         hintText="lol"
+            //         fullWidth={true}
+            //       />
+            //   </GridTile>
+            // </GridList>*/}
             {/*Acaba los datos de p fisica*/}
-                <Toolbar>
+          <Toolbar>
                   <ToolbarTitle
                       text="Ocupación o Actividad (Obligatorio)"
                   />
@@ -717,7 +736,7 @@ class PolizaForm extends React.Component{
                     Indique su principal ocupación relacionada con su actividad económica
                   </GridTile>
                 </GridList>
-                <Divider/>
+                <Divider style={{width:'100%'}}/>
                 <GridList
                   cellHeight='auto'
                   cols={12}
@@ -725,93 +744,47 @@ class PolizaForm extends React.Component{
 
 
 
-                  <GridTile cols={3}>
+                  <GridTile cols={4}>
                     Asalariado
                   </GridTile>
-                  <GridTile cols={3}>
-                  </GridTile>
-                  <GridTile cols={3}>
+
+                  <GridTile cols={4}>
                     Por Honorarios
                   </GridTile>
-                  <GridTile cols={3}>
+                  <GridTile cols={4}>
                     Actividad Empresarial
                   </GridTile>
 
-                  <GridTile cols={3}>
-                    <RadioButtonGroup onChange={this.handleText} name="asalariado"  >
-                     <RadioButton
-                       value="Militar"
-                       label="Militar"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="Piloto"
-                       label="Piloto"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="Profesor"
-                       label="Profesor"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="Notario"
-                       label="Notario"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="Ministro Religioso"
-                       label="Ministro Religioso"
-                       style={styles.radioButton}
-                     />
-
-                   </RadioButtonGroup>
-
-                  <br/>
-
-                  Especifique Institución
-                  </GridTile>
-
-                  <GridTile cols={3}
+                  <GridTile cols={4}
                     >
-                    <RadioButtonGroup onChange={this.handleText} name="asalariado" >
-                     <RadioButton
-                       value="Agricultor"
-                       label="Agricultor"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="medico"
-                       label="Médico"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="empleadopri"
-                       label="Empleado Privado"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="empleadopub"
-                       label="Empleado Público"
-                       style={styles.radioButton}
-                     />
-                     <RadioButton
-                       value="Otro"
-                       label="Otro"
-                       style={styles.radioButton}
-                     />
-
-                   </RadioButtonGroup>
+                    <SelectField
+                      name='ocupacion'
+                      floatingLabelText="Actividad"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <MenuItem value="Militar" primaryText="Militar" />
+                      <MenuItem value="Piloto/Sobrecargo" primaryText="Piloto/Sobrecargo" />
+                      <MenuItem value="Profesor" primaryText="Profesor" />
+                      <MenuItem value="Notario" primaryText="Notario" />
+                      <MenuItem value="Ministro Religioso" primaryText="Ministro Religioso" />
+                      <MenuItem value="Agricultor" primaryText="Agricultor" />
+                      <MenuItem value="Médico" primaryText="Médico" />
+                      <MenuItem value="Empleado Privado" primaryText="Empleado Privado" />
+                      <MenuItem value="Empleado Público" primaryText="Empleado Público" />
+                      <MenuItem value="Otro" primaryText="Otro" />
+                    </SelectField>
                     <TextField
-                      name="institucion"
+                      name="otraoc"
+                      disabled={this.state.value=='Otro'?false:true}
                       onChange={this.handleText}
-                      hintText="lol"
+                      hintText="Ocupación"
                       fullWidth={true}
                     />
 
                   </GridTile>
 
-                  <GridTile cols={3}
+                  <GridTile cols={4}
                     >
                     <RadioButtonGroup onChange={this.handleText} name="bhonorarios"  >
                      <RadioButton
@@ -826,17 +799,19 @@ class PolizaForm extends React.Component{
                      />
 
                    </RadioButtonGroup>
+                   <br/>
+                   Indique
                     <TextField
                       name="honorarios"
                       onChange={this.handleText}
-                      hintText="lol"
+                      hintText="Actividad"
                       fullWidth={true}
 
                     />
 
                   </GridTile>
 
-                  <GridTile cols={3}>
+                  <GridTile cols={4}>
                     <RadioButtonGroup onChange={this.handleText} name="actempresarial"  >
                      <RadioButton
                        value="Empresario"
@@ -861,7 +836,7 @@ class PolizaForm extends React.Component{
                   <TextField
                     name="aempresarial"
                     onChange={this.handleText}
-                    hintText="lol"
+                    hintText="Actividad"
                     fullWidth={true}
                   />
 
@@ -869,14 +844,29 @@ class PolizaForm extends React.Component{
 
 
                 </GridList>
+                <Divider style={{width:'100%'}}/>
+                <GridList cols={1}>
+                  <GridTile cols={1} style={{padding:'2%'}}>
+                    <TextField
+                      multiLine={true}
+                      floatingLabelText="Observaciones"
+                      rows={2}
+                      style={{paddingRight:'6%'}}
+                      name="observaciones"
+                      onChange={this.handleText}
+                      hintText="Observaciones"
+                      fullWidth={true}
+                    />
+                  </GridTile>
+                </GridList>
 
 
                 <Toolbar>
                   <ToolbarTitle
-                      text="Envía tu Poliza si haz terminado"
+                      text="Guarda la información del Cliente"
                   />
                   <div style={{paddingTop:'1%'}}>
-                    <RaisedButton  onTouchTap={this.enviarPoliza} label="Enviar" />
+                    <RaisedButton  onTouchTap={this.enviarPoliza} label="Guardar" />
                   </div>
                 </Toolbar>
 
@@ -915,4 +905,4 @@ const styles = {
 
 
 
-export default PolizaForm;
+export default ClienteForm;

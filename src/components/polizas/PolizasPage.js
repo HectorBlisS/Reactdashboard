@@ -14,6 +14,8 @@ import DownArrow from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import Personitas from 'material-ui/svg-icons/action/supervisor-account';
 import Description from 'material-ui/svg-icons/action/description';
 import List from 'material-ui/svg-icons/action/list';
+import AddPolicy from 'material-ui/svg-icons/action/note-add';
+import AddUser from 'material-ui/svg-icons/social/person-add';
 
 import PolizaSections from './PolizaSections';
 
@@ -78,14 +80,25 @@ class PolizasPage extends Component {
           >
           <Subheader>Menú</Subheader>
 
-            <NavLink to="/polizas/new" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<Description/>}>
-                Nueva Poliza
+            <NavLink to="/polizas/new-policy" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<AddPolicy/>}>
+                  Nueva Poliza
               </MenuItem>
             </NavLink>
-            <NavLink to="/polizas/list" style={{textDecoration:'none'}}>
+            <NavLink to="/polizas/" style={{textDecoration:'none'}}>
               <MenuItem leftIcon={<List/>}>
                   Polizas
+              </MenuItem>
+            </NavLink>
+
+            <NavLink to="/polizas/new-client" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<AddUser/>}>
+                Nuevo Cliente
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/polizas/clientes" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<List/>}>
+                  Clientes
               </MenuItem>
             </NavLink>
             <NavLink to="/polizas/asesores" style={{textDecoration:'none'}}>
