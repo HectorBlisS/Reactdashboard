@@ -1,0 +1,16 @@
+.image_box{
+    width: 35%;
+}
+.image_box img{
+    width: 60%;
+    margin-top: 20px;
+}
+.btns_float{
+    position: absolute;
+    top:75%;
+    left:90%;
+    position: fixed;
+}
+.btn_icon{
+	margin: 10px 0;
+}

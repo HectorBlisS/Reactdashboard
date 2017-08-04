@@ -9,6 +9,8 @@ import Salud from './components/servicios/salud/Salud';
 import Extras from './components/servicios/extras/Extras';
 import Contacto from './components/contacto/Contacto';
 import FormContacto from './components/formcontacto/FormContacto';
+import Invitacion from './components/invitacion/Invitacion';
+import AsesorProfile from './components/asesorprofile/AsesorProfile';
 import {
   Switch,
   Route
@@ -25,8 +27,6 @@ const Routes = () => (
     <Switch>
       <Route exact path='/' component={HomePage}/>
       <Route path='/polizas' component={PolizasPage}/>
-
-
       <Route path='/logIn' component={LogIn}/>
       <Route path='/seguros' component={Seguros}/>
       <Route path='/afore' component={Afore}/>
@@ -38,6 +38,8 @@ const Routes = () => (
       <Route path='/form' component={FormContacto}/>
       <Route path='/integrate' component={Integrate}/>
       <Route path='/perfil' component={UserProfile}/>
+      <Route path='/app' component={Invitacion}/>
+      <Route path='/asesor' component={AsesorProfile}/>
     </Switch>
 );
 
