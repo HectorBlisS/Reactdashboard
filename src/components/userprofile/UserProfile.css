@@ -45,20 +45,15 @@
     font-size: 20px;
 }
 .tip{
-    width: 80%;
-    margin-left: 10%;
+    width: 100%;
     height: 240px;
-    border-bottom: 1px solid #f2f2f2;
-    display: inline-flex;
-}
 
+}
 .box_tip{
-    width: 25%;
+    width: 20%;
 }
-
 .data_tip{
-    width: 65%;
-    margin-left: 5%;
+    width: 30%;
     text-align: left;
 }
 .fechas{
@@ -124,5 +119,12 @@
 
 .icon_service{
     color:#BDBDBD;
-    margin-top: 40%;
+   margin-top: 5%;
+}
+.flex_cien{
+    display: inline-flex;
+    width: 100%;
+}
+.status{
+    width: 50%;
 }

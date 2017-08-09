@@ -9,6 +9,7 @@ class Invitacion extends Component{
 		return(
 			<div >
 				<div className='descarga'>
+					<div className='cover'>
 					<Nav />
 					
 					<div className='text_app'>
@@ -20,7 +21,7 @@ class Invitacion extends Component{
 							<img className='store' src={IOS}/>
 						</div>
 					</div>
-					
+					</div>
 				</div>
 			</div>
 		);

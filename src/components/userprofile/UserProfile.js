@@ -5,9 +5,12 @@ import FontAwesome from 'react-fontawesome';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import Footer from '../footer/Footer';
 import api from '../../Api/Django';
 import toastr from 'toastr';
+import TextField from 'material-ui/TextField';
  
 const styles = {
   headline: {
@@ -73,6 +76,7 @@ class UserProfile extends Component {
           				</div>
           			</div>
           		</div>
+
           		<div className='tabs'>
           		 <Tabs
 		          onChange={this.handleChange}
@@ -184,71 +188,59 @@ class UserProfile extends Component {
                 </div>
 		          </div>
 		          <div style={styles.slide}>
-		           
+		            <div>
+                  <h3>Para recibir información de tus productos completa tus datos:</h3>
+                  <TextField
+                    hintText="Nombre"
+                  /><br />
+                  <TextField
+                    hintText="Número de Cliente"
+                  /><br />
+                   <FlatButton label="Enviar" primary={true} />
+                </div>
                 <div className='tip'>
-                    <div className='box_tip'>
-                       <FontAwesome name='car' className='icon_service' size='5x'/>
-                    </div>
-                    <div className='data_tip'>
-                      <h3>Seguro de Vida </h3>
-                      <p>
-                      Un estudio realizado por MasterCard encontró
-                       que tener un negocio propio es el sueño de al
-                        menos 53 por ciento de los jóvenes entre 18 y 
-                        34 años en América Latina. Sin embargo, 
-                        la empresa de crédito reconoció que no basta 
-                        con desear ser dueño de una empresa y recopiló 
-                        cuatro consejos para las personas que deseen o 
-                        estén por iniciar un emprendimiento.
-                        </p>
-                        <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
-                        <p className='fechas'>Cobertura: Amplia</p>
-                        <button>Ver más</button>
-                    </div>
+                     <Card>
+                      <CardHeader
+                        
+                        actAsExpander={true}
+                        showExpandableButton={true}
+                      />
+                      <CardText>
+                        <div className='flex_cien'>
+                          <div className='box_tip'>
+                            <FontAwesome name='car' className='icon_service' size='5x'/>
+                          </div>
+                          <div className='data_tip'>
+                            <h3>Seguro de Auto </h3>
+                            
+                            <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
+                            <p className='fechas'>Cobertura: Amplia</p>
+                            
+                          </div>
+                          <div className='status'>
+                          <h3>Status</h3>
+                            <p className='fechas'>Activo</p>
+                          </div>
+                        </div>
+                      </CardText>
+                    
+                      <CardText expandable={true}>
+                          <h3>Seguro de Vida </h3>
+                          <p>
+                            Un estudio realizado por MasterCard encontró
+                            que tener un negocio propio es el sueño de al
+                            menos 53 por ciento de los jóvenes entre 18 y 
+                            34 años en América Latina. Sin embargo, 
+                            la empresa de crédito reconoció que no basta 
+                            con desear ser dueño de una empresa y recopiló 
+                            cuatro consejos para las personas que deseen o 
+                            estén por iniciar un emprendimiento.
+                          </p>
+                    
+                      </CardText>
+                    </Card>
 
-                </div>
-                         <div className='tip'>
-                    <div className='box_tip'>
-                       <FontAwesome name='car' className='icon_service' size='5x'/>
-                    </div>
-                    <div className='data_tip'>
-                      <h3>Seguro de Vida </h3>
-                      <p>
-                      Un estudio realizado por MasterCard encontró
-                       que tener un negocio propio es el sueño de al
-                        menos 53 por ciento de los jóvenes entre 18 y 
-                        34 años en América Latina. Sin embargo, 
-                        la empresa de crédito reconoció que no basta 
-                        con desear ser dueño de una empresa y recopiló 
-                        cuatro consejos para las personas que deseen o 
-                        estén por iniciar un emprendimiento.
-                        </p>
-                        <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
-                        <p className='fechas'>Cobertura: Amplia</p>
-                        <button>Ver más</button>
-                    </div>
-
-                </div>
-                  <div className='tip'>
-                    <div className='box_tip'>
-                       <FontAwesome name='car' className='icon_service' size='5x'/>
-                    </div>
-                    <div className='data_tip'>
-                      <h3>Seguro de Vida </h3>
-                      <p>
-                      Un estudio realizado por MasterCard encontró
-                       que tener un negocio propio es el sueño de al
-                        menos 53 por ciento de los jóvenes entre 18 y 
-                        34 años en América Latina. Sin embargo, 
-                        la empresa de crédito reconoció que no basta 
-                        con desear ser dueño de una empresa y recopiló 
-                        cuatro consejos para las personas que deseen o 
-                        estén por iniciar un emprendimiento.
-                        </p>
-                        <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
-                        <p className='fechas'>Cobertura: Amplia</p>
-                        <button>Ver más</button>
-                    </div>
+                   
                 </div>
 		          </div>
 		        </SwipeableViews>
