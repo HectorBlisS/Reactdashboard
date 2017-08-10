@@ -30,12 +30,12 @@ const griddleStyles={
     SettingsWrapper:{display:'none'},
     PageDropdown:{color:'red'},
     Filter:{width:'50%',
-            left:0,
+
             marginTop:'2%',
             borderRadius:'5px',
             borderColor:'#9e9e9e',
             borderWidth:'1px',
-            height:'5vh'}
+            height:'3vh'}
 
   }
 }
@@ -103,7 +103,7 @@ class UsersList extends Component{
           styleConfig={griddleStyles}>
           <RowDefinition>
             <ColumnDefinition id="id" title="ID" customComponent={CustomColumn} />
-            <ColumnDefinition id={"username"} title="Usuario" customComponent={CustomColumn}/>
+            <ColumnDefinition id={"first_name"} title="Usuario" customComponent={CustomColumn}/>
             <ColumnDefinition id="profile.tipo" title="Tipo" customComponent={CustomColumn}/>
             <ColumnDefinition id={"date_joined"}  title="Fecha de registro" customComponent={CustomColumn2}/>
           </RowDefinition>

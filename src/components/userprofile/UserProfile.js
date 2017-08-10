@@ -11,7 +11,9 @@ import Footer from '../footer/Footer';
 import api from '../../Api/Django';
 import toastr from 'toastr';
 import TextField from 'material-ui/TextField';
- 
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -30,11 +32,15 @@ class UserProfile extends Component {
      constructor(props) {
     super(props);
     this.state = {
+      datos:{
+        tipo:'',
+      },
       slideIndex: 0,
         user:{profile:''}
     };
   }
-    
+
+
     componentWillMount(){
         const user = JSON.parse(localStorage.getItem('userToken'));
         if (!user){
@@ -55,13 +61,29 @@ class UserProfile extends Component {
     });
   };
 
+  handleTipo = (event, index, value) => {
+    let field = 'tipo'
+    let datos = this.state.datos;
+    datos[field] = value
+    this.setState({datos});
+    console.log(this.state.datos)
+  }
+  //textfields data
+  handleText = (event, index) => {
+     let field = event.target.name
+     let datos = this.state.datos;
+     datos[field] = event.target.value
+     this.setState({datos});
+     console.log(this.state.datos)
+   }
+
     render(){
         const {user} = this.state;
         return(
             <div className='back_perfil'>
           		<div className='barra'>
-					<Nav history={this.props.history} />
-				</div>
+					     <Nav history={this.props.history} />
+				      </div>
           		<div className='datos_user'>
           			<div className='photo_user'>
           				<img className='photo_user' src={user.profile.photo} alt='user'/>
@@ -84,7 +106,9 @@ class UserProfile extends Component {
 
 		        >
 		          <Tab label="Tips" value={0} style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E'}} />
-		          <Tab label="Mis Productos" value={1}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
+		          <Tab
+                label={user.profile.tipo==="asesor"?"Clientes":user.profile.tipo==="cliente"?"Mis Productos":"Completa"}
+                value={1}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
 		        </Tabs>
 		        <SwipeableViews
 		          index={this.state.slideIndex}
@@ -92,36 +116,36 @@ class UserProfile extends Component {
 		        >
 		          <div>
                 <div className='text_intro'>
-                  <h4>CUALQUIER PERSONA PUEDE MEJORAR SU 
+                  <h4>CUALQUIER PERSONA PUEDE MEJORAR SU
                   SITUACIÓN FINANCIERA. APRENDE A ADMINISTRAR
-                   TUS INGRESOS PARA QUE SIEMPRE TE ALCANCE 
+                   TUS INGRESOS PARA QUE SIEMPRE TE ALCANCE
                    SIN IMPORTAR CUÁNTO GANAS.</h4>
                    <p>
                      Imagínate poder ahorrar para un imprevisto,
-                      para los estudios de tus hijos o para hacer 
-                      se viaje con el que llevas tiempo soñando. 
-                      Llegar a fin de mes es más fácil de lo que 
-                      parece y vamos a demostrártelo. Únete a 
-                      nuestra comunidad y descubre los pasos 
+                      para los estudios de tus hijos o para hacer
+                      se viaje con el que llevas tiempo soñando.
+                      Llegar a fin de mes es más fácil de lo que
+                      parece y vamos a demostrártelo. Únete a
+                      nuestra comunidad y descubre los pasos
                       definitivos para ser financieramente libre.
                    </p>
                    <br />
                    <div className='box_informativa'>
                    </div>
                    <div>
-                      <h4>DÉJAME DECIRTE QUE GANAR MÁS DINERO NO ES LA 
+                      <h4>DÉJAME DECIRTE QUE GANAR MÁS DINERO NO ES LA
                       SOLUCIÓN A TUS PROBLEMAS FINANCIEROS</h4>
                       <div className='flex'>
                         <div className='text_box'>
                         <p>
-                          Sé mejor que nadie lo difícil que es verlo porque 
+                          Sé mejor que nadie lo difícil que es verlo porque
                           yo también pasé por esa etapa.
                           <br />
                           Pensaba que si ganaba el doble, cubriría todos esos
-                           gastos que me ahogaban a fin de mes y que por fin 
-                           empezaría a sobrarme algo de dinero. No te voy a 
+                           gastos que me ahogaban a fin de mes y que por fin
+                           empezaría a sobrarme algo de dinero. No te voy a
                            engañar, también hubo un tiempo en el que fantaseaba
-                          con la idea de ganar la lotería y arreglar la 
+                          con la idea de ganar la lotería y arreglar la
                           escasez en la que vivía sumergida.
                         </p>
                         </div>
@@ -138,9 +162,9 @@ class UserProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -151,9 +175,9 @@ class UserProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -164,9 +188,9 @@ class UserProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -177,9 +201,9 @@ class UserProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -190,18 +214,43 @@ class UserProfile extends Component {
 		          <div style={styles.slide}>
 		            <div>
                   <h3>Para recibir información de tus productos completa tus datos:</h3>
+                    <SelectField
+                      hintText="Tipo de Usuario"
+                      value={this.state.datos.tipo}
+                      onChange={this.handleTipo}
+                    >
+                      <MenuItem value={'asesor'} primaryText="Asesor" />
+                      <MenuItem value={'cliente'} primaryText="Cliente" />
+
+                    </SelectField><br />
                   <TextField
+                    onChange={this.handleText}
+                    name='first_name'
                     hintText="Nombre"
                   /><br />
+
+                {this.state.datos.tipo==='asesor'?
+                  <div>
+                    <TextField
+                      onChange={this.handleText}
+                      name="asesorId"
+                      hintText="Número de Asesor"
+                    /><br />
+                  </div>:
+                this.state.datos.tipo==='cliente'?
+                <div>
                   <TextField
+                    onChange={this.handleText}
+                    name="clienteId"
                     hintText="Número de Cliente"
                   /><br />
+                </div>:''}
                    <FlatButton label="Enviar" primary={true} />
                 </div>
                 <div className='tip'>
                      <Card>
                       <CardHeader
-                        
+
                         actAsExpander={true}
                         showExpandableButton={true}
                       />
@@ -212,10 +261,10 @@ class UserProfile extends Component {
                           </div>
                           <div className='data_tip'>
                             <h3>Seguro de Auto </h3>
-                            
+
                             <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
                             <p className='fechas'>Cobertura: Amplia</p>
-                            
+
                           </div>
                           <div className='status'>
                           <h3>Status</h3>
@@ -223,24 +272,24 @@ class UserProfile extends Component {
                           </div>
                         </div>
                       </CardText>
-                    
+
                       <CardText expandable={true}>
                           <h3>Seguro de Vida </h3>
                           <p>
                             Un estudio realizado por MasterCard encontró
                             que tener un negocio propio es el sueño de al
-                            menos 53 por ciento de los jóvenes entre 18 y 
-                            34 años en América Latina. Sin embargo, 
-                            la empresa de crédito reconoció que no basta 
-                            con desear ser dueño de una empresa y recopiló 
-                            cuatro consejos para las personas que deseen o 
+                            menos 53 por ciento de los jóvenes entre 18 y
+                            34 años en América Latina. Sin embargo,
+                            la empresa de crédito reconoció que no basta
+                            con desear ser dueño de una empresa y recopiló
+                            cuatro consejos para las personas que deseen o
                             estén por iniciar un emprendimiento.
                           </p>
-                    
+
                       </CardText>
                     </Card>
 
-                   
+
                 </div>
 		          </div>
 		        </SwipeableViews>

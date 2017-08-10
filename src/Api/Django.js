@@ -10,6 +10,7 @@ let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/polizas/';
 let policysUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/policys/';
 let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
 let usersUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/profiles/'
+let asesoresUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/asesores/'
 let selfProfileUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/myprofile/'
 let vehiclesFilteredUrl = 'http://ronchon-choucroute-16574.herokuapp.com/api/vehiculospoliza/';
 let vehiclesUrl = 'http://ronchon-choucroute-16574.herokuapp.com/api/vehicles/';
@@ -23,6 +24,7 @@ if (debug){
     selfProfileUrl = 'http://localhost:8000/auth/myprofile/';
     vehiclesFilteredUrl = 'http://localhost:8000/api/vehiculospoliza/';
     vehiclesUrl = 'http://localhost:8000/api/vehicles/';
+    asesoresUrl = 'http://localhost:8000/api/asesores/'
 }
 
 
@@ -30,6 +32,30 @@ if (debug){
 
 
 const api = {
+  getAsesores: () => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: asesoresUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token' + userToken}
+            });
+            instance.get()
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
   getUsers: () => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
