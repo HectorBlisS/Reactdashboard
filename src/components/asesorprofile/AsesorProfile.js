@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import './UserProfile.css';
+import './AsesorProfile.css';
 import Nav from '../nav/Nav';
 import FontAwesome from 'react-fontawesome';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
 import Footer from '../footer/Footer';
 import api from '../../Api/Django';
 import toastr from 'toastr';
-import TextField from 'material-ui/TextField';
- 
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+
+
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-class UserProfile extends Component {
+class AsesorProfile extends Component {
      constructor(props) {
     super(props);
     this.state = {
@@ -76,15 +76,14 @@ class UserProfile extends Component {
           				</div>
           			</div>
           		</div>
-
           		<div className='tabs'>
           		 <Tabs
 		          onChange={this.handleChange}
 		          value={this.state.slideIndex}
 
 		        >
-		          <Tab label="Tips" value={0} style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E'}} />
-		          <Tab label="Mis Productos" value={1}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
+		          <Tab label="Portafolio" value={0} style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E'}} />
+		          <Tab label="Preguntas Frecuentes" value={1}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
 		        </Tabs>
 		        <SwipeableViews
 		          index={this.state.slideIndex}
@@ -92,41 +91,29 @@ class UserProfile extends Component {
 		        >
 		          <div>
                 <div className='text_intro'>
-                  <h4>CUALQUIER PERSONA PUEDE MEJORAR SU 
-                  SITUACIÓN FINANCIERA. APRENDE A ADMINISTRAR
-                   TUS INGRESOS PARA QUE SIEMPRE TE ALCANCE 
-                   SIN IMPORTAR CUÁNTO GANAS.</h4>
+                  <h4>OLVIDATE DE LOS EMPLEOS TRADICIONALES, DIPRA TE 
+                  OFRECE UN EMPLEO EN DONDE GANAS LO QUE TU DESEAS GANAR,
+                   SIN HORARIOS FIJOS</h4>
                    <p>
-                     Imagínate poder ahorrar para un imprevisto,
-                      para los estudios de tus hijos o para hacer 
-                      se viaje con el que llevas tiempo soñando. 
-                      Llegar a fin de mes es más fácil de lo que 
-                      parece y vamos a demostrártelo. Únete a 
-                      nuestra comunidad y descubre los pasos 
-                      definitivos para ser financieramente libre.
+                     Convviertete en el mejor asesor de tu zona, y obten el reconocimiento y los bonos que mereces.
                    </p>
                    <br />
-                   <div className='box_informativa'>
-                   </div>
+                 <iframe width="660" height="415" src="https://www.youtube.com/embed/z9BPMjL44Aw" frameborder="0" allowfullscreen></iframe>
                    <div>
-                      <h4>DÉJAME DECIRTE QUE GANAR MÁS DINERO NO ES LA 
-                      SOLUCIÓN A TUS PROBLEMAS FINANCIEROS</h4>
+                    <br />
                       <div className='flex'>
                         <div className='text_box'>
                         <p>
-                          Sé mejor que nadie lo difícil que es verlo porque 
-                          yo también pasé por esa etapa.
-                          <br />
-                          Pensaba que si ganaba el doble, cubriría todos esos
-                           gastos que me ahogaban a fin de mes y que por fin 
-                           empezaría a sobrarme algo de dinero. No te voy a 
-                           engañar, también hubo un tiempo en el que fantaseaba
-                          con la idea de ganar la lotería y arreglar la 
-                          escasez en la que vivía sumergida.
+                         El Asesor Financiero es el profesional que ayuda a descubrir las necesidades financieras, 
+                         analizando circunstancias pasadas, presentes y futuras de su cliente, teniendo en cuenta
+                          la edad, su patrimonio disponible, su tipo impositivo, su situación profesional y familiar, 
+                          y el resto de inversiones que pueda disponer. Una vez analizado su perfil de riesgo y sus 
+                          necesidades, el asesor llevará a cabo sus recomendaciones de inversión, asesorándole según 
+                          sus circunstancias y necesidades vayan cambiando y adaptándolas al momento actual.
                         </p>
                         </div>
-                        <div className='img_box'>
-                          <img src='https://www.blogylana.com/wp-content/uploads/2016/07/money.png' alt='tip'/>
+                        <div className='image_box'>
+                          <img  src='https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_05-512.png' alt='tip'/>
                         </div>
                       </div>
                    </div>
@@ -187,45 +174,26 @@ class UserProfile extends Component {
 
                 </div>
 		          </div>
+
+
+
 		          <div style={styles.slide}>
-		            <div>
-                  <h3>Para recibir información de tus productos completa tus datos:</h3>
-                  <TextField
-                    hintText="Nombre"
-                  /><br />
-                  <TextField
-                    hintText="Número de Cliente"
-                  /><br />
-                   <FlatButton label="Enviar" primary={true} />
-                </div>
-                <div className='tip'>
+		           
+
+
+                    <div className='tip'>
+                      
                      <Card>
                       <CardHeader
-                        
+                        title="Que necesito para ser un asesor?"
+                        className='left'
                         actAsExpander={true}
                         showExpandableButton={true}
                       />
-                      <CardText>
-                        <div className='flex_cien'>
-                          <div className='box_tip'>
-                            <FontAwesome name='car' className='icon_service' size='5x'/>
-                          </div>
-                          <div className='data_tip'>
-                            <h3>Seguro de Auto </h3>
-                            
-                            <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
-                            <p className='fechas'>Cobertura: Amplia</p>
-                            
-                          </div>
-                          <div className='status'>
-                          <h3>Status</h3>
-                            <p className='fechas'>Activo</p>
-                          </div>
-                        </div>
-                      </CardText>
+                      
                     
-                      <CardText expandable={true}>
-                          <h3>Seguro de Vida </h3>
+                      <CardText expandable={true} className='left'>
+                          
                           <p>
                             Un estudio realizado por MasterCard encontró
                             que tener un negocio propio es el sueño de al
@@ -240,17 +208,24 @@ class UserProfile extends Component {
                       </CardText>
                     </Card>
 
-                   
+
+
                 </div>
+                        
 		          </div>
 		        </SwipeableViews>
 		        </div>
 
-		        <div className='btn_float'>
-		         	<FloatingActionButton style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
-				        <FontAwesome name='download' />
+		        <div className='btns_float'>
+		         	<FloatingActionButton className='btn_icon' style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
+				        <FontAwesome name='plus' />
 
 				    </FloatingActionButton>
+            <br />
+            <FloatingActionButton className='btn_icon' style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
+                <FontAwesome name='download' />
+
+            </FloatingActionButton>
 				</div>
 				<Footer />
             </div>
@@ -258,4 +233,4 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile;
+export default AsesorProfile;

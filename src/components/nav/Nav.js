@@ -71,7 +71,7 @@ class MainBar extends Component{
                     <Link className='pestana'
                         id="explorar"
                         style={styles.elLink}
-                        to="/servicios" >
+                        to="/app" >
                         App Móvil
                     </Link>
                     <Link className='pestana'
