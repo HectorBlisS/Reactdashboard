@@ -12,6 +12,7 @@ import Hamb from 'material-ui/svg-icons/navigation/menu';
 import Close from 'material-ui/svg-icons/navigation/close';
 import DownArrow from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import Personitas from 'material-ui/svg-icons/action/supervisor-account';
+import Personitas2 from 'material-ui/svg-icons/social/group';
 import Description from 'material-ui/svg-icons/action/description';
 import List from 'material-ui/svg-icons/action/list';
 import AddPolicy from 'material-ui/svg-icons/action/note-add';
@@ -61,6 +62,7 @@ class PolizasPage extends Component {
                           <MenuItem primaryText="Inicio" />
                       </Link>
 
+
                   </IconMenu>
 
               </ToolbarGroup>
@@ -68,7 +70,7 @@ class PolizasPage extends Component {
           }
       />
     <div style={this.state.open?{padding:'5.4% 0 0 18%', transition:'all .5s ease' }:{paddingTop:'5.4%', transition:'all .5s ease'}}>
-        <PolizaSections match={this.props.match}/>
+        <PolizaSections match={this.props.match} location={this.props.location}/>
       </div>
       <Drawer
           width={200}
@@ -80,7 +82,7 @@ class PolizasPage extends Component {
           >
           <Subheader>Menú</Subheader>
 
-            <NavLink to="/polizas/new-policy" style={{textDecoration:'none'}}>
+            <NavLink to="/polizas/nueva" style={{textDecoration:'none'}}>
               <MenuItem leftIcon={<AddPolicy/>}>
                   Nueva Poliza
               </MenuItem>
@@ -91,19 +93,24 @@ class PolizasPage extends Component {
               </MenuItem>
             </NavLink>
 
-            <NavLink to="/polizas/new-client" style={{textDecoration:'none'}}>
+            <NavLink to="/polizas/nuevo-cliente" style={{textDecoration:'none'}}>
               <MenuItem leftIcon={<AddUser/>}>
                 Nuevo Cliente
               </MenuItem>
             </NavLink>
             <NavLink to="/polizas/clientes" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<List/>}>
+              <MenuItem leftIcon={<Personitas2/>}>
                   Clientes
               </MenuItem>
             </NavLink>
             <NavLink to="/polizas/asesores" style={{textDecoration:'none'}}>
               <MenuItem leftIcon={<Personitas/>}>
                   Asesores
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/polizas/usuarios" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<Personitas/>}>
+                  Usuarios
               </MenuItem>
             </NavLink>
 

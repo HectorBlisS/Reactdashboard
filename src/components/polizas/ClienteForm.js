@@ -47,8 +47,8 @@ class ClienteForm extends React.Component{
      console.log(this.state.poliza)
    }
    enviarPoliza=()=>{
-     api.newPolicy(this.state.poliza).then(r=>{
-       toastr.success('Tu poliza se a registrado con éxito')
+     api.newClient(this.state.poliza).then(r=>{
+       toastr.success('Tu Cliente se ha registrado con éxito')
        console.log(r)
      }).catch(e=>{
        toastr.error('Hubo un problema, Intenta más tarde')
@@ -862,12 +862,12 @@ class ClienteForm extends React.Component{
 
 
                 <Toolbar>
-                  <ToolbarTitle
-                      text="Guarda la información del Cliente"
-                  />
-                  <div style={{paddingTop:'1%'}}>
-                    <RaisedButton  onTouchTap={this.enviarPoliza} label="Guardar" />
-                  </div>
+                  <RaisedButton
+                    style={{margin:'2% 0 '}}
+                    label='Guardar'
+                    fullWidth={true}
+                    onTouchTap={this.enviarPoliza}/>
+
                 </Toolbar>
 
 

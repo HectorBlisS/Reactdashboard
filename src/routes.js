@@ -14,8 +14,7 @@ import {
   Route
 } from 'react-router-dom';
 import PolizasPage from './components/polizas/PolizasPage';
-import NewPolizaPage from './components/polizas/NewPolizaPage';
-import PolizaDetail from './components/polizas/PolizaDetail';
+
 import Integrate from './components/integrate/Integrate';
 import UserProfile from './components/userprofile/UserProfile';
 // <Route path='/roster' component={Roster}/>

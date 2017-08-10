@@ -11,6 +11,10 @@ import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
+import api from '../../Api/Django';
+import toastr from 'toastr';
+import VehiculosForm from './VehiculosForm';
+
 
 
 class NewPoliza extends Component{
@@ -29,29 +33,25 @@ class NewPoliza extends Component{
       search:'',
       clientesobj:[
         {id:1,
-        nombre:'oswaldo'},
-        {id:2,
-        nombre:'Brenda'},
-        {id:3,
-        nombre:'Bliss'},
-        {id:4,
-        nombre:'oswaldinho'},
-        {id:5,
-        nombre:'Prote'},
+        pnombre:'oswaldo'},
+
       ],
       vehiculos:[
         {placa:'123',
         marca:'tesla'},
-        {placa:'234',
-        marca:'chevrolet'},
-        {placa:'345',
-        marca:'mercedez'},
+
       ],
       poliza:{}
     }
   }
 
+  componentWillMount(){
+    api.getClients().then(r=>{
+      this.setState({clientesobj:r})
+      console.log(this.state.clientesobj)
 
+    })
+  }
   search=(event)=>{
     this.setState({search:event.target.value})
 
@@ -80,10 +80,10 @@ class NewPoliza extends Component{
       });
     };
     selectItem=(f,e)=>{
-
-      this.setState({selected:f, search:f.nombre})
+      let nombre = f.rsocial?f.rsocial:f.pnombre+' '+f.amaterno+' '+f.apaterno
+      this.setState({selected:f, search:nombre})
       let poliza = this.state.poliza
-      poliza['cliente'] = f
+      poliza['cliente'] = f.id
       this.handleRequestClose()
     }
     //selectFieldsData :(
@@ -154,36 +154,34 @@ class NewPoliza extends Component{
        //console.log(e.target.name,e.target.value)
      }
 
-     //modal
-     handleOpen = () => {
-      this.setState({openModal: true});
-    };
-
-    handleClose = () => {
-      this.setState({openModal: false});
-    };
-
+     
+    enviarPoliza=()=>{
+      api.newPolicy(this.state.poliza).then(r=>{
+        toastr.success('Tu Cliente se ha registrado con éxito')
+        console.log(r)
+      }).catch(e=>{
+        toastr.error('Hubo un problema, Intenta más tarde')
+        console.log(e)
+      })
+    }
 
 
 
   render(){
-    const actions = [
-      <RaisedButton
-        label="Cancelar"
-        primary={true}
-        onTouchTap={this.handleClose}
-      />,
-    <RaisedButton
-        label="Guardar"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this.handleClose}
-      />,
-    ];
+
       let filtered = this.state.clientesobj.filter((cliente)=>{
 
-        return cliente.nombre.toLowerCase().indexOf(
-          this.state.search.toLowerCase())!== -1
+        if(cliente.rsocial){
+          return cliente.rsocial.toLowerCase().indexOf(
+            this.state.search.toLowerCase())!== -1 ||
+            cliente.idcliente.toLowerCase().indexOf(
+              this.state.search.toLowerCase())!== -1
+        }else{
+        return cliente.pnombre.toLowerCase().indexOf(
+          this.state.search.toLowerCase())!== -1 ||
+          cliente.idcliente.toLowerCase().indexOf(
+            this.state.search.toLowerCase())!== -1
+        }
       })
     return(
       <div >
@@ -211,7 +209,7 @@ class NewPoliza extends Component{
                   value={this.state.search}
                   onChange={this.search}
                   fullWidth={true}
-                  floatingLabelText={this.state.selected?'ID: '+this.state.selected.id:'ID Cliente'}
+                  floatingLabelText={this.state.selected?'ID: '+this.state.selected.idcliente:'ID Cliente'}
                   onTouchTap={this.handleTouchTap}/>
                   <Popover
                   style={{width:'30%', height:'200px'}}
@@ -225,7 +223,7 @@ class NewPoliza extends Component{
                     return(
                     <MenuItem onTouchTap={()=>this.selectItem(f)}>
                       <div style={{margin:0, position:'relative'}}>
-                        {f.nombre}
+                        {f.rsocial?f.rsocial:f.pnombre+' '+f.apaterno+' '+f.amaterno}
                         <p
                           style={{
                             margin:0,
@@ -233,7 +231,7 @@ class NewPoliza extends Component{
                             position:'absolute',
                             color:'grey',
                             top:-10, right:0}}>
-                          ID: {f.id}
+                          ID: {f.idcliente}
                         </p>
                       </div>
                     </MenuItem>
@@ -339,9 +337,7 @@ class NewPoliza extends Component{
             <ToolbarTitle
                 text="Datos Secundarios"
             />
-            <div style={{paddingTop:'1%'}}>
-              <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
-            </div>
+
           </Toolbar>
           <div style={{padding:'1%'}}>
             <GridList cols={2} cellHeight='auto'>
@@ -546,47 +542,18 @@ class NewPoliza extends Component{
 
             </div>
             :''}
-            <GridList cols={1} cellHeight='auto'>
-              <GridTile>
-                <RaisedButton
-                  primary={true}
-                  label="Registro de Vehículos"
-                  fullWidth={true}
-                  onTouchTap={this.handleOpen}/>
-                  <Dialog
-                   title="Registro de Vehículos"
-                   actions={actions}
-                   modal={false}
-                   open={this.state.openModal}
-                   onRequestClose={this.handleClose}
-                 >
-                   El form
-                 </Dialog>
-              </GridTile>
-            </GridList>
-            <div>
-              <h3>Vehículos Registrados</h3>
-              {this.state.vehiculos.map(v=>{
-                return(
-                  <Card>
-                    <CardHeader
-                      title={v.marca}
-                      subtitle={v.placa}
-                      actAsExpander={true}
-                      showExpandableButton={true}
-                    />
-                    <CardText expandable={true}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                    </CardText>
-                  </Card>
-                );
-              }).reverse()}
-            </div>
 
           </div>
+          <Toolbar>
+            <RaisedButton
+              style={{margin:'2% 0 '}}
+              label='Guardar'
+              fullWidth={true}
+              onTouchTap={this.enviarPoliza}/>
+
+          </Toolbar>
+
+
         </Paper>
 
       </div>

@@ -1,172 +1,142 @@
 import React, {Component} from 'react';
-import api from '../../Api/Django';
-import {Paper,Toolbar,ToolbarTitle,ToolbarGroup} from 'material-ui';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import {GridList, GridTile} from 'material-ui/GridList';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import {Toolbar, ToolbarTitle} from 'material-ui/Toolbar';
 import RaisedButton from 'material-ui/RaisedButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import NewPoliza from './NewPoliza';
+import Popover from 'material-ui/Popover';
+import Checkbox from 'material-ui/Checkbox';
+import DatePicker from 'material-ui/DatePicker';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import {Link} from 'react-router-dom';
-
+import Dialog from 'material-ui/Dialog';
+import api from '../../Api/Django';
+import toastr from 'toastr';
+import VehiculosForm from './VehiculosForm';
 
 class PolizaDetail extends Component{
+
   constructor(){
     super()
     this.state={
       open:false,
-      value:'b',
-      newPolicy:{tipo:'',valor:''},
-      polizas:[
+      openModal:false,
+      poliza:{
+        asesor:{}
+      },
+      clientesobj:[
         {id:1,
-        tipo:'auto',
-        valor:50000},
-        {id:2,
-        tipo:'auto',
-        valor:50000},
-        {id:3,
-        tipo:'auto',
-        valor:50000}
+        pnombre:'oswaldo'},
 
       ],
-      poliza:{
-        asesor:{
-          username:''
-        }
-      }
+      vehiculos:[
+        {placa:'123',
+        marca:'tesla'},
+
+      ],
     }
   }
   componentWillMount(){
+    api.getPolicy(this.props.match.params.polizaId).then(r=>{
+      this.setState({poliza:r})
+      console.log(this.state.poliza)
+    })
+
+    api.getVehicles(this.props.match.params.polizaId).then(r=>{
+      this.setState({vehiculos:r})
+
+    }).catch(e=>{
+
+    })
 
     api.getPolicy(this.props.match.params.polizaId).then(r=>{
       this.setState({poliza:r})
+    }).catch(e=>{
+
     })
+
   }
-  handleChange = (value) => {
-    this.setState({
-      value: value,
-    });
-  };
+  pasala=(a)=>{
+     this.state.vehiculos.push(a)
+   }
+
+  //modal
   handleOpen = () => {
-  this.setState({open: true});
-};
+   this.setState({openModal: true});
+ };
 
-handleClose = () => {
-  this.setState({open: false});
-};
-addPolicy=()=>{
-  this.state.polizas.push(this.state.newPolicy)
-  this.setState({open:false})
-}
+ handleClose = () => {
+   this.setState({openModal: false});
+ };
+
   render(){
-    const actions = [
-      <FlatButton
-        label="Cancelar"
-        primary={true}
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        label="Guardar"
-        primary={true}
-
-        onTouchTap={this.addPolicy}
-      />,
-    ];
-    const poliza = this.state.poliza
     return(
       <div>
         <Paper style={{maxWidth:'80%' ,
-          margin:'0 auto',
-          marginTop:30,
-          textAlign:'left',
-          marginBottom: 25,
-        }}>
-          <Toolbar>
-            <ToolbarTitle text={'Cliente# '+poliza.id}/>
-            <ToolbarTitle text={'Nombre del Cliente '}/>
-          </Toolbar>
+        margin:'0 auto',
+        marginTop:30,
+        textAlign:'left',
+        marginBottom: 25,
+      }}>
+        <Toolbar>
+          <ToolbarTitle
+              text={'Poliza de '+this.state.poliza.empresa}
+          />
+          <ToolbarTitle
+              text={'ID '+this.state.poliza.idpoliza}
+          />
 
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <Tab label="Info del Cliente" value="a">
-              <div>
-                <h2 style={styles.headline}>CLient info</h2>
-                <p>
+          <ToolbarTitle
+              text={'Asesor: '+this.state.poliza.asesor.first_name}
+          />
 
-                </p>
-              </div>
-            </Tab>
-            <Tab label="Polizas" value="b">
-              <div style={{position:'relative'}}>
-
-                {this.state.polizas.map(poliza=>{
-                  return(
-
-                      <Card key={poliza.id} style={{marginBottom:'1%'}}>
-                       <CardHeader
-                         title={'Poliza de '+poliza.tipo}
-                         subtitle={'Folio: '+poliza.id}
-                         actAsExpander={true}
-                         showExpandableButton={true}
-                       />
-                       <CardActions>
-                         <Link to='/'>
-                           <RaisedButton label="Detalle" fullWidth={true}/>
-                         </Link>
-                       </CardActions>
-                       <CardText expandable={true}>
-                         <h3>Valor de la poliza: {poliza.valor}</h3>
-                         <p>Número de Recibos pagados: 2/4</p>
-
-                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                         Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                         Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                       </CardText>
-                     </Card>
-
-                  )
-                }).reverse()}
-
-
+        </Toolbar>
+        {this.state.poliza.daños==='Autos y Camiones'?
+          <div>
+            <GridList cols={1} cellHeight='auto' style={{padding:'1%'}}>
+              <GridTile>
+                <RaisedButton
+                  primary={true}
+                  label="Registro de Vehículos"
+                  fullWidth={true}
+                  onTouchTap={this.handleOpen}/>
                   <Dialog
-                    contentStyle={{width:'50%'}}
-                    autoScrollBodyContent={true}
-                    title="Nueva Poliza"
-                    actions={actions}
-                    modal={true}
-                    open={this.state.open}
-                  >
-                    <NewPoliza/>
-                  </Dialog>
-
-                <FloatingActionButton
-                  secondary={true}
-                  style={{position:'absolute', top:-30, right:-30}}
-                  tooltip="Font Icon"
-                  onTouchTap={this.handleOpen}>
-                  <ContentAdd />
-                </FloatingActionButton>
-              </div>
-            </Tab>
-          </Tabs>
+                   title="Registro de Vehículos"
+                   autoScrollBodyContent={true}
+                   modal={false}
+                   open={this.state.openModal}
+                   onRequestClose={this.handleClose}
+                 >
+                   <VehiculosForm id={this.state.poliza.id} pasala={this.pasala}/>
+                 </Dialog>
+              </GridTile>
+            </GridList>
+            <div style={{padding:'1%'}}>
+              <h3>Vehículos Registrados</h3>
+              {this.state.vehiculos.map(v=>{
+                return(
+                  <Card>
+                    <CardHeader
+                      title={v.marca}
+                      subtitle={v.placa}
+                      actAsExpander={true}
+                      showExpandableButton={true}
+                    />
+                    <CardText expandable={true}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                      Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                      Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                    </CardText>
+                  </Card>
+                );
+              }).reverse()}
+            </div>
+          </div>:''}
         </Paper>
-
       </div>
     );
   }
 }
 export default PolizaDetail;
-
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
