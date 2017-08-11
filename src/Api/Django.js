@@ -12,8 +12,10 @@ let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
 let usersUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/profiles/'
 let asesoresUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/asesores/'
 let selfProfileUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/myprofile/'
-let vehiclesFilteredUrl = 'http://ronchon-choucroute-16574.herokuapp.com/api/vehiculospoliza/';
-let vehiclesUrl = 'http://ronchon-choucroute-16574.herokuapp.com/api/vehicles/';
+let vehiclesFilteredUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehiculospoliza/';
+let vehiclesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehicles/';
+let perfilesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/perfiles/';
+let matchUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/match/';
 
 if (debug){
     clientesUrl = 'http://localhost:8000/api/clientes/';
@@ -24,7 +26,9 @@ if (debug){
     selfProfileUrl = 'http://localhost:8000/auth/myprofile/';
     vehiclesFilteredUrl = 'http://localhost:8000/api/vehiculospoliza/';
     vehiclesUrl = 'http://localhost:8000/api/vehicles/';
-    asesoresUrl = 'http://localhost:8000/api/asesores/'
+    asesoresUrl = 'http://localhost:8000/api/asesores/';
+    perfilesUrl = 'http://localhost:8000/api/perfiles/';
+    matchUrl = 'http://localhost:8000/api/match/';
 }
 
 
@@ -32,6 +36,54 @@ if (debug){
 
 
 const api = {
+  matchClient: (datos) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: matchUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token' + userToken}
+            });
+            instance.post('',datos)
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+  updateTipo: (id,datos) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: perfilesUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token' + userToken}
+            });
+            instance.patch(id+'/',datos)
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
   getAsesores: () => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));

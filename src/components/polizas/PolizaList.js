@@ -120,7 +120,7 @@ class PolizaList extends Component{
           <RowDefinition>
             <ColumnDefinition id="idpoliza" title="ID" customComponent={CustomColumn} />
             <ColumnDefinition id={"asesor.first_name"} title="Asesor" customComponent={CustomColumn}/>
-            <ColumnDefinition id={"cliente.snombre"} title="Cliente" customComponent={CustomColumn}/>
+            <ColumnDefinition id={"cliente.pnombre"} title="Cliente" customComponent={CustomColumn}/>
             <ColumnDefinition id={"apertura"}  title="Fecha de registro" customComponent={CustomColumn2}/>
           </RowDefinition>
         </Griddle>

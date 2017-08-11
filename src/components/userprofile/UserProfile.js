@@ -32,9 +32,7 @@ class UserProfile extends Component {
      constructor(props) {
     super(props);
     this.state = {
-      datos:{
-        tipo:'',
-      },
+      datos:{},
       slideIndex: 0,
         user:{profile:''}
     };
@@ -55,19 +53,46 @@ class UserProfile extends Component {
         }
     }
 
+  updateClienteInfo=()=>{
+    //update user info
+    api.updateTipo(this.state.user.profile.id, this.state.datos).then(r=>{
+      toastr.success('Gracias por completar')
+    }).catch(e=>{
+      toastr.error('naaa')
+      console.log(e)
+    })
+    //match user client
+    api.matchClient(this.state.datos).then(r=>{
+      toastr.success('matched')
+      console.log(r)
+    }).catch(e=>{
+      toastr.error('nel')
+    })
+  }
+  updateAsesorInfo=()=>{
+    //update user info
+    api.updateTipo(this.state.user.profile.id, this.state.datos).then(r=>{
+      toastr.success('Gracias por completar')
+    }).catch(e=>{
+      toastr.error('naaa')
+      console.log(e)
+    })
+    //match user client
+    // api.matchClient(this.state.datos).then(r=>{
+    //   toastr.success('matched')
+    //   console.log(r)
+    // }).catch(e=>{
+    //   toastr.error('nel')
+    // })
+  }
+
   handleChange = (value) => {
     this.setState({
       slideIndex: value,
     });
   };
 
-  handleTipo = (event, index, value) => {
-    let field = 'tipo'
-    let datos = this.state.datos;
-    datos[field] = value
-    this.setState({datos});
-    console.log(this.state.datos)
-  }
+
   //textfields data
   handleText = (event, index) => {
      let field = event.target.name
@@ -107,8 +132,11 @@ class UserProfile extends Component {
 		        >
 		          <Tab label="Tips" value={0} style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E'}} />
 		          <Tab
-                label={user.profile.tipo==="asesor"?"Clientes":user.profile.tipo==="cliente"?"Mis Productos":"Completa"}
+                label="Mis Productos"
                 value={1}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
+                <Tab
+                  label="Asesor"
+                  value={2}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
 		        </Tabs>
 		        <SwipeableViews
 		          index={this.state.slideIndex}
@@ -212,41 +240,20 @@ class UserProfile extends Component {
                 </div>
 		          </div>
 		          <div style={styles.slide}>
-		            <div>
-                  <h3>Para recibir información de tus productos completa tus datos:</h3>
-                    <SelectField
-                      hintText="Tipo de Usuario"
-                      value={this.state.datos.tipo}
-                      onChange={this.handleTipo}
-                    >
-                      <MenuItem value={'asesor'} primaryText="Asesor" />
-                      <MenuItem value={'cliente'} primaryText="Cliente" />
-
-                    </SelectField><br />
-                  <TextField
-                    onChange={this.handleText}
-                    name='first_name'
-                    hintText="Nombre"
-                  /><br />
-
-                {this.state.datos.tipo==='asesor'?
+		            {this.state.user.profile.clienteId?'':
+                  <div>
+                    <h3>Para recibir información de tus productos completa tus datos:</h3>
                   <div>
                     <TextField
                       onChange={this.handleText}
-                      name="asesorId"
-                      hintText="Número de Asesor"
+                      name="clienteId"
+                      hintText="Número de Cliente"
                     /><br />
-                  </div>:
-                this.state.datos.tipo==='cliente'?
-                <div>
-                  <TextField
-                    onChange={this.handleText}
-                    name="clienteId"
-                    hintText="Número de Cliente"
-                  /><br />
-                </div>:''}
-                   <FlatButton label="Enviar" primary={true} />
-                </div>
+
+                  </div>
+                     <FlatButton label="Enviar" primary={true} onTouchTap={this.updateClienteInfo}
+                       />
+                   </div>}
                 <div className='tip'>
                      <Card>
                       <CardHeader
@@ -292,6 +299,20 @@ class UserProfile extends Component {
 
                 </div>
 		          </div>
+              {this.state.user.profile.asesorId?'':
+                <div>
+                  <h3>Eres Asesor?, Ingresa tu ID</h3>
+                <div>
+                    <TextField
+                      onChange={this.handleText}
+                      name="asesorId"
+                      hintText="Número de Asesor"
+                    /><br />
+
+                </div>
+                   <FlatButton label="Enviar" primary={true} onTouchTap={this.updateAsesorInfo}
+                     />
+                 </div>}
 		        </SwipeableViews>
 		        </div>
 
