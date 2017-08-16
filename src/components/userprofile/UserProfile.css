@@ -24,11 +24,17 @@
     margin-top: 40px;
     margin-bottom: 80px;
     background-color: white;
-  
+
 }
 .btn_float{
     position: absolute;
     top:90%;
+    left:90%;
+    position: fixed;
+}
+.btn_float2{
+    position: absolute;
+    top:80%;
     left:90%;
     position: fixed;
 }
@@ -87,7 +93,7 @@
 }
 .square img{
     width: 100%;
-    
+
 }
 .square_text h5{
     font-size: 18px;

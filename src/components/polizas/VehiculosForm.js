@@ -6,6 +6,7 @@ import api from '../../Api/Django';
 import toastr from 'toastr';
 import TextField from 'material-ui/TextField';
 import {GridList, GridTile} from 'material-ui/GridList';
+import DatePicker from 'material-ui/DatePicker';
 
 class VehiculosForm extends Component{
 
@@ -33,6 +34,17 @@ class VehiculosForm extends Component{
     })
     this.props.pasala(this.state.vehicle)
   }
+  //datePicker data
+  handleDates =(e,val)=>{
+    let field = this.state.lafecha
+    let vehicle = this.state.vehicle;
+    vehicle[field] = val
+    console.log(this.state.lafecha,val)
+  }
+  testing=(e)=>{
+    this.setState({lafecha:e.target.name})
+    //console.log(e.target.name,e.target.value)
+  }
   handleText=(event)=>{
      let field = event.target.name
      let vehicle = this.state.vehicle;
@@ -56,6 +68,33 @@ class VehiculosForm extends Component{
 
         </Toolbar>
           <div style={{padding:'1%'}}>
+            <GridList cellHeight="auto" cols={3}>
+              <GridTile cols={1}>
+                <TextField
+                  onChange={this.handleText}
+                  name="origen"
+                  hintText="Origen"
+                  floatingLabelText="Origen"
+
+                />
+              </GridTile>
+              <GridTile cols={1}>
+                <TextField
+                  onChange={this.handleText}
+                  hintText="Uso"
+                  floatingLabelText="Uso"
+                  name="uso"
+                />
+              </GridTile>
+              <GridTile cols={1}>
+                <DatePicker hintText="Portrait Dialog"
+                  name='alta'
+                  onChange={this.handleDates}
+                  onTouchTap={this.testing}
+                   autoOk={true}
+                   floatingLabelText="Alta"/>
+              </GridTile>
+            </GridList>
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
@@ -139,9 +178,9 @@ class VehiculosForm extends Component{
               <GridTile cols={1}>
                 <TextField
                   onChange={this.handleText}
-                  hintText="Color"
-                  floatingLabelText="Color"
-                  name="color"
+                  hintText="Status"
+                  floatingLabelText="Status"
+                  name="status"
                 />
               </GridTile>
               <GridTile cols={1}>

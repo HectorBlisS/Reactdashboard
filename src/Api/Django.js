@@ -16,6 +16,8 @@ let vehiclesFilteredUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/ve
 let vehiclesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehicles/';
 let perfilesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/perfiles/';
 let matchUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/match/';
+let mispolizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/mispolizas/';
+let recibosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/recibos/';
 
 if (debug){
     clientesUrl = 'http://localhost:8000/api/clientes/';
@@ -29,6 +31,8 @@ if (debug){
     asesoresUrl = 'http://localhost:8000/api/asesores/';
     perfilesUrl = 'http://localhost:8000/api/perfiles/';
     matchUrl = 'http://localhost:8000/api/match/';
+    mispolizasUrl = 'http://localhost:8000/api/mispolizas/';
+    recibosUrl = 'http://localhost:8000/api/recibos/';
 }
 
 
@@ -36,6 +40,54 @@ if (debug){
 
 
 const api = {
+  updateRecibo: (id,datos) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: recibosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.patch(id+'/',datos)
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+  getMisPolizas: () => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: mispolizasUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.get()
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
   matchClient: (datos) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -45,7 +97,7 @@ const api = {
                 baseURL: matchUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.post('',datos)
                 .then(function (response) {
@@ -69,7 +121,7 @@ const api = {
                 baseURL: perfilesUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.patch(id+'/',datos)
                 .then(function (response) {
@@ -93,7 +145,7 @@ const api = {
                 baseURL: asesoresUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.get()
                 .then(function (response) {
@@ -117,7 +169,7 @@ const api = {
                 baseURL: usersUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.get()
                 .then(function (response) {
@@ -141,7 +193,7 @@ const api = {
                 baseURL: vehiclesUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.post('',vehicle)
                 .then(function (response) {
@@ -165,7 +217,7 @@ const api = {
                 baseURL: vehiclesFilteredUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.get(id+'/')
                 .then(function (response) {
@@ -189,7 +241,7 @@ const api = {
                 baseURL: policysUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.get()
                 .then(function (response) {
@@ -210,10 +262,10 @@ const api = {
 
           return new Promise(function (resolve, reject) {
               const instance = axios.create({
-                  baseURL: polizasUrl,
+                  baseURL: policysUrl,
                   //timeout: 2000,
                   headers: {'Content-Type': 'application/json',
-                      'Authorization': 'Token' + userToken}
+                      'Authorization': 'Token ' + userToken}
               });
               instance.get(id+'/')
                   .then(function (response) {
@@ -262,7 +314,7 @@ const api = {
                 baseURL: clientesUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
-                    'Authorization': 'Token' + userToken}
+                    'Authorization': 'Token ' + userToken}
             });
             instance.get()
                 .then(function (response) {
@@ -286,7 +338,7 @@ const api = {
                   baseURL: clientesUrl,
                   //timeout: 2000,
                   headers: {'Content-Type': 'application/json',
-                      'Authorization': 'Token' + userToken}
+                      'Authorization': 'Token ' + userToken}
               });
               instance.get(id+'/')
                   .then(function (response) {

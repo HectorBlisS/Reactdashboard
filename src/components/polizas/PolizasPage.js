@@ -32,7 +32,8 @@ class PolizasPage extends Component {
         return(
           <div>
       <AppBar
-          style={{position:'fixed'}}
+
+          style={{position:'fixed', backgroundColor:'#57658E'}}
           title={<Link style={{textDecoration:'none',color:'white'}} to="/">Administración de Polizas</Link>}
           onLeftIconButtonTouchTap={this.handleToggle}
           iconElementLeft={

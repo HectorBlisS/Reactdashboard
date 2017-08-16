@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import api from '../../Api/Django';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+// import {
+//   Table,
+//   TableBody,
+//   TableHeader,
+//   TableHeaderColumn,
+//   TableRow,
+//   TableRowColumn,
+// } from 'material-ui/Table';
 import {Link} from 'react-router-dom';
 import 'moment/locale/es';
 import moment from 'moment';
@@ -28,14 +28,28 @@ const griddleStyles={
   styles:{
     Table:{width:'100%'},
     SettingsWrapper:{display:'none'},
-    PageDropdown:{color:'red'},
-    Filter:{width:'50%',
+    Filter:{
+      padding:'1% 3%',
+      width:'50%',
+      margin:'2% 0',
+      borderRadius:'5px',
+      borderColor:'rgb(224, 224, 224)',
+      borderWidth:'2px',
+      height:'1vh',
+      fontSize:'1rem',
+      color:'#9e9e9e'},
 
-            marginTop:'2%',
-            borderRadius:'5px',
-            borderColor:'#9e9e9e',
-            borderWidth:'1px',
-            height:'3vh'}
+    Row:{
+      boxShadow:'0 1px 0 0 rgb(224, 224, 224)',
+    },
+    PageDropdown:{
+      margin:'1%',
+      width:'5%'
+    },
+     Pagination:{
+      margin:'2% 0'
+     }
+
 
   }
 }
@@ -98,7 +112,7 @@ class UsersList extends Component{
           </TableBody>
         </Table>*/}
         <Griddle
-          data={this.state.usuarios}
+          data={this.state.usuarios.reverse()}
           plugins={[plugins.LocalPlugin]}
           styleConfig={griddleStyles}>
           <RowDefinition>

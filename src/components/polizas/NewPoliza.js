@@ -21,6 +21,7 @@ class NewPoliza extends Component{
   constructor(){
     super()
     this.state={
+      editar:true,
       domicilio:false,
       modalidad:'',
       subrama:'',
@@ -36,12 +37,9 @@ class NewPoliza extends Component{
         pnombre:'oswaldo'},
 
       ],
-      vehiculos:[
-        {placa:'123',
-        marca:'tesla'},
-
-      ],
-      poliza:{}
+      vehiculos:[],
+      poliza:{},
+      openModal:false,
     }
   }
 
@@ -147,17 +145,31 @@ class NewPoliza extends Component{
        let field = this.state.lafecha
        let poliza = this.state.poliza;
        poliza[field] = val
-       console.log(this.state.lafecha,val)
+       this.setState({poliza});
+       
      }
      testing=(e)=>{
        this.setState({lafecha:e.target.name})
        //console.log(e.target.name,e.target.value)
      }
 
-     
+     pasala=(a)=>{
+        this.state.vehiculos.push(a)
+      }
+      //modal
+      handleOpen = () => {
+       this.setState({openModal: true});
+     };
+
+     handleClose = () => {
+       this.setState({openModal: false});
+     };
+
+
     enviarPoliza=()=>{
       api.newPolicy(this.state.poliza).then(r=>{
-        toastr.success('Tu Cliente se ha registrado con éxito')
+        toastr.success('Tu Cliente se ha registrado con éxito');
+        this.setState({elId:r.id,editar:false})
         console.log(r)
       }).catch(e=>{
         toastr.error('Hubo un problema, Intenta más tarde')
@@ -195,15 +207,15 @@ class NewPoliza extends Component{
           <ToolbarTitle
               text="Datos Básicos"
           />
-          <div style={{paddingTop:'1%'}}>
-            <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
-          </div>
+
+
         </Toolbar>
 
           <div style={{padding:'1%'}}>
             <GridList cols={4} cellHeight='auto'>
               <GridTile style={{padding:'1.5%'}} cols={2}>
                 <TextField
+                  disabled={this.state.editar?false:true}
                   hintText='Buscador de Clientes'
                   name='cliente'
                   value={this.state.search}
@@ -242,6 +254,7 @@ class NewPoliza extends Component{
               <GridTile style={{padding:'3%'}}>
 
                 <TextField
+                  disabled={this.state.editar?false:true}
                   name='idpoliza'
                   onChange={this.handleText}
                   hintText="444455554444"
@@ -251,6 +264,7 @@ class NewPoliza extends Component{
               <GridTile style={{padding:'3%'}}>
 
                 <TextField
+                  disabled={this.state.editar?false:true}
                   name='cis'
                   onChange={this.handleText}
                   hintText="55665544"
@@ -266,9 +280,10 @@ class NewPoliza extends Component{
                   onCheck={this.addDomicilio}
                 />
               <TextField
+                disabled={!this.state.domicilio&&this.state.editar?false:true}
                 name='newaddress'
                 onChange={this.handleText}
-                  disabled={this.state.domicilio?true:false}
+
                   multiLine={true}
                   rows={2}
                   hintText={"Calle Número Colonia Codigo Postal Ciudad Estado"}
@@ -284,6 +299,7 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  disabled={this.state.editar?false:true}
                   name='agrupacion'
                   onChange={this.handleText}
                   hintText="55665544"
@@ -294,6 +310,7 @@ class NewPoliza extends Component{
               <GridTile cols={1}>
 
                 <SelectField
+                  disabled={this.state.editar?false:true}
                   name='pago'
                   id='pago'
                  floatingLabelText="Forma de Pago"
@@ -310,6 +327,7 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  disabled={this.state.editar?false:true}
                   name='prima'
                   onChange={this.handleText}
                   hintText="55665544"
@@ -317,6 +335,7 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  disabled={this.state.editar?false:true}
                   name='financiamiento'
                   onChange={this.handleText}
                   hintText="55665544"
@@ -324,6 +343,7 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  disabled={this.state.editar?false:true}
                   name='importe'
                   onChange={this.handleText}
                   hintText="55665544"
@@ -344,6 +364,7 @@ class NewPoliza extends Component{
               <GridTile cols={1}>
 
                 <SelectField
+                  disabled={this.state.editar?false:true}
                   name='empresa'
                   fullWidth={true}
                  floatingLabelText="Empresa"
@@ -360,6 +381,7 @@ class NewPoliza extends Component{
               <GridTile cols={1}>
 
                 <SelectField
+                  disabled={this.state.editar?false:true}
                   fullWidth={true}
                   name='sector'
                  floatingLabelText="Sector"
@@ -381,6 +403,7 @@ class NewPoliza extends Component{
               <GridTile cols={1}>
                 {this.state.sector==='Seguros'?<div>
                   <SelectField
+                    disabled={this.state.editar?false:true}
                     fullWidth={true}
                     name='seguros'
                    floatingLabelText="Tipo de Seguro"
@@ -398,6 +421,7 @@ class NewPoliza extends Component{
                 this.state.sector==='Afore'?'':
                 this.state.sector==='Bancos'?<div>
                 <SelectField
+                  disabled={this.state.editar?false:true}
                   fullWidth={true}
                   name='banco'
                  floatingLabelText="Actividad"
@@ -417,6 +441,7 @@ class NewPoliza extends Component{
               <GridTile cols={1}>
                 {this.state.nextOption==='Capacitacion'?<div>
                   <SelectField
+                    disabled={this.state.editar?false:true}
                     fullWidth={true}
                     name='capacitacion'
                    floatingLabelText="Capacitación"
@@ -438,6 +463,7 @@ class NewPoliza extends Component{
                 </div>:
                 this.state.nextOption==='Credito'?<div>
                   <SelectField
+                    disabled={this.state.editar?false:true}
                     name='credito'
                     fullWidth={true}
                    floatingLabelText="Crédito"
@@ -464,6 +490,7 @@ class NewPoliza extends Component{
                 </div>:
                 this.state.nextOption==='Daños'?<div>
                 <SelectField
+                  disabled={this.state.editar?false:true}
                   name='daño'
                   fullWidth={true}
                  floatingLabelText="Daños"
@@ -483,6 +510,7 @@ class NewPoliza extends Component{
                 </div>:
                 this.state.nextOption==='Accidentes'?<div>
                 <SelectField
+                  disabled={this.state.editar?false:true}
                   name='accidentes'
                   fullWidth={true}
                  floatingLabelText="Accidentes y Enfermedades"
@@ -504,6 +532,7 @@ class NewPoliza extends Component{
               <GridList cellHeight='auto'>
                 <GridTile>
                   <SelectField
+                    disabled={this.state.editar?false:true}
                     name='subrama'
                     fullWidth={true}
                    floatingLabelText="Subrama"
@@ -522,6 +551,7 @@ class NewPoliza extends Component{
                 </GridTile>
                 <GridTile>
                   <SelectField
+                    disabled={this.state.editar?false:true}
                     name='modalidad'
                     fullWidth={true}
                    floatingLabelText="Modalidad"
@@ -552,6 +582,50 @@ class NewPoliza extends Component{
               onTouchTap={this.enviarPoliza}/>
 
           </Toolbar>
+          {/*cars form*/}
+          {this.state.poliza.daños==='Autos y Camiones'?
+            <div>
+              <GridList cols={1} cellHeight='auto' style={{padding:'1%'}}>
+                <GridTile>
+                  <RaisedButton
+                    primary={true}
+                    label="Registro de Vehículos"
+                    disabled={this.state.vehiculos.length>=1?true:false}
+                    fullWidth={true}
+                    onTouchTap={this.handleOpen}/>
+                    <Dialog
+                     title="Registro de Vehículos"
+                     autoScrollBodyContent={true}
+                     modal={false}
+                     open={this.state.openModal}
+                     onRequestClose={this.handleClose}
+                   >
+                     <VehiculosForm id={this.state.elId} pasala={this.pasala}/>
+                   </Dialog>
+                </GridTile>
+              </GridList>
+              <div style={{padding:'1%'}}>
+                <h3>Vehículos Registrados</h3>
+                {this.state.vehiculos.map(v=>{
+                  return(
+                    <Card>
+                      <CardHeader
+                        title={v.marca}
+                        subtitle={v.placa}
+                        actAsExpander={true}
+                        showExpandableButton={true}
+                      />
+                      <CardText expandable={true}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+                        Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+                        Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+                      </CardText>
+                    </Card>
+                  );
+                }).reverse()}
+              </div>
+            </div>:''}
 
 
         </Paper>

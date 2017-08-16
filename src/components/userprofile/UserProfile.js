@@ -13,6 +13,7 @@ import toastr from 'toastr';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Dialog from 'material-ui/Dialog';
 
 const styles = {
   headline: {
@@ -32,9 +33,15 @@ class UserProfile extends Component {
      constructor(props) {
     super(props);
     this.state = {
+      open:false,
+      cliente:false,
       datos:{},
       slideIndex: 0,
-        user:{profile:''}
+        user:{
+          profile:'',
+          usuario:''
+        },
+        mispolizas:[],
     };
   }
 
@@ -50,29 +57,40 @@ class UserProfile extends Component {
                 console.log(r);
             })
             .catch(e=>toastr.error("algo falló"));
+
+            api.getMisPolizas().then(r=>{
+              this.setState({mispolizas:r})
+              console.log(this.state.mispolizas)
+            }).catch(e=>{
+              toastr.error('no tienes')
+            })
         }
+
     }
+
+
 
   updateClienteInfo=()=>{
     //update user info
     api.updateTipo(this.state.user.profile.id, this.state.datos).then(r=>{
-      toastr.success('Gracias por completar')
+
     }).catch(e=>{
       toastr.error('naaa')
       console.log(e)
     })
     //match user client
     api.matchClient(this.state.datos).then(r=>{
-      toastr.success('matched')
+      toastr.success('Tus polizas en seguida')
       console.log(r)
     }).catch(e=>{
-      toastr.error('nel')
+      toastr.error('Ese no es tu Id de Cliente')
     })
+    this.componentWillMount()
   }
   updateAsesorInfo=()=>{
     //update user info
     api.updateTipo(this.state.user.profile.id, this.state.datos).then(r=>{
-      toastr.success('Gracias por completar')
+      toastr.success('Gracias por completar, Espera tu aprobación')
     }).catch(e=>{
       toastr.error('naaa')
       console.log(e)
@@ -85,6 +103,14 @@ class UserProfile extends Component {
     //   toastr.error('nel')
     // })
   }
+  //for modal
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
 
   handleChange = (value) => {
     this.setState({
@@ -134,9 +160,10 @@ class UserProfile extends Component {
 		          <Tab
                 label="Mis Productos"
                 value={1}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
+              {this.state.user.profile.aprobado?
                 <Tab
-                  label="Asesor"
-                  value={2}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>
+                  label="Portafolio"
+                  value={2}  style={{backgroundColor:'white', color:'#57658E', borderBottom:'solid 1px #57658E' }}/>:''}
 		        </Tabs>
 		        <SwipeableViews
 		          index={this.state.slideIndex}
@@ -240,7 +267,8 @@ class UserProfile extends Component {
                 </div>
 		          </div>
 		          <div style={styles.slide}>
-		            {this.state.user.profile.clienteId?'':
+		            {this.state.user.profile.clienteId==this.state.user.usuario.idcliente?
+                  '':
                   <div>
                     <h3>Para recibir información de tus productos completa tus datos:</h3>
                   <div>
@@ -254,74 +282,90 @@ class UserProfile extends Component {
                      <FlatButton label="Enviar" primary={true} onTouchTap={this.updateClienteInfo}
                        />
                    </div>}
-                <div className='tip'>
-                     <Card>
-                      <CardHeader
+                   <div className='tip' style={this.state.user.profile.clienteId==this.state.user.usuario.idcliente?{display:'block'}:{display:'none'}}>
+                       {this.state.mispolizas.map(poliza=>{
+                         return(
+                           <Card>
+                            <CardHeader
 
-                        actAsExpander={true}
-                        showExpandableButton={true}
-                      />
-                      <CardText>
-                        <div className='flex_cien'>
-                          <div className='box_tip'>
-                            <FontAwesome name='car' className='icon_service' size='5x'/>
-                          </div>
-                          <div className='data_tip'>
-                            <h3>Seguro de Auto </h3>
+                              actAsExpander={true}
+                              showExpandableButton={true}
+                            />
+                            <CardText>
+                              <div className='flex_cien'>
+                                <div className='box_tip'>
+                                  <FontAwesome name='car' className='icon_service' size='5x'/>
+                                </div>
+                                <div className='data_tip'>
+                                  <h3>Seguro de Auto </h3>
 
-                            <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
-                            <p className='fechas'>Cobertura: Amplia</p>
+                                  <p className='fechas'>Fecha de contratación: 6 de Septiembre</p>
+                                  <p className='fechas'>Cobertura: Amplia</p>
 
-                          </div>
-                          <div className='status'>
-                          <h3>Status</h3>
-                            <p className='fechas'>Activo</p>
-                          </div>
-                        </div>
-                      </CardText>
+                                </div>
+                                <div className='status'>
+                                <h3>Status</h3>
+                                  <p className='fechas'>Activo</p>
+                                </div>
+                              </div>
+                            </CardText>
 
-                      <CardText expandable={true}>
-                          <h3>Seguro de Vida </h3>
-                          <p>
-                            Un estudio realizado por MasterCard encontró
-                            que tener un negocio propio es el sueño de al
-                            menos 53 por ciento de los jóvenes entre 18 y
-                            34 años en América Latina. Sin embargo,
-                            la empresa de crédito reconoció que no basta
-                            con desear ser dueño de una empresa y recopiló
-                            cuatro consejos para las personas que deseen o
-                            estén por iniciar un emprendimiento.
-                          </p>
+                            <CardText expandable={true}>
+                                <h3>Seguro de Vida </h3>
+                                <p>
+                                  Un estudio realizado por MasterCard encontró
+                                  que tener un negocio propio es el sueño de al
+                                  menos 53 por ciento de los jóvenes entre 18 y
+                                  34 años en América Latina. Sin embargo,
+                                  la empresa de crédito reconoció que no basta
+                                  con desear ser dueño de una empresa y recopiló
+                                  cuatro consejos para las personas que deseen o
+                                  estén por iniciar un emprendimiento.
+                                </p>
 
-                      </CardText>
-                    </Card>
-
-
-                </div>
+                            </CardText>
+                          </Card>
+                         )
+                       })}
+                   </div>
 		          </div>
-              {this.state.user.profile.asesorId?'':
-                <div>
-                  <h3>Eres Asesor?, Ingresa tu ID</h3>
-                <div>
-                    <TextField
-                      onChange={this.handleText}
-                      name="asesorId"
-                      hintText="Número de Asesor"
-                    /><br />
-
-                </div>
-                   <FlatButton label="Enviar" primary={true} onTouchTap={this.updateAsesorInfo}
-                     />
-                 </div>}
+              <div>
+                lo que los asesores deben ver
+              </div>
 		        </SwipeableViews>
 		        </div>
 
 		        <div className='btn_float'>
 		         	<FloatingActionButton style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
 				        <FontAwesome name='download' />
+				      </FloatingActionButton>
+				    </div>
+            {this.state.user.profile.aprobado?'':
+              <div className='btn_float2'>
+                <Dialog
+                  title="¿Eres Asesor?"
+                  contentStyle={{width:'35%'}}
+                  modal={false}
+                  open={this.state.open}
+                  onRequestClose={this.handleClose}
+                >
+                <div>
+                  <h3>Ingresa tu Id para darte mas Info</h3>
 
-				    </FloatingActionButton>
-				</div>
+                    <TextField
+                      onChange={this.handleText}
+                      name="asesorId"
+                      hintText="Número de Asesor"
+                    /><br />
+                  <FlatButton fullWidth={true} label="Enviar" primary={true} onTouchTap={this.updateAsesorInfo}/>
+                </div>
+                </Dialog>
+  		         	<FloatingActionButton
+                  onTouchTap={this.handleOpen}
+                  style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
+  				        <FontAwesome name='user' />
+  				      </FloatingActionButton>
+  				    </div>}
 				<Footer />
             </div>
         );

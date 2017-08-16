@@ -4,17 +4,19 @@ import 'moment/locale/es';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
 import Popover from 'material-ui/Popover';
+import RaisedButton from 'material-ui/RaisedButton';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
-import {
-  Table,
-  TableBody,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
+// import {
+//   Table,
+//   TableBody,
+//   TableHeader,
+//   TableHeaderColumn,
+//   TableRow,
+//   TableRowColumn,
+// } from 'material-ui/Table';
 
-
+const Detalle = ({value}) => <Link style={{color:'#000', textDecoration:'none'}}
+ to={'/polizas/detalle/'+value}><RaisedButton>Detalle</RaisedButton></Link>
 const CustomColumn = ({value}) => <p>{value}</p>
 const CustomColumn2 = ({value}) => {
   moment.locale('es')
@@ -28,12 +30,26 @@ const griddleStyles={
     Table:{width:'100%'},
     SettingsWrapper:{display:'none'},
     Filter:{
-      width:'80%',
-      marginTop:'2%',
+      padding:'1% 3%',
+      width:'50%',
+      margin:'2% 0',
       borderRadius:'5px',
-      borderColor:'#9e9e9e',
-      borderWidth:'1px',
-      height:'5vh'},
+      borderColor:'rgb(224, 224, 224)',
+      borderWidth:'2px',
+      height:'1vh',
+      fontSize:'1rem',
+      color:'#9e9e9e'},
+
+    Row:{
+      boxShadow:'0 1px 0 0 rgb(224, 224, 224)',
+    },
+    PageDropdown:{
+      margin:'1%',
+      width:'5%'
+    },
+     Pagination:{
+      margin:'2% 0'
+     }
 
 
   }
@@ -114,11 +130,12 @@ class PolizaList extends Component{
         </Table>*/}
 
         <Griddle
-          data={this.state.polizas}
+          data={this.state.polizas.reverse()}
           plugins={[plugins.LocalPlugin]}
           styleConfig={griddleStyles}>
           <RowDefinition>
-            <ColumnDefinition id="idpoliza" title="ID" customComponent={CustomColumn} />
+            <ColumnDefinition id="id" title=" " customComponent={Detalle} />
+            <ColumnDefinition id="idpoliza" title="ID de Poliza" customComponent={CustomColumn} />
             <ColumnDefinition id={"asesor.first_name"} title="Asesor" customComponent={CustomColumn}/>
             <ColumnDefinition id={"cliente.pnombre"} title="Cliente" customComponent={CustomColumn}/>
             <ColumnDefinition id={"apertura"}  title="Fecha de registro" customComponent={CustomColumn2}/>
