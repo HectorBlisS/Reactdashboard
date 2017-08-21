@@ -23,7 +23,11 @@ class PolizaDetail extends Component{
   constructor(){
     super()
     this.state={
-      elrecibo:{},
+      modal:false,
+      idRecibo:'',
+      elrecibo:{
+        pagado:true,
+      },
       open:false,
       openModal:false,
       poliza:{
@@ -39,10 +43,11 @@ class PolizaDetail extends Component{
       vehiculos:[],
     }
   }
+
   componentWillMount(){
     api.getPolicy(this.props.match.params.polizaId).then(r=>{
       this.setState({poliza:r})
-      console.log(this.state.poliza)
+      console.log("req",this.state.poliza)
     })
 
     api.getVehicles(this.props.match.params.polizaId).then(r=>{
@@ -60,18 +65,33 @@ class PolizaDetail extends Component{
 
   }
 
-  pagado=(id,r)=>{
 
-    let field = 'pagado'
+
+  handleOpen = () => {
+     this.setState({modal: true});
+   };
+
+   handleClose = () => {
+     this.setState({modal: false});
+   };
+   handleIDrecibo = (event, index, value) => this.setState({idRecibo:value});
+
+
+  handleRecibo=(e)=>{
+    let field = e.target.name
     let elrecibo = this.state.elrecibo;
-    elrecibo[field] = !r
+    elrecibo[field] = e.target.value
     this.setState({elrecibo});
     console.log(this.state.elrecibo)
-    api.updateRecibo(id, this.state.elrecibo).then(r=>{
+  }
+  pagado=()=>{
+
+    api.updateRecibo(this.state.idRecibo, this.state.elrecibo).then(r=>{
       toastr.success('Recibo Pagados')
     }).catch(e=>{
       toastr.error('Sorrys')
     })
+    this.setState({modal:false})
   }
 
 
@@ -145,8 +165,9 @@ class PolizaDetail extends Component{
               /><br />
             </GridTile>
             <GridTile cols={1}>
+
                <TextField
-                 value={'ID: '+this.state.poliza.apertura}
+                 value={'Fecha: '+moment(this.state.poliza.apertura).format('LL')}
                  disabled={true}/>
             </GridTile>
             <GridTile cols={1}>
@@ -381,50 +402,152 @@ class PolizaDetail extends Component{
                 );
               }).reverse()}
             </div>:''}
-            <div>
+            <div style={{padding:'0 1%', position:'relative'}}>
+              <h3>Recibos ({this.state.poliza.recibo_poliza.length})</h3>
+                <RaisedButton
+                   label={'Llenar'}
+                   labelColor={'#fff'}
+                   style={{position:'absolute', right:10, top:-10}}
+                   backgroundColor="rgb(87, 101, 142)"
+                   onTouchTap={this.handleOpen}/>
+                <Dialog
+                  title="Completa para marcar el recibo como pagado"
+                  modal={false}
+                  open={this.state.modal}
+                  onRequestClose={this.handleClose}>
+                    <div style={{padding:'2%'}}>
 
-              <Card>
-                <CardHeader
-                  title={<h3>No. de recibos: {this.state.poliza.recibo_poliza.length}</h3>}
-                  actAsExpander={true}
-                  showExpandableButton={true}
-                />
-              <CardText expandable={true}>
-                {this.state.poliza.recibo_poliza.map(recibo=>{
-                  return(
-                    <div>
-                      <GridList cols={3} cellHeight="auto">
-                        <GridTile cols={1}>
-                          <div>
-                            Recibo #{recibo.numero}
-                          </div>
+                      <GridList cols={4} cellHeight='auto'>
+                        <GridTile>
+                          <SelectField
+                            floatingLabelText="Recibo"
+                            value={this.state.idRecibo}
+                            onChange={this.handleIDrecibo}
+                          >
+                            {this.state.poliza.recibo_poliza.map(re=>{
+                              return(
+                                <MenuItem value={re.id} primaryText={'Recibo '+re.numero} />
+                              )
+                            })}
+
+                          </SelectField>
                         </GridTile>
                         <GridTile cols={1}>
-                            {recibo.fecha?<div>{moment(recibo.fecha).format('LL')}</div>:
-
+                          <div style={{marginTop:'24px'}}>
                             <DatePicker
-
                               name='fecha'
                               onChange={this.handleDates}
                               onTouchTap={this.testing}
                               autoOk={true}
                               hintText="Fecha de Pago"
-                              />}
+                              />
+                          </div>
+                        </GridTile>
+                        <GridTile cols={1}>
+                          <TextField
+                            floatingLabelText="Derechos"
+                            name="derechos"
+                            onChange={this.handleRecibo}/>
 
                         </GridTile>
                         <GridTile cols={1}>
-                          <Toggle
-                             label={recibo.pagado?"Pagado":"No Pagado"}
-                             defaultToggled={recibo.pagado}
-                             onToggle={()=>this.pagado(recibo.id, recibo.pagado)}
-                           />
+                          <TextField
+                            floatingLabelText="IVA"
+                            name="iva"
+                            onChange={this.handleRecibo}/>
+
                         </GridTile>
                       </GridList>
+                        <GridList cols={4} cellHeight='auto'>
+                          <GridTile cols={1}>
+                            <TextField
+                              floatingLabelText="Prima Neta"
+                              name="prima_neta"
+                              onChange={this.handleRecibo}/>
+
+                          </GridTile>
+                          <GridTile cols={1}>
+                            <TextField
+                              floatingLabelText="Prima Total"
+                              name="prima_total"
+                              onChange={this.handleRecibo}/>
+
+                          </GridTile>
+                          <GridTile cols={1}>
+                            <TextField
+                              floatingLabelText="Descuento"
+                              name="descuento"
+                              onChange={this.handleRecibo}/>
+
+                          </GridTile>
+                          <GridTile cols={1}>
+                            <TextField
+                              floatingLabelText="Pago Fracc"
+                              name="pago_frac"
+                              onChange={this.handleRecibo}/>
+
+                          </GridTile>
+                        </GridList>
+                      <RaisedButton
+                        label={'Pagar'}
+                        fullWidth={true}
+                        labelColor={'#fff'}
+                        backgroundColor="rgb(87, 101, 142)"
+                        onTouchTap={this.pagado}/>
                     </div>
-                  )
-                })}
-              </CardText>
-              </Card>
+                </Dialog>
+              {this.state.poliza.recibo_poliza.map(recibo=>{
+                return(
+                  <Card>
+                    <CardHeader
+                      title={'Recibo #' +recibo.numero}
+                      subtitle={recibo.pagado?'Pagado':'No Pagado'}
+                      actAsExpander={true}
+                      showExpandableButton={true}
+                    />
+
+                    <CardText expandable={true}>
+                        <div>
+                          <GridList cols={8} cellHeight="auto">
+
+                            <GridTile cols={1}>
+                                <h4>Prima Neta:</h4>
+                                {recibo.prima_neta}
+
+                            </GridTile>
+                            <GridTile cols={1}>
+                                <h4>Prima Total:</h4>
+                                {recibo.prima_total}
+                            </GridTile>
+                            <GridTile cols={1}>
+                                <h4>Descuento</h4>
+                                {recibo.descuento}
+                            </GridTile>
+                            <GridTile cols={1}>
+                                <h4>Pago Fracc</h4>
+                                {recibo.pago_frac}
+                            </GridTile>
+                            <GridTile cols={1}>
+                                <h4>Derechos</h4>
+                                {recibo.derechos}
+                            </GridTile>
+                            <GridTile cols={1}>
+                                <h4>Iva</h4>
+                                {recibo.iva}
+                            </GridTile>
+
+                            <GridTile cols={2}>
+                                <h4>Fecha:</h4>
+                                {recibo.fecha?<div>{moment(recibo.fecha).format('LL')}</div>:''}
+
+                            </GridTile>
+
+                          </GridList>
+                        </div>
+                  </CardText>
+                  </Card>
+                )
+              })}
             </div>
 
         </div>

@@ -7,6 +7,7 @@ import SwipeableViews from 'react-swipeable-views';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import {Link} from 'react-router-dom';
 import Footer from '../footer/Footer';
 import api from '../../Api/Django';
 import toastr from 'toastr';
@@ -14,6 +15,10 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
+import {GridList, GridTile} from 'material-ui/GridList';
+import 'moment/locale/es';
+import moment from 'moment';
+
 
 const styles = {
   headline: {
@@ -41,7 +46,10 @@ class UserProfile extends Component {
           profile:'',
           usuario:''
         },
-        mispolizas:[],
+        mispolizas:[{
+          apertura:'',
+          cliente:'',
+        }],
     };
   }
 
@@ -72,7 +80,9 @@ class UserProfile extends Component {
 
   updateClienteInfo=()=>{
     //update user info
-    api.updateTipo(this.state.user.profile.id, this.state.datos).then(r=>{
+    let cliente = this.state.datos
+    cliente['tipo'] = 'cliente'
+    api.updateTipo(this.state.user.profile.id, cliente).then(r=>{
 
     }).catch(e=>{
       toastr.error('naaa')
@@ -89,7 +99,9 @@ class UserProfile extends Component {
   }
   updateAsesorInfo=()=>{
     //update user info
-    api.updateTipo(this.state.user.profile.id, this.state.datos).then(r=>{
+    let asesor = this.state.datos
+    asesor['tipo'] = 'asesor'
+    api.updateTipo(this.state.user.profile.id, asesor).then(r=>{
       toastr.success('Gracias por completar, Espera tu aprobación')
     }).catch(e=>{
       toastr.error('naaa')
@@ -307,6 +319,7 @@ class UserProfile extends Component {
                                 <h3>Status</h3>
                                   <p className='fechas'>Activo</p>
                                 </div>
+
                               </div>
                             </CardText>
 
@@ -322,6 +335,98 @@ class UserProfile extends Component {
                                   cuatro consejos para las personas que deseen o
                                   estén por iniciar un emprendimiento.
                                 </p>
+                                <div>
+                                  <GridList cols={4} cellHeight='auto'>
+                                    <GridTile style={{padding:'1.5%'}} cols={2}>
+                                      <TextField
+                                        value={'Cliente: '+poliza.cliente.pnombre+' '+poliza.cliente.amaterno}
+                                        disabled={true}/>
+
+                                    </GridTile>
+                                    <GridTile style={{padding:'3%'}}>
+
+                                      <TextField
+                                        value={'ID: '+poliza.idpoliza}
+                                        disabled={true}/><br />
+                                    </GridTile>
+                                    <GridTile style={{padding:'3%'}}>
+
+                                      <TextField
+                                        value={'CIS: '+poliza.cis}
+                                        disabled={true}/><br />
+                                    </GridTile>
+                                  </GridList>
+                                  <GridList cols={3} cellHeight='auto'>
+                                    <GridTile cols={1}>
+
+                                    <TextField
+                                      disabled={true}
+                                      value={poliza.addaddress?poliza.newaddress:poliza.cliente.calle+' '+poliza.cliente.noext+' '+poliza.cliente.colonia}
+                                      multiLine={true}
+                                      rows={2}
+
+                                      /><br />
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                       <TextField
+                                         value={'Fecha: '+moment(poliza.apertura).format('LL')}
+                                         disabled={true}/>
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={'Agrupación: '+poliza.agrupacion}
+                                        disabled={true}/>
+                                    </GridTile>
+                                  </GridList>
+                                  <GridList cols={4} cellHeight='auto'>
+                                    <GridTile cols={1}>
+
+                                      <TextField
+                                        value={'Tipo de pago: '+poliza.pago}
+                                        disabled={true}/>
+
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={'Fecha: '+moment(poliza.apertura).format('LL')}
+                                        disabled={true}/>
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={poliza.financiamiento}
+                                        disabled={true}/>
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={'Importe: '+poliza.importe}
+                                        disabled={true}/>
+                                    </GridTile>
+                                  </GridList>
+                                  <GridList cols={4} cellHeight='auto'>
+                                    <GridTile cols={1}>
+
+                                      <TextField
+                                        value={'Empresa: '+poliza.empresa}
+                                        disabled={true}/>
+
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={'Sector: '+poliza.sector}
+                                        disabled={true}/>
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={'Tipo de Seguro: '+poliza.next}
+                                        disabled={true}/>
+                                    </GridTile>
+                                    <GridTile cols={1}>
+                                      <TextField
+                                        value={poliza.next==='Accidentes'?'Tipo: '+poliza.daños:'Tipo: '+poliza.last}
+                                        disabled={true}/>
+                                    </GridTile>
+                                  </GridList>
+                                </div>
 
                             </CardText>
                           </Card>
@@ -330,7 +435,91 @@ class UserProfile extends Component {
                    </div>
 		          </div>
               <div>
-                lo que los asesores deben ver
+                <div>
+                  <div className='text_intro'>
+                    <h4>OLVIDATE DE LOS EMPLEOS TRADICIONALES, DIPRA TE
+                    OFRECE UN EMPLEO EN DONDE GANAS LO QUE TU DESEAS GANAR,
+                     SIN HORARIOS FIJOS</h4>
+                     <p>
+                       Convviertete en el mejor asesor de tu zona, y obten el reconocimiento y los bonos que mereces.
+                     </p>
+                     <br />
+                   <iframe width="660" height="415" src="https://www.youtube.com/embed/z9BPMjL44Aw" frameborder="0" allowfullscreen></iframe>
+                     <div>
+                      <br />
+                        <div className='flex'>
+                          <div className='text_box'>
+                          <p>
+                           El Asesor Financiero es el profesional que ayuda a descubrir las necesidades financieras,
+                           analizando circunstancias pasadas, presentes y futuras de su cliente, teniendo en cuenta
+                            la edad, su patrimonio disponible, su tipo impositivo, su situación profesional y familiar,
+                            y el resto de inversiones que pueda disponer. Una vez analizado su perfil de riesgo y sus
+                            necesidades, el asesor llevará a cabo sus recomendaciones de inversión, asesorándole según
+                            sus circunstancias y necesidades vayan cambiando y adaptándolas al momento actual.
+                          </p>
+                          </div>
+                          <div className='image_box'>
+                            <img  src='https://cdn1.iconfinder.com/data/icons/business-and-finance-20/200/vector_65_05-512.png' alt='tip'/>
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+                    <div className='box_square'>
+                    <div className='square'>
+                        <div className='sq_img'>
+                          <img src='https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='tip'/>
+                        </div>
+                        <div className='square_text'>
+                          <h5>3 casos de deudas terroríficas</h5>
+                          <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                          convertido en “el que nada debe nada tiene”; y es que ahora
+                          muchos creen que el crédito es una extensión de los ingresos
+                          y lo pagan cada que se acuerdan… en el mejor de estos casos
+                           de deudas terroríficas...</p>
+                        </div>
+                    </div>
+                    <div className='square'>
+                        <div className='sq_img'>
+                          <img src='https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='tip'/>
+                        </div>
+                        <div className='square_text'>
+                          <h5>3 casos de deudas terroríficas</h5>
+                          <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                          convertido en “el que nada debe nada tiene”; y es que ahora
+                          muchos creen que el crédito es una extensión de los ingresos
+                          y lo pagan cada que se acuerdan… en el mejor de estos casos
+                           de deudas terroríficas...</p>
+                        </div>
+                    </div>
+                    <div className='square'>
+                        <div className='sq_img'>
+                          <img src='https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='tip'/>
+                        </div>
+                        <div className='square_text'>
+                          <h5>3 casos de deudas terroríficas</h5>
+                          <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                          convertido en “el que nada debe nada tiene”; y es que ahora
+                          muchos creen que el crédito es una extensión de los ingresos
+                          y lo pagan cada que se acuerdan… en el mejor de estos casos
+                           de deudas terroríficas...</p>
+                        </div>
+                    </div>
+                    <div className='square'>
+                        <div className='sq_img'>
+                          <img src='https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='tip'/>
+                        </div>
+                        <div className='square_text'>
+                          <h5>3 casos de deudas terroríficas</h5>
+                          <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                          convertido en “el que nada debe nada tiene”; y es que ahora
+                          muchos creen que el crédito es una extensión de los ingresos
+                          y lo pagan cada que se acuerdan… en el mejor de estos casos
+                           de deudas terroríficas...</p>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
               </div>
 		        </SwipeableViews>
 		        </div>
@@ -340,7 +529,15 @@ class UserProfile extends Component {
 				        <FontAwesome name='download' />
 				      </FloatingActionButton>
 				    </div>
-            {this.state.user.profile.aprobado?'':
+            {this.state.user.profile.aprobado?
+              <div className='btn_float2'>
+                <Link to="/polizas">
+                  <FloatingActionButton
+                    style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
+                    <FontAwesome name='user' />
+                  </FloatingActionButton>
+                </Link>
+              </div>:
               <div className='btn_float2'>
                 <Dialog
                   title="¿Eres Asesor?"

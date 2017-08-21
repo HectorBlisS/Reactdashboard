@@ -34,7 +34,7 @@ class AsesorProfile extends Component {
         user:{profile:''}
     };
   }
-    
+
     componentWillMount(){
         const user = JSON.parse(localStorage.getItem('userToken'));
         if (!user){
@@ -91,7 +91,7 @@ class AsesorProfile extends Component {
 		        >
 		          <div>
                 <div className='text_intro'>
-                  <h4>OLVIDATE DE LOS EMPLEOS TRADICIONALES, DIPRA TE 
+                  <h4>OLVIDATE DE LOS EMPLEOS TRADICIONALES, DIPRA TE
                   OFRECE UN EMPLEO EN DONDE GANAS LO QUE TU DESEAS GANAR,
                    SIN HORARIOS FIJOS</h4>
                    <p>
@@ -104,11 +104,11 @@ class AsesorProfile extends Component {
                       <div className='flex'>
                         <div className='text_box'>
                         <p>
-                         El Asesor Financiero es el profesional que ayuda a descubrir las necesidades financieras, 
+                         El Asesor Financiero es el profesional que ayuda a descubrir las necesidades financieras,
                          analizando circunstancias pasadas, presentes y futuras de su cliente, teniendo en cuenta
-                          la edad, su patrimonio disponible, su tipo impositivo, su situación profesional y familiar, 
-                          y el resto de inversiones que pueda disponer. Una vez analizado su perfil de riesgo y sus 
-                          necesidades, el asesor llevará a cabo sus recomendaciones de inversión, asesorándole según 
+                          la edad, su patrimonio disponible, su tipo impositivo, su situación profesional y familiar,
+                          y el resto de inversiones que pueda disponer. Una vez analizado su perfil de riesgo y sus
+                          necesidades, el asesor llevará a cabo sus recomendaciones de inversión, asesorándole según
                           sus circunstancias y necesidades vayan cambiando y adaptándolas al momento actual.
                         </p>
                         </div>
@@ -118,16 +118,16 @@ class AsesorProfile extends Component {
                       </div>
                    </div>
                 </div>
-		            <div className='box_square'>
+		              <div className='box_square'>
                   <div className='square'>
                       <div className='sq_img'>
                         <img src='https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?w=940&h=650&auto=compress&cs=tinysrgb' alt='tip'/>
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -138,9 +138,9 @@ class AsesorProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -151,9 +151,9 @@ class AsesorProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -164,9 +164,9 @@ class AsesorProfile extends Component {
                       </div>
                       <div className='square_text'>
                         <h5>3 casos de deudas terroríficas</h5>
-                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha 
-                        convertido en “el que nada debe nada tiene”; y es que ahora 
-                        muchos creen que el crédito es una extensión de los ingresos 
+                        <p>Antes era “el que nada debe nada teme”, pero ahora se ha
+                        convertido en “el que nada debe nada tiene”; y es que ahora
+                        muchos creen que el crédito es una extensión de los ingresos
                         y lo pagan cada que se acuerdan… en el mejor de estos casos
                          de deudas terroríficas...</p>
                       </div>
@@ -178,11 +178,11 @@ class AsesorProfile extends Component {
 
 
 		          <div style={styles.slide}>
-		           
+
 
 
                     <div className='tip'>
-                      
+
                      <Card>
                       <CardHeader
                         title="Que necesito para ser un asesor?"
@@ -190,28 +190,28 @@ class AsesorProfile extends Component {
                         actAsExpander={true}
                         showExpandableButton={true}
                       />
-                      
-                    
+
+
                       <CardText expandable={true} className='left'>
-                          
+
                           <p>
                             Un estudio realizado por MasterCard encontró
                             que tener un negocio propio es el sueño de al
-                            menos 53 por ciento de los jóvenes entre 18 y 
-                            34 años en América Latina. Sin embargo, 
-                            la empresa de crédito reconoció que no basta 
-                            con desear ser dueño de una empresa y recopiló 
-                            cuatro consejos para las personas que deseen o 
+                            menos 53 por ciento de los jóvenes entre 18 y
+                            34 años en América Latina. Sin embargo,
+                            la empresa de crédito reconoció que no basta
+                            con desear ser dueño de una empresa y recopiló
+                            cuatro consejos para las personas que deseen o
                             estén por iniciar un emprendimiento.
                           </p>
-                    
+
                       </CardText>
                     </Card>
 
 
 
                 </div>
-                        
+
 		          </div>
 		        </SwipeableViews>
 		        </div>

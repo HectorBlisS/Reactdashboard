@@ -35,7 +35,7 @@ const griddleStyles={
       margin:'2% 0',
       borderRadius:'5px',
       borderColor:'rgb(224, 224, 224)',
-      borderWidth:'2px',
+      borderWidth:'1px',
       height:'1vh',
       fontSize:'1rem',
       color:'#9e9e9e'},

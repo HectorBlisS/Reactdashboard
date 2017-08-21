@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import api from '../../Api/Django';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
+import Toggle from 'material-ui/Toggle';
+import Dialog from 'material-ui/Dialog';
+import toastr from 'toastr';
+import RaisedButton from 'material-ui/RaisedButton';
 // import {
 //   Table,
 //   TableBody,
@@ -12,9 +16,15 @@ import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react'
 import {Link} from 'react-router-dom';
 import 'moment/locale/es';
 import moment from 'moment';
+import Aprobar from './Aprobar';
 
 
 
+const Detalle = ({value}) => {
+  return(
+    <Aprobar id={value}/>
+  )
+}
 
 const CustomColumn = ({value}) => <p>{value}</p>
 const CustomColumn2 = ({value}) => {
@@ -34,7 +44,7 @@ const griddleStyles={
       margin:'2% 0',
       borderRadius:'5px',
       borderColor:'rgb(224, 224, 224)',
-      borderWidth:'2px',
+      borderWidth:'1px',
       height:'1vh',
       fontSize:'1rem',
       color:'#9e9e9e'},
@@ -116,7 +126,8 @@ class UsersList extends Component{
           plugins={[plugins.LocalPlugin]}
           styleConfig={griddleStyles}>
           <RowDefinition>
-            <ColumnDefinition id="id" title="ID" customComponent={CustomColumn} />
+            <ColumnDefinition id="id" title="Aprobar" customComponent={Detalle} />
+
             <ColumnDefinition id={"first_name"} title="Usuario" customComponent={CustomColumn}/>
             <ColumnDefinition id="profile.tipo" title="Tipo" customComponent={CustomColumn}/>
             <ColumnDefinition id={"date_joined"}  title="Fecha de registro" customComponent={CustomColumn2}/>
