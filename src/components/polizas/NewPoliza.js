@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
 import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
 import api from '../../Api/Django';
 import toastr from 'toastr';
@@ -146,7 +146,7 @@ class NewPoliza extends Component{
        let poliza = this.state.poliza;
        poliza[field] = val
        this.setState({poliza});
-       
+
      }
      testing=(e)=>{
        this.setState({lafecha:e.target.name})
@@ -215,6 +215,8 @@ class NewPoliza extends Component{
             <GridList cols={4} cellHeight='auto'>
               <GridTile style={{padding:'1.5%'}} cols={2}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   hintText='Buscador de Clientes'
                   name='cliente'
@@ -254,6 +256,8 @@ class NewPoliza extends Component{
               <GridTile style={{padding:'3%'}}>
 
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   name='idpoliza'
                   onChange={this.handleText}
@@ -264,6 +268,8 @@ class NewPoliza extends Component{
               <GridTile style={{padding:'3%'}}>
 
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   name='cis'
                   onChange={this.handleText}
@@ -280,6 +286,8 @@ class NewPoliza extends Component{
                   onCheck={this.addDomicilio}
                 />
               <TextField
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                 disabled={!this.state.domicilio&&this.state.editar?false:true}
                 name='newaddress'
                 onChange={this.handleText}
@@ -299,6 +307,8 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   name='agrupacion'
                   onChange={this.handleText}
@@ -327,6 +337,8 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   name='prima'
                   onChange={this.handleText}
@@ -335,6 +347,8 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   name='financiamiento'
                   onChange={this.handleText}
@@ -343,6 +357,8 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
                   name='importe'
                   onChange={this.handleText}

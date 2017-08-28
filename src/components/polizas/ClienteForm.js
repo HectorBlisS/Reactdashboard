@@ -1,26 +1,13 @@
 /*Formulario de Nuevo Cliente*/
 import React from 'react';
-import TextInput from '../common/TextInput';
-import SelectInput from '../common/SelectInput';
 import {GridList, GridTile} from 'material-ui/GridList';
-import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
-import {Paper,Toolbar,ToolbarTitle,ToolbarGroup,RaisedButton,TextField,
-  Divider,RadioButton,RadioButtonGroup,Toggle} from 'material-ui';
+import {Paper,Toolbar,ToolbarTitle,RaisedButton,TextField,
+  Divider,RadioButton,RadioButtonGroup} from 'material-ui';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
-
 import api from '../../Api/Django';
 import toastr from 'toastr';
-
-const style = {
-  check:{
-    paddingTop:'5%', fontSize:'.8rem'
-  }
-
-}
 
 
 class ClienteForm extends React.Component{
@@ -79,9 +66,7 @@ class ClienteForm extends React.Component{
               <ToolbarTitle
                   text="Datos Generales del Contratante"
               />
-            <div style={{paddingTop:'1%'}}>
-              <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
-            </div>
+
             </Toolbar>
             {/*1st razon social y tipo de persona*/}
             <GridList
@@ -100,6 +85,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={3}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="idcliente"
                   hintText="12345678"
@@ -126,6 +113,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={7}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="rsocial"
                   hintText="Empresa S.A. de C.V."
@@ -151,6 +140,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={5}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="apaterno"
                   hintText="López"
@@ -159,6 +150,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={5}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="amaterno"
                   hintText="Hernández"
@@ -201,6 +194,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={5}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="pnombre"
                   hintText="Maria"
@@ -209,6 +204,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={5}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="snombre"
                   hintText="José"
@@ -254,6 +251,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="rfc"
                   hintText="AAA555AAA555"
@@ -262,6 +261,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="curp"
                   hintText="AABB554433CCBBAA55"
@@ -270,6 +271,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="edad"
                   hintText="20"
@@ -306,6 +309,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="tipoid"
                   hintText="INE"
@@ -314,6 +319,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="numid"
                   hintText="AABBCC44556677A444"
@@ -322,6 +329,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="fiel"
                   hintText="FIEL"
@@ -347,6 +356,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="estado"
                   hintText="Hidalgo"
@@ -355,6 +366,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="pais"
                   hintText="México"
@@ -363,6 +376,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="Mexicana"
                   hintText="lol"
@@ -414,6 +429,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={4}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   name="otroext"
                   onChange={this.handleText}
                   hintText=""
@@ -445,6 +462,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={5}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   name="calle"
                   onChange={this.handleText}
                   hintText="Calle"
@@ -453,6 +472,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={3}>
                   <TextField
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                     name="edificio"
                     onChange={this.handleText}
                     hintText="A"
@@ -461,6 +482,8 @@ class ClienteForm extends React.Component{
                 </GridTile>
                 <GridTile cols={1}>
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       name="noext"
                       onChange={this.handleText}
                       hintText="111"
@@ -469,6 +492,8 @@ class ClienteForm extends React.Component{
                   </GridTile>
                   <GridTile cols={1}>
                       <TextField
+                        floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                        underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                         name="noint"
                         onChange={this.handleText}
                         hintText="222"
@@ -477,6 +502,8 @@ class ClienteForm extends React.Component{
                 </GridTile>
                 <GridTile cols={2}>
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       name="cp"
                       onChange={this.handleText}
                       hintText="42090"
@@ -507,6 +534,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={3}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   name="colonia"
                   onChange={this.handleText}
                   hintText="Piracantos"
@@ -515,6 +544,8 @@ class ClienteForm extends React.Component{
               </GridTile>
               <GridTile cols={3}>
                   <TextField
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                     name="municipio"
                     onChange={this.handleText}
                     hintText="Pachuca de Soto"
@@ -523,6 +554,8 @@ class ClienteForm extends React.Component{
                 </GridTile>
                 <GridTile cols={3}>
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       name="ciudad"
                       onChange={this.handleText}
                       hintText="Pachuca"
@@ -531,6 +564,8 @@ class ClienteForm extends React.Component{
                   </GridTile>
                   <GridTile cols={3}>
                       <TextField
+                        floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                        underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                         name="estado"
                         onChange={this.handleText}
                         hintText="Hidalgo"
@@ -557,6 +592,8 @@ class ClienteForm extends React.Component{
 
               <GridTile cols={3}>
                   <TextField
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                     name="telefono"
                     onChange={this.handleText}
                     hintText="7777777777"
@@ -565,6 +602,8 @@ class ClienteForm extends React.Component{
                 </GridTile>
                 <GridTile cols={5}>
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       name="correo"
                       onChange={this.handleText}
                       hintText="correo@dominio"
@@ -573,6 +612,8 @@ class ClienteForm extends React.Component{
                   </GridTile>
                   <GridTile cols={4}>
                       <TextField
+                        floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                        underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                         name="fmercantil"
                         onChange={this.handleText}
                         hintText="Folio Mercantil"
@@ -628,6 +669,8 @@ class ClienteForm extends React.Component{
             //       </GridTile>
             //       <GridTile cols={6}>
             //           <TextField
+            floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+            underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
             //             name="micargo"
             //             onChange={this.handleText}
             //             hintText="lol"
@@ -680,6 +723,8 @@ class ClienteForm extends React.Component{
             //
             //       <GridTile cols={6}>
             //           <TextField
+            floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+            underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
             //             name="sucargo"
             //             onChange={this.handleText}
             //             hintText="lol"
@@ -701,6 +746,8 @@ class ClienteForm extends React.Component{
             //   </GridTile>
             //   <GridTile cols={3}>
             //       <TextField
+            floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+            underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
             //         name="parentesco"
             //         onChange={this.handleText}
             //         hintText="lol"
@@ -712,6 +759,8 @@ class ClienteForm extends React.Component{
             //   </GridTile>
             //   <GridTile cols={5}>
             //       <TextField
+            floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+            underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
             //         name="familiar"
             //         onChange={this.handleText}
             //         hintText="lol"
@@ -724,9 +773,7 @@ class ClienteForm extends React.Component{
                   <ToolbarTitle
                       text="Ocupación o Actividad (Obligatorio)"
                   />
-                  <div style={{paddingTop:'1%'}}>
-                    <RaisedButton  onTouchTap={this.guardar} label="Guardar" />
-                  </div>
+
                 </Toolbar>
                 <GridList
                   cellHeight='auto'
@@ -775,8 +822,10 @@ class ClienteForm extends React.Component{
                       <MenuItem value="Otro" primaryText="Otro" />
                     </SelectField>
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       name="otraoc"
-                      disabled={this.state.value=='Otro'?false:true}
+                      disabled={this.state.value==='Otro'?false:true}
                       onChange={this.handleText}
                       hintText="Ocupación"
                       fullWidth={true}
@@ -802,6 +851,8 @@ class ClienteForm extends React.Component{
                    <br/>
                    Indique
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       name="honorarios"
                       onChange={this.handleText}
                       hintText="Actividad"
@@ -834,6 +885,8 @@ class ClienteForm extends React.Component{
                   <br/>
                   Indique
                   <TextField
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                     name="aempresarial"
                     onChange={this.handleText}
                     hintText="Actividad"
@@ -848,6 +901,8 @@ class ClienteForm extends React.Component{
                 <GridList cols={1}>
                   <GridTile cols={1} style={{padding:'2%'}}>
                     <TextField
+                      floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                      underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                       multiLine={true}
                       floatingLabelText="Observaciones"
                       rows={2}

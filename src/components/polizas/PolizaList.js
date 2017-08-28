@@ -3,9 +3,9 @@ import api from '../../Api/Django';
 import 'moment/locale/es';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
-import Popover from 'material-ui/Popover';
 import RaisedButton from 'material-ui/RaisedButton';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
+import MainLoader from '../common/MainLoader';
 // import {
 //   Table,
 //   TableBody,
@@ -60,14 +60,14 @@ class PolizaList extends Component{
   constructor(){
     super()
     this.state={
-
+      loading:true,
       polizas:[]
     }
   }
 
   componentWillMount(){
     api.getPolicys().then(r=>{
-      this.setState({polizas:r})
+      this.setState({polizas:r,loading:false})
       console.log(this.state.polizas)
 
     })//.then(r=>{this.dates()})
@@ -91,6 +91,7 @@ class PolizaList extends Component{
   render(){
     return(
       <div>
+        {this.state.loading && <MainLoader/>}
         {/*<Table>
           <TableHeader>
             <TableRow>

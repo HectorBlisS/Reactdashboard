@@ -5,15 +5,13 @@ import FontAwesome from 'react-fontawesome';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card,CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import Footer from '../footer/Footer';
 import api from '../../Api/Django';
 import toastr from 'toastr';
 import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
 import {GridList, GridTile} from 'material-ui/GridList';
 import 'moment/locale/es';
@@ -279,7 +277,7 @@ class UserProfile extends Component {
                 </div>
 		          </div>
 		          <div style={styles.slide}>
-		            {this.state.user.profile.clienteId==this.state.user.usuario.idcliente?
+		            {this.state.user.profile.clienteId===this.state.user.usuario.idcliente?
                   '':
                   <div>
                     <h3>Para recibir información de tus productos completa tus datos:</h3>
@@ -294,7 +292,7 @@ class UserProfile extends Component {
                      <FlatButton label="Enviar" primary={true} onTouchTap={this.updateClienteInfo}
                        />
                    </div>}
-                   <div className='tip' style={this.state.user.profile.clienteId==this.state.user.usuario.idcliente?{display:'block'}:{display:'none'}}>
+                   <div className='tip' style={this.state.user.profile.clienteId===this.state.user.usuario.idcliente?{display:'block'}:{display:'none'}}>
                        {this.state.mispolizas.map(poliza=>{
                          return(
                            <Card>
@@ -339,20 +337,29 @@ class UserProfile extends Component {
                                   <GridList cols={4} cellHeight='auto'>
                                     <GridTile style={{padding:'1.5%'}} cols={2}>
                                       <TextField
-                                        value={'Cliente: '+poliza.cliente.pnombre+' '+poliza.cliente.amaterno}
+                                        onChange={this.handleText}
+                                        name="cliente"
+                                        floatingLabelText="Cliente"
+                                        value={poliza.cliente.pnombre+' '+poliza.cliente.amaterno}
                                         disabled={true}/>
 
                                     </GridTile>
                                     <GridTile style={{padding:'3%'}}>
 
                                       <TextField
-                                        value={'ID: '+poliza.idpoliza}
+                                        onChange={this.handleText}
+                                        floatingLabelText="ID"
+                                        value={poliza.idpoliza}
+                                        name="idpoliza"
                                         disabled={true}/><br />
                                     </GridTile>
                                     <GridTile style={{padding:'3%'}}>
 
                                       <TextField
-                                        value={'CIS: '+poliza.cis}
+                                        onChange={this.handleText}
+                                        floatingLabelText="CIS"
+                                        name="cis"
+                                        value={poliza.cis}
                                         disabled={true}/><br />
                                     </GridTile>
                                   </GridList>
@@ -360,21 +367,31 @@ class UserProfile extends Component {
                                     <GridTile cols={1}>
 
                                     <TextField
+                                      onChange={this.handleText}
+                                      floatingLabelText="Domicilio"
+                                      name="newaddress"
                                       disabled={true}
-                                      value={poliza.addaddress?poliza.newaddress:poliza.cliente.calle+' '+poliza.cliente.noext+' '+poliza.cliente.colonia}
+                                      value={poliza.addaddress?poliza.cliente.calle+' '+poliza.cliente.noext+' '+poliza.cliente.colonia:poliza.newaddress}
                                       multiLine={true}
                                       rows={2}
 
                                       /><br />
                                     </GridTile>
                                     <GridTile cols={1}>
+
                                        <TextField
-                                         value={'Fecha: '+moment(poliza.apertura).format('LL')}
+                                         onChange={this.handleText}
+                                         floatingLabelText="Fecha"
+                                         name="apertura"
+                                         value={moment(poliza.apertura).format('LL')}
                                          disabled={true}/>
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
-                                        value={'Agrupación: '+poliza.agrupacion}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Agrupación"
+                                        name="agrupacion"
+                                        value={poliza.agrupacion}
                                         disabled={true}/>
                                     </GridTile>
                                   </GridList>
@@ -382,23 +399,35 @@ class UserProfile extends Component {
                                     <GridTile cols={1}>
 
                                       <TextField
-                                        value={'Tipo de pago: '+poliza.pago}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Tipo de Apago"
+                                        name="pago"
+                                        value={poliza.pago}
                                         disabled={true}/>
 
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
-                                        value={'Fecha: '+moment(poliza.apertura).format('LL')}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Prima"
+                                        name="prima"
+                                        value={poliza.prima}
                                         disabled={true}/>
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
+                                        onChange={this.handleText}
+                                        floatingLabelText="Financiamiento"
+                                        name="financiamiento"
                                         value={poliza.financiamiento}
                                         disabled={true}/>
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
-                                        value={'Importe: '+poliza.importe}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Importe"
+                                        name="importe"
+                                        value={poliza.importe}
                                         disabled={true}/>
                                     </GridTile>
                                   </GridList>
@@ -406,23 +435,36 @@ class UserProfile extends Component {
                                     <GridTile cols={1}>
 
                                       <TextField
-                                        value={'Empresa: '+poliza.empresa}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Empresa"
+                                        name="empresa"
+                                        value={poliza.empresa}
                                         disabled={true}/>
 
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
-                                        value={'Sector: '+poliza.sector}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Sector"
+                                        name="sector"
+                                        value={poliza.sector}
                                         disabled={true}/>
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
-                                        value={'Tipo de Seguro: '+poliza.next}
+                                        onChange={this.handleText}
+                                        floatingLabelText="Tipo de Seguro"
+                                        name="next"
+                                        value={poliza.next}
                                         disabled={true}/>
                                     </GridTile>
                                     <GridTile cols={1}>
                                       <TextField
-                                        value={poliza.next==='Accidentes'?'Tipo: '+poliza.daños:'Tipo: '+poliza.last}
+                                        floatingLabelText="Tipo"
+                                        onChange={this.handleText}
+
+                                        name={poliza.next==='Daños'?'daños':'last'}
+                                        value={poliza.next==='Daños'?poliza.daños:poliza.last}
                                         disabled={true}/>
                                     </GridTile>
                                   </GridList>
@@ -444,7 +486,7 @@ class UserProfile extends Component {
                        Convviertete en el mejor asesor de tu zona, y obten el reconocimiento y los bonos que mereces.
                      </p>
                      <br />
-                   <iframe width="660" height="415" src="https://www.youtube.com/embed/z9BPMjL44Aw" frameborder="0" allowfullscreen></iframe>
+                   <iframe width="660" height="415" src="https://www.youtube.com/embed/z9BPMjL44Aw" frameborder="0" allowfullscreen title="Video"></iframe>
                      <div>
                       <br />
                         <div className='flex'>

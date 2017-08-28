@@ -1,4 +1,4 @@
-import $ from "jquery";
+
 import axios from 'axios';
 import FormData from 'form-data'
 
@@ -18,6 +18,7 @@ let perfilesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/perfiles/'
 let matchUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/match/';
 let mispolizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/mispolizas/';
 let recibosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/recibos/';
+let prospectosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/prospectos/';
 
 if (debug){
     clientesUrl = 'http://localhost:8000/api/clientes/';
@@ -33,6 +34,7 @@ if (debug){
     matchUrl = 'http://localhost:8000/api/match/';
     mispolizasUrl = 'http://localhost:8000/api/mispolizas/';
     recibosUrl = 'http://localhost:8000/api/recibos/';
+    prospectosUrl = 'http://localhost:8000/api/prospectos/';
 }
 
 
@@ -40,6 +42,50 @@ if (debug){
 
 
 const api = {
+  getProspects: () => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: prospectosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.get()
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+        });
+    },
+  newProspect: (prospect) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: prospectosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.post('',prospect)
+                .then(function (response) {
+
+                        resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+        });
+    },
   updateRecibo: (id,datos) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -328,6 +374,30 @@ const api = {
 
           });
       },
+      updatePolicy: (id,poliza) => {
+
+            const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+            return new Promise(function (resolve, reject) {
+                const instance = axios.create({
+                    baseURL: polizasUrl,
+                    //timeout: 2000,
+                    headers: {'Content-Type': 'application/json',
+                        'Authorization': 'Token ' + userToken}
+                });
+                instance.patch(id+'/', poliza)
+                    .then(function (response) {
+
+                            resolve(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log(error.response);
+                        reject(error);
+                    });
+
+
+            });
+        },
 
   getClients: () => {
 

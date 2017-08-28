@@ -3,7 +3,8 @@ import api from '../../Api/Django';
 import 'moment/locale/es';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
-import Popover from 'material-ui/Popover';
+import RaisedButton from 'material-ui/RaisedButton';
+import MainLoader from '../common/MainLoader';
 // import {
 //   Table,
 //   TableBody,
@@ -14,7 +15,8 @@ import Popover from 'material-ui/Popover';
 // } from 'material-ui/Table';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
 
-
+const Detalle = ({value}) => <Link style={{color:'#000', textDecoration:'none'}}
+ to={'/polizas/cliente/'+value}><RaisedButton>Detalle</RaisedButton></Link>
 const CustomColumn = ({value}) => <p>{value}</p>
 const CustomColumn2 = ({value}) => {
   moment.locale('es')
@@ -57,14 +59,14 @@ class ClienteList extends Component{
   constructor(){
     super()
     this.state={
-
+      loading:true,
       clientes:[]
     }
   }
 
   componentWillMount(){
     api.getClients().then(r=>{
-      this.setState({clientes:r})
+      this.setState({clientes:r, loading:false})
       console.log(this.state.clientes)
 
     }).then(r=>{this.dates()})
@@ -91,6 +93,7 @@ class ClienteList extends Component{
 
     return(
       <div>
+        {this.state.loading && <MainLoader/>}
       {/*<Table>
         <TableHeader>
           <TableRow>
@@ -131,6 +134,7 @@ class ClienteList extends Component{
         plugins={[plugins.LocalPlugin]}
         styleConfig={griddleStyles}>
         <RowDefinition>
+          <ColumnDefinition id="id" title=" " customComponent={Detalle} />
           <ColumnDefinition id="idcliente" title="ID" customComponent={CustomColumn} />
           <ColumnDefinition id={"asesor.first_name"} title="Asesor" customComponent={CustomColumn}/>
           <ColumnDefinition id="pnombre" title="Cliente" customComponent={CustomColumn}/>

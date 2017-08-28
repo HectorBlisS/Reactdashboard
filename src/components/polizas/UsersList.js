@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import api from '../../Api/Django';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
-import Toggle from 'material-ui/Toggle';
-import Dialog from 'material-ui/Dialog';
-import toastr from 'toastr';
-import RaisedButton from 'material-ui/RaisedButton';
+import MainLoader from '../common/MainLoader';
+
 // import {
 //   Table,
 //   TableBody,
@@ -13,7 +11,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 //   TableRow,
 //   TableRowColumn,
 // } from 'material-ui/Table';
-import {Link} from 'react-router-dom';
 import 'moment/locale/es';
 import moment from 'moment';
 import Aprobar from './Aprobar';
@@ -70,12 +67,13 @@ class UsersList extends Component{
   constructor(){
     super()
     this.state={
+      loading:true,
       usuarios:[]
     }
   }
   componentWillMount(){
     api.getUsers().then(r=>{
-      this.setState({usuarios:r})
+      this.setState({usuarios:r,loading:false})
       console.log(this.state.usuarios)
     })//.then(r=>{this.dates()})
   }
@@ -95,6 +93,7 @@ class UsersList extends Component{
   render(){
     return(
       <div>
+        {this.state.loading && <MainLoader/>}
         {/*<Table>
           <TableHeader>
             <TableRow>

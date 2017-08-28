@@ -71,6 +71,8 @@ class VehiculosForm extends Component{
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="origen"
                   hintText="Origen"
@@ -80,6 +82,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Uso"
                   floatingLabelText="Uso"
@@ -98,6 +102,8 @@ class VehiculosForm extends Component{
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   name="clavet"
                   hintText="Clave Tarifa"
@@ -107,6 +113,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Marca"
                   floatingLabelText="Marca"
@@ -115,6 +123,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Modelo"
                   floatingLabelText="Modelo"
@@ -125,6 +135,8 @@ class VehiculosForm extends Component{
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Color"
                   floatingLabelText="Color"
@@ -133,6 +145,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Puertas"
                   floatingLabelText="Puertas"
@@ -141,6 +155,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Ocupantes"
                   floatingLabelText="Ocupantes"
@@ -151,6 +167,8 @@ class VehiculosForm extends Component{
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Placa"
                   floatingLabelText="Placa"
@@ -159,6 +177,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Serie"
                   floatingLabelText="Serie"
@@ -167,6 +187,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Motor"
                   floatingLabelText="Motor"
@@ -177,6 +199,8 @@ class VehiculosForm extends Component{
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Status"
                   floatingLabelText="Status"
@@ -185,6 +209,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Repuve"
                   floatingLabelText="Repuve"
@@ -193,6 +219,8 @@ class VehiculosForm extends Component{
               </GridTile>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Conductor Habitual"
                   floatingLabelText="Conductor Habitual"
@@ -207,6 +235,8 @@ class VehiculosForm extends Component{
             <GridList cellHeight="auto" cols={3}>
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Prima Neta Anual"
                   floatingLabelText="Prima Neta Anual"
@@ -216,6 +246,8 @@ class VehiculosForm extends Component{
 
               <GridTile cols={1}>
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Prima Total Anual"
                   floatingLabelText="Prima Total Anual"
@@ -223,9 +255,26 @@ class VehiculosForm extends Component{
                 />
               </GridTile>
               <GridTile cols={1}>
+
                 <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                  onChange={this.handleText}
+                  hintText="Servicio"
+                  floatingLabelText="Servicio"
+                  name="servicio"
+                />
+              </GridTile>
+
+            </GridList>
+            <GridList cellHeight="auto" cols={1}>
+              <GridTile cols={1}>
+                <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   onChange={this.handleText}
                   hintText="Adaptaciones"
+                  fullWidth={true}
                   floatingLabelText="Adaptaciones"
                   name="adaptaciones"
                 />

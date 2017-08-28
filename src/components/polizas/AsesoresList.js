@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import api from '../../Api/Django';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
+import MainLoader from '../common/MainLoader';
 // import {
 //   Table,
 //   TableBody,
@@ -9,7 +10,6 @@ import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react'
 //   TableRow,
 //   TableRowColumn,
 // } from 'material-ui/Table';
-import {Link} from 'react-router-dom';
 import 'moment/locale/es';
 import moment from 'moment';
 
@@ -64,12 +64,13 @@ class AsesoresList extends Component{
   constructor(){
     super()
     this.state={
+      loading:true,
       asesores:[]
     }
   }
   componentWillMount(){
     api.getAsesores().then(r=>{
-      this.setState({asesores:r})
+      this.setState({asesores:r, loading:false})
       console.log(this.state.asesores)
     })//.then(r=>{this.dates()})
   }
@@ -89,6 +90,7 @@ class AsesoresList extends Component{
   render(){
     return(
       <div>
+        {this.state.loading && <MainLoader/>}
         {/*<Table>
           <TableHeader>
             <TableRow>

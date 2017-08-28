@@ -6,23 +6,23 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import {Toolbar, ToolbarTitle} from 'material-ui/Toolbar';
 import RaisedButton from 'material-ui/RaisedButton';
-import Popover from 'material-ui/Popover';
-import Checkbox from 'material-ui/Checkbox';
-import Toggle from 'material-ui/Toggle';
 import DatePicker from 'material-ui/DatePicker';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 import Dialog from 'material-ui/Dialog';
 import api from '../../Api/Django';
 import toastr from 'toastr';
-import VehiculosForm from './VehiculosForm';
 import 'moment/locale/es';
 import moment from 'moment';
+
 
 class PolizaDetail extends Component{
 
   constructor(){
     super()
     this.state={
+      user:{},
+      updates:{},
+      editar:true,
       modal:false,
       idRecibo:'',
       elrecibo:{
@@ -45,9 +45,21 @@ class PolizaDetail extends Component{
   }
 
   componentWillMount(){
+
+    api.getProfile().then(r=>{
+      this.setState({user:r})
+      console.log()
+    })
+
     api.getPolicy(this.props.match.params.polizaId).then(r=>{
       this.setState({poliza:r})
-      console.log("req",this.state.poliza)
+      console.log(this.state.user.id+'=>'+this.state.poliza.asesor.id)
+      if(!this.state.user.is_staff){
+        if(this.state.user.id!==this.state.poliza.asesor.id){
+          toastr.warning('Tu no eres asesor de esta poliza')
+          this.props.history.push('/polizas')
+        }
+      }
     })
 
     api.getVehicles(this.props.match.params.polizaId).then(r=>{
@@ -57,11 +69,6 @@ class PolizaDetail extends Component{
 
     })
 
-    api.getPolicy(this.props.match.params.polizaId).then(r=>{
-      this.setState({poliza:r})
-    }).catch(e=>{
-
-    })
 
   }
 
@@ -88,6 +95,9 @@ class PolizaDetail extends Component{
 
     api.updateRecibo(this.state.idRecibo, this.state.elrecibo).then(r=>{
       toastr.success('Recibo Pagados')
+      this.componentWillMount()
+
+
     }).catch(e=>{
       toastr.error('Sorrys')
     })
@@ -106,6 +116,27 @@ class PolizaDetail extends Component{
   testing=(e)=>{
     this.setState({lafecha:e.target.name})
     //console.log(e.target.name,e.target.value)
+  }
+  editar=()=>{
+    this.setState({editar:false})
+  }
+
+  handleText=(e)=>{
+
+    let field=e.target.name
+    let updates = this.state.updates
+    let poliza = this.state.poliza
+    poliza[field] = e.target.value
+    updates[field]=e.target.value
+    this.setState({updates, poliza})
+    console.log(this.state.updates)
+  }
+  updatePoliza=()=>{
+    api.updatePolicy(this.state.poliza.id, this.state.updates).then(r=>{
+      toastr.success('Editada con éxito')
+
+      this.setState({editar:true})
+    })
   }
 
 
@@ -129,6 +160,9 @@ class PolizaDetail extends Component{
           <ToolbarTitle
               text={'Asesor: '+this.state.poliza.asesor.first_name}
           />
+        {this.state.user.is_staff?<div style={{paddingTop:'2%'}}>
+          <RaisedButton label="Editar" onTouchTap={this.editar}/>
+        </div>:''}
 
         </Toolbar>
 
@@ -136,29 +170,50 @@ class PolizaDetail extends Component{
           <GridList cols={4} cellHeight='auto'>
             <GridTile style={{padding:'1.5%'}} cols={2}>
               <TextField
-                value={'Cliente: '+this.state.poliza.cliente.pnombre+' '+this.state.poliza.cliente.amaterno}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                name="cliente"
+                floatingLabelText="Cliente"
+                value={this.state.poliza.cliente.pnombre+' '+this.state.poliza.cliente.amaterno}
+                disabled={this.state.editar}/>
 
             </GridTile>
             <GridTile style={{padding:'3%'}}>
 
               <TextField
-                value={'ID: '+this.state.poliza.idpoliza}
-                disabled={true}/><br />
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="ID"
+                value={this.state.poliza.idpoliza}
+                name="idpoliza"
+                disabled={this.state.editar}/><br />
             </GridTile>
             <GridTile style={{padding:'3%'}}>
 
               <TextField
-                value={'CIS: '+this.state.poliza.cis}
-                disabled={true}/><br />
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="CIS"
+                name="cis"
+                value={this.state.poliza.cis}
+                disabled={this.state.editar}/><br />
             </GridTile>
           </GridList>
           <GridList cols={3} cellHeight='auto'>
             <GridTile cols={1}>
 
             <TextField
-              disabled={true}
-              value={this.state.poliza.addaddress?this.state.poliza.newaddress:this.state.poliza.cliente.calle+' '+this.state.poliza.cliente.noext+' '+this.state.poliza.cliente.colonia}
+              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+              onChange={this.handleText}
+              floatingLabelText="Domicilio"
+              name="newaddress"
+              disabled={this.state.editar}
+              value={this.state.poliza.addaddress?this.state.poliza.cliente.calle+' '+this.state.poliza.cliente.noext+' '+this.state.poliza.cliente.colonia:this.state.poliza.newaddress}
+
               multiLine={true}
               rows={2}
 
@@ -167,63 +222,123 @@ class PolizaDetail extends Component{
             <GridTile cols={1}>
 
                <TextField
-                 value={'Fecha: '+moment(this.state.poliza.apertura).format('LL')}
-                 disabled={true}/>
+                 floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                 underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                 onChange={this.handleText}
+                 floatingLabelText="Fecha"
+                 name="apertura"
+                 value={moment(this.state.poliza.apertura).format('LL')}
+                 disabled={this.state.editar}/>
             </GridTile>
             <GridTile cols={1}>
               <TextField
-                value={'Agrupación: '+this.state.poliza.agrupacion}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Agrupación"
+                name="agrupacion"
+                value={this.state.poliza.agrupacion}
+                disabled={this.state.editar}/>
             </GridTile>
           </GridList>
           <GridList cols={4} cellHeight='auto'>
             <GridTile cols={1}>
 
               <TextField
-                value={'Tipo de pago: '+this.state.poliza.pago}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Tipo de Apago"
+                name="pago"
+                value={this.state.poliza.pago}
+                disabled={this.state.editar}/>
 
             </GridTile>
             <GridTile cols={1}>
               <TextField
-                value={'Apertura: '+this.state.poliza.prima}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Prima"
+                name="prima"
+                value={this.state.poliza.prima}
+                disabled={this.state.editar}/>
             </GridTile>
             <GridTile cols={1}>
               <TextField
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Financiamiento"
+                name="financiamiento"
                 value={this.state.poliza.financiamiento}
-                disabled={true}/>
+                disabled={this.state.editar}/>
             </GridTile>
             <GridTile cols={1}>
               <TextField
-                value={'Importe: '+this.state.poliza.importe}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Importe"
+                name="importe"
+                value={this.state.poliza.importe}
+                disabled={this.state.editar}/>
             </GridTile>
           </GridList>
           <GridList cols={4} cellHeight='auto'>
             <GridTile cols={1}>
 
               <TextField
-                value={'Empresa: '+this.state.poliza.empresa}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Empresa"
+                name="empresa"
+                value={this.state.poliza.empresa}
+                disabled={this.state.editar}/>
 
             </GridTile>
             <GridTile cols={1}>
               <TextField
-                value={'Sector: '+this.state.poliza.sector}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Sector"
+                name="sector"
+                value={this.state.poliza.sector}
+                disabled={this.state.editar}/>
             </GridTile>
             <GridTile cols={1}>
               <TextField
-                value={'Tipo de Seguro: '+this.state.poliza.next}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.handleText}
+                floatingLabelText="Tipo de Seguro"
+                name="next"
+                value={this.state.poliza.next}
+                disabled={this.state.editar}/>
             </GridTile>
             <GridTile cols={1}>
               <TextField
-                value={this.state.poliza.next==='Accidentes'?'Tipo: '+this.state.poliza.daños:'Tipo: '+this.state.poliza.last}
-                disabled={true}/>
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                floatingLabelText="Tipo"
+                onChange={this.handleText}
+
+                name={this.state.poliza.next==='Daños'?'daños':'last'}
+                value={this.state.poliza.next==='Daños'?this.state.poliza.daños:this.state.poliza.last}
+                disabled={this.state.editar}/>
             </GridTile>
           </GridList>
+
+          {!this.state.editar?<div style={{padding:'2%'}}>
+            <RaisedButton
+              backgroundColor='#57658e'
+              labelColor={'#fff'}
+              fullWidth={true}
+              label="Guardar"
+              onTouchTap={this.updatePoliza}/>
+          </div>:''}
 
           {this.state.poliza.daños==='Autos y Camiones'?
 
@@ -231,13 +346,23 @@ class PolizaDetail extends Component{
               <GridList cols={2} cellHeight='auto'>
                 <GridTile>
                   <TextField
-                    value={'Subrama: '+this.state.poliza.subrama}
-                    disabled={true}/>
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                    onChange={this.handleText}
+                    floatingLabelText="Subrama"
+                    name="subrama"
+                    value={this.state.poliza.subrama}
+                    disabled={this.state.editar}/>
                 </GridTile>
                 <GridTile>
                   <TextField
-                    value={'Modalidad: '+this.state.poliza.modalidad}
-                    disabled={true}/>
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                    onChange={this.handleText}
+                    floatingLabelText="Modalidad"
+                    name="modalidad"
+                    value={this.state.poliza.modalidad}
+                    disabled={this.state.editar}/>
                 </GridTile>
               </GridList>
 
@@ -256,21 +381,27 @@ class PolizaDetail extends Component{
                         <GridList cellHeight="auto" cols={3}>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Servicio: '+v.servicio}
-                              disabled={true}
+                              disabled={this.state.editar}
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
-                              value={'Alta: '+v.alta}
-                              disabled={true}
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                              value={'Alta: '+moment(v.alta).format('LL')}                              
+                              disabled={this.state.editar}
                               name="alta"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Placa: '+v.placa}
-                              disabled={true}
+                              disabled={this.state.editar}
 
                             />
                           </GridTile>
@@ -278,23 +409,29 @@ class PolizaDetail extends Component{
                         <GridList cellHeight="auto" cols={3}>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Clave Tarifa: '+v.clavet}
-                              disabled={true}
+                              disabled={this.state.editar}
 
 
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Origen: '+v.origen}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="origen"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Modelo: '+v.modelo}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="modelo"
                             />
                           </GridTile>
@@ -302,22 +439,28 @@ class PolizaDetail extends Component{
                         <GridList cellHeight="auto" cols={3}>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Color: '+v.color}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="color"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Puertas: '+v.puertas}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="puertas"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Ocupantes: '+v.ocupantes}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="ocupantes"
                             />
                           </GridTile>
@@ -325,22 +468,28 @@ class PolizaDetail extends Component{
                         <GridList cellHeight="auto" cols={3}>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Uso: '+v.Uso}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="placa"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Serie: '+v.serie}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="serie"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Motor: '+v.motor}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="motor"
                             />
                           </GridTile>
@@ -348,22 +497,28 @@ class PolizaDetail extends Component{
                         <GridList cellHeight="auto" cols={3}>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Status: '+v.status}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="status"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Repuve: '+v.repuve}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="repuve"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Conductor: '+v.conductor}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="conductor"
                             />
                           </GridTile>
@@ -375,23 +530,29 @@ class PolizaDetail extends Component{
                         <GridList cellHeight="auto" cols={3}>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Prima Neta: '+v.prima_neta}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="prima_neta"
                             />
                           </GridTile>
 
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Prima Total: '+v.prima_total}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="prima_total"
                             />
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               value={'Adaptaciones: '+v.adaptaciones}
-                              disabled={true}
+                              disabled={this.state.editar}
                               name="adaptaciones"
                             />
                           </GridTile>
@@ -445,6 +606,8 @@ class PolizaDetail extends Component{
                         </GridTile>
                         <GridTile cols={1}>
                           <TextField
+                            floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                            underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                             floatingLabelText="Derechos"
                             name="derechos"
                             onChange={this.handleRecibo}/>
@@ -452,6 +615,8 @@ class PolizaDetail extends Component{
                         </GridTile>
                         <GridTile cols={1}>
                           <TextField
+                            floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                            underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                             floatingLabelText="IVA"
                             name="iva"
                             onChange={this.handleRecibo}/>
@@ -461,6 +626,8 @@ class PolizaDetail extends Component{
                         <GridList cols={4} cellHeight='auto'>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               floatingLabelText="Prima Neta"
                               name="prima_neta"
                               onChange={this.handleRecibo}/>
@@ -468,6 +635,8 @@ class PolizaDetail extends Component{
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               floatingLabelText="Prima Total"
                               name="prima_total"
                               onChange={this.handleRecibo}/>
@@ -475,6 +644,8 @@ class PolizaDetail extends Component{
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               floatingLabelText="Descuento"
                               name="descuento"
                               onChange={this.handleRecibo}/>
@@ -482,6 +653,8 @@ class PolizaDetail extends Component{
                           </GridTile>
                           <GridTile cols={1}>
                             <TextField
+                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                               floatingLabelText="Pago Fracc"
                               name="pago_frac"
                               onChange={this.handleRecibo}/>

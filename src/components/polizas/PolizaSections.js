@@ -8,12 +8,13 @@ import NewPoliza from './NewPoliza';
 import PolizaList from './PolizaList';
 import PolizaDetail from './PolizaDetail';
 import UsersList from './UsersList';
+import Prospectos from './Prospectos';
 
 
 class PolizaSections extends Component{
 
   detail=()=>{
-    return(<PolizaDetail location={this.props.location} match={this.props.match} />)
+    return(<PolizaDetail location={this.props.location} match={this.props.match} history={this.props.history}/>)
   }
   render(){
     return(
@@ -26,6 +27,7 @@ class PolizaSections extends Component{
         <Route path={`${this.props.match.url}/asesores`} component={AsesoresList}/>
         <Route path={`${this.props.match.url}/usuarios`} component={UsersList}/>
         <Route path={`${this.props.match.url}/cliente/:clientId`} component={ClientDetail}/>
+        <Route path={`${this.props.match.url}/prospectos`} component={Prospectos}/>
 
       </div>
     );

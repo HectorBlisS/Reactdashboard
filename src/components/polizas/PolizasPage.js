@@ -13,8 +13,9 @@ import Close from 'material-ui/svg-icons/navigation/close';
 import DownArrow from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import Personitas from 'material-ui/svg-icons/action/supervisor-account';
 import Personitas2 from 'material-ui/svg-icons/social/group';
-import Description from 'material-ui/svg-icons/action/description';
-import List from 'material-ui/svg-icons/action/list';
+import Personitas3 from 'material-ui/svg-icons/social/people-outline';
+
+import List from 'material-ui/svg-icons/av/library-books';
 import AddPolicy from 'material-ui/svg-icons/action/note-add';
 import AddUser from 'material-ui/svg-icons/social/person-add';
 import Port from 'material-ui/svg-icons/action/work';
@@ -36,6 +37,8 @@ class PolizasPage extends Component {
   }
   componentWillMount(){
     const user = JSON.parse(localStorage.getItem('userToken'));
+
+
     if(!user){
       this.props.history.push('/login');
     }else{
@@ -108,36 +111,48 @@ class PolizasPage extends Component {
           <Subheader>Menú</Subheader>
 
             <NavLink to="/polizas/nueva" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<AddPolicy color={this.props.location.pathname=="/polizas/nueva"?'#fff':''}/>} style={this.props.location.pathname=="/polizas/nueva"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:''}>
+              <MenuItem leftIcon={<AddPolicy color={this.props.location.pathname==="/polizas/nueva"?'#fff':''}/>}
+                style={this.props.location.pathname==="/polizas/nueva"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                   Nueva Poliza
               </MenuItem>
             </NavLink>
             <NavLink to="/polizas" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<List color={this.props.location.pathname=="/polizas"?'#fff':''}/>} style={this.props.location.pathname=="/polizas"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:''}>
+              <MenuItem leftIcon={<List color={this.props.location.pathname==="/polizas"?'#fff':''}/>}
+                style={this.props.location.pathname==="/polizas"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                   Polizas
               </MenuItem>
             </NavLink>
 
             <NavLink to="/polizas/nuevo-cliente" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<AddUser color={this.props.location.pathname=="/polizas/nuevo-cliente"?'#fff':''}/>}  style={this.props.location.pathname=="/polizas/nuevo-cliente"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:''}>
+              <MenuItem leftIcon={<AddUser color={this.props.location.pathname==="/polizas/nuevo-cliente"?'#fff':''}/>}
+                style={this.props.location.pathname==="/polizas/nuevo-cliente"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                 Nuevo Cliente
               </MenuItem>
             </NavLink>
             <NavLink to="/polizas/clientes" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<Personitas2 color={this.props.location.pathname=="/polizas/clientes"?'#fff':''}/>}style={this.props.location.pathname=="/polizas/clientes"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:''}>
+              <MenuItem leftIcon={<Personitas2 color={this.props.location.pathname==="/polizas/clientes"?'#fff':''}/>}
+                style={this.props.location.pathname==="/polizas/clientes"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                   Clientes
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/polizas/prospectos" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<Personitas3 color={this.props.location.pathname==="/polizas/prospectos"?'#fff':''}/>}
+                style={this.props.location.pathname==="/polizas/prospectos"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
+                  Prospectos
               </MenuItem>
             </NavLink>
           {this.state.user.is_staff?
               <div>
 
               <NavLink to="/polizas/asesores" style={{textDecoration:'none'}}>
-                <MenuItem leftIcon={<Port color={this.props.location.pathname=="/polizas/asesores"?'#fff':''}/>}style={this.props.location.pathname=="/polizas/asesores"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:''}>
+                <MenuItem leftIcon={<Port color={this.props.location.pathname==="/polizas/asesores"?'#fff':''}/>}
+                  style={this.props.location.pathname==="/polizas/asesores"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                     Asesores
                 </MenuItem>
               </NavLink>
               <NavLink to="/polizas/usuarios" style={{textDecoration:'none'}}>
-                <MenuItem leftIcon={<Personitas color={this.props.location.pathname=="/polizas/usuarios"?'#fff':''}/>}style={this.props.location.pathname=="/polizas/usuarios"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:''}>
+                <MenuItem leftIcon={<Personitas color={this.props.location.pathname==="/polizas/usuarios"?'#fff':''}/>}
+                  style={this.props.location.pathname==="/polizas/usuarios"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                     Usuarios
                 </MenuItem>
               </NavLink>

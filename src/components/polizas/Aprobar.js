@@ -1,9 +1,8 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import api from '../../Api/Django';
 import Toggle from 'material-ui/Toggle';
-import Dialog from 'material-ui/Dialog';
 import toastr from 'toastr';
-import RaisedButton from 'material-ui/RaisedButton';
+
 
 class Aprobar extends React.Component {
 
