@@ -3,22 +3,22 @@ import axios from 'axios';
 import FormData from 'form-data'
 
 
-let debug = true;
+let debug = false;
 
-let clientesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/clientes/';
-let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/polizas/';
-let policysUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/policys/';
-let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
-let usersUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/profiles/'
-let asesoresUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/asesores/'
-let selfProfileUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/myprofile/'
-let vehiclesFilteredUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehiculospoliza/';
-let vehiclesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehicles/';
-let perfilesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/perfiles/';
-let matchUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/match/';
-let mispolizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/mispolizas/';
-let recibosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/recibos/';
-let prospectosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/prospectos/';
+let clientesUrl = 'http://dipra.planb.com.mx/api/clientes/';
+let polizasUrl = 'http://dipra.planb.com.mx/api/polizas/';
+let policysUrl = 'http://dipra.planb.com.mx/api/policys/';
+let loginUrl = 'http://dipra.planb.com.mx//auth/token-auth/'
+let usersUrl = 'http://dipra.planb.com.mx/api/profiles/'
+let asesoresUrl = 'http://dipra.planb.com.mx/api/asesores/'
+let selfProfileUrl = 'http://dipra.planb.com.mx/auth/myprofile/'
+let vehiclesFilteredUrl = 'http://dipra.planb.com.mx/api/vehiculospoliza/';
+let vehiclesUrl = 'http://dipra.planb.com.mx/api/vehicles/';
+let perfilesUrl = 'http://dipra.planb.com.mx/api/perfiles/';
+let matchUrl = 'http://dipra.planb.com.mx/api/match/';
+let mispolizasUrl = 'http://dipra.planb.com.mx/api/mispolizas/';
+let recibosUrl = 'http://dipra.planb.com.mx/api/recibos/';
+let prospectosUrl = 'http://dipra.planb.com.mx/api/prospectos/';
 
 if (debug){
     clientesUrl = 'http://localhost:8000/api/clientes/';
