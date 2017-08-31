@@ -95,8 +95,10 @@ class MainBar extends Component{
                                 <IconMenu
                                   iconButtonElement={<IconButton
                                   iconStyle={{color:'white'}}
-                                  ><MoreVertIcon /></IconButton>}
-                                  style={{display:'relative', top:0, rigth:0}}>
+                                  ><MoreVertIcon
+                                  /></IconButton>}
+                                  style={{display:'absolute', top:'-38px', right:'-210px', width:'auto', zIndex:'-1'}}
+                                >
                                
                                   <MenuItem 
                                   name="perfil"
