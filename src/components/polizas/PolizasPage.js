@@ -12,6 +12,7 @@ import Hamb from 'material-ui/svg-icons/navigation/menu';
 import Close from 'material-ui/svg-icons/navigation/close';
 import DownArrow from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import Personitas from 'material-ui/svg-icons/action/supervisor-account';
+import CandidatosI from 'material-ui/svg-icons/action/assignment-ind';
 import Personitas2 from 'material-ui/svg-icons/social/group';
 import Personitas3 from 'material-ui/svg-icons/social/people-outline';
 
@@ -45,6 +46,10 @@ class PolizasPage extends Component {
       api.getProfile()
       .then(r=>{
           this.setState({user:r});
+          if(!r.profile.aprobado){
+            this.props.history.push('/perfil');
+            toastr.warning('Aún no te han aprobado')
+          }
           console.log(r);
       })
       .catch(e=>toastr.error("algo falló"));
@@ -139,6 +144,12 @@ class PolizasPage extends Component {
               <MenuItem leftIcon={<Personitas3 color={this.props.location.pathname==="/polizas/prospectos"?'#fff':''}/>}
                 style={this.props.location.pathname==="/polizas/prospectos"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
                   Prospectos
+              </MenuItem>
+            </NavLink>
+            <NavLink to="/polizas/candidatos" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<CandidatosI color={this.props.location.pathname==="/polizas/candidatos"?'#fff':''}/>}
+                style={this.props.location.pathname==="/polizas/candidatos"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
+                  Candidatos
               </MenuItem>
             </NavLink>
           {this.state.user.is_staff?
