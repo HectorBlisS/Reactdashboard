@@ -136,7 +136,7 @@ class ClienteList extends Component{
         <RowDefinition>
           <ColumnDefinition id="id" title=" " customComponent={Detalle} />
           <ColumnDefinition id="idcliente" title="ID" customComponent={CustomColumn} />
-          <ColumnDefinition id={"asesor.first_name"} title="Asesor" customComponent={CustomColumn}/>
+          <ColumnDefinition id={"asesor.username"} title="Asesor" customComponent={CustomColumn}/>
           <ColumnDefinition id="pnombre" title="Cliente" customComponent={CustomColumn}/>
           <ColumnDefinition id={"fecha_poliza"}  title="Fecha de registro" customComponent={CustomColumn2}/>
         </RowDefinition>

@@ -118,12 +118,12 @@ class AsesoresList extends Component{
           </TableBody>
         </Table>*/}
         <Griddle
-          data={this.state.asesores.reverse()}
+          data={this.state.asesores}
           plugins={[plugins.LocalPlugin]}
           styleConfig={griddleStyles}>
           <RowDefinition>
             <ColumnDefinition id="asesorid" title="ID" customComponent={CustomColumn} />
-            <ColumnDefinition id={"first_name"} title="Asesor" customComponent={CustomColumn}/>
+            <ColumnDefinition id={"username"} title="Asesor" customComponent={CustomColumn}/>
             <ColumnDefinition id="cliente_asesor" title="Clientes" customComponent={CustomClientes}/>
             <ColumnDefinition id={"date_joined"}  title="Fecha de registro" customComponent={CustomColumn2}/>
           </RowDefinition>

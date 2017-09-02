@@ -3,24 +3,27 @@ import axios from 'axios';
 import FormData from 'form-data'
 
 
-let debug = true;
+let debug = false;
 
-let clientesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/clientes/';
-let polizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/polizas/';
-let policysUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/policys/';
-let loginUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/token-auth/'
-let usersUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/profiles/'
-let asesoresUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/asesores/'
-let selfProfileUrl = 'https://ronchon-choucroute-16574.herokuapp.com/auth/myprofile/'
-let vehiclesFilteredUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehiculospoliza/';
-let vehiclesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/vehicles/';
-let perfilesUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/perfiles/';
-let matchUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/match/';
-let mispolizasUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/mispolizas/';
-let recibosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/recibos/';
-let prospectosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/prospectos/';
-let candidatosUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/candidatos/';
-let candidatoslistUrl = 'https://ronchon-choucroute-16574.herokuapp.com/api/candidatoslist/';
+let clientesUrl = 'http://dipra.planb.com.mx/api/clientes/';
+let polizasUrl = 'http://dipra.planb.com.mx/api/polizas/';
+let policysUrl = 'http://dipra.planb.com.mx/api/policys/';
+let loginUrl = 'http://dipra.planb.com.mx//auth/token-auth/'
+let usersUrl = 'http://dipra.planb.com.mx/api/profiles/'
+let asesoresUrl = 'http://dipra.planb.com.mx/api/asesores/'
+let selfProfileUrl = 'http://dipra.planb.com.mx/auth/myprofile/'
+let vehiclesFilteredUrl = 'http://dipra.planb.com.mx/api/vehiculospoliza/';
+let vehiclesUrl = 'http://dipra.planb.com.mx/api/vehicles/';
+let perfilesUrl = 'http://dipra.planb.com.mx/api/perfiles/';
+let matchUrl = 'http://dipra.planb.com.mx/api/match/';
+let asesormatchUrl = 'http://dipra.planb.com.mx/api/asesormatch/';
+let mispolizasUrl = 'http://dipra.planb.com.mx/api/mispolizas/';
+let recibosUrl = 'http://dipra.planb.com.mx/api/recibos/';
+let prospectosUrl = 'http://dipra.planb.com.mx/api/prospectos/';
+let candidatosUrl = 'http://dipra.planb.com.mx/api/candidatos/';
+let candidatoslistUrl = 'http://dipra.planb.com.mx/api/candidatoslist/';
+let adminpolizasUrl = 'http://dipra.planb.com.mx/api/adminpolizas/';
+
 
 if (debug){
     clientesUrl = 'http://localhost:8000/api/clientes/';
@@ -34,11 +37,13 @@ if (debug){
     asesoresUrl = 'http://localhost:8000/api/asesores/';
     perfilesUrl = 'http://localhost:8000/api/perfiles/';
     matchUrl = 'http://localhost:8000/api/match/';
+    asesormatchUrl = 'http://localhost:8000/api/asesormatch/';
     mispolizasUrl = 'http://localhost:8000/api/mispolizas/';
     recibosUrl = 'http://localhost:8000/api/recibos/';
     prospectosUrl = 'http://localhost:8000/api/prospectos/';
     candidatosUrl = 'http://localhost:8000/api/candidatos/';
     candidatoslistUrl = 'http://localhost:8000/api/candidatoslist/';
+    adminpolizasUrl = 'http://localhost:8000/api/adminpolizas/';
 }
 
 
@@ -46,6 +51,30 @@ if (debug){
 
 
 const api = {
+    updateCandidato: (id,datos) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: candidatosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.patch(id+'/',datos)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
   getCandidato: (id) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -219,6 +248,30 @@ const api = {
                 .then(function (response) {
 
                         resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    matchAsesor: (datos) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: asesormatchUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.post('',datos)
+                .then(function (response) {
+
+                    resolve(response.data);
                 })
                 .catch(function (error) {
                     console.log(error.response);
@@ -420,6 +473,30 @@ const api = {
 
           });
       },
+      newAdminPolicy: (poliza) => {
+
+            const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+            return new Promise(function (resolve, reject) {
+                const instance = axios.create({
+                    baseURL: adminpolizasUrl,
+                    //timeout: 2000,
+                    headers: {'Content-Type': 'application/json',
+                        'Authorization': 'Token ' + userToken}
+                });
+                instance.post('', poliza)
+                    .then(function (response) {
+
+                            resolve(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log(error.response);
+                        reject(error);
+                    });
+
+
+            });
+        },
     newPolicy: (poliza) => {
 
           const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -468,6 +545,30 @@ const api = {
 
             });
         },
+    updateAsesor: (id,asesor) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: asesoresUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.patch(id+'/', asesor)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
 
   getClients: () => {
 

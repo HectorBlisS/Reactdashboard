@@ -8,7 +8,7 @@ class Integrate extends Component{
 		return(
 			<div className=''>
 				<div className='barra'>
-					<Nav />
+					<Nav history={this.props.history} />
 				</div>
 				<h2>INTEGRATE COMO ASESOR FINANCIERO</h2>
 				<div className='flex'>

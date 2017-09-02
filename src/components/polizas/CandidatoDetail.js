@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import {GridList, GridTile, Tabs, Tab, Paper, List, ListItem, RaisedButton, Dialog} from 'material-ui';
+import {GridList, GridTile, Tabs, Tab, Paper, List, ListItem, RaisedButton, Dialog, TextField} from 'material-ui';
 import api from '../../Api/Django';
 import 'moment/locale/es';
 import moment from 'moment';
@@ -19,8 +19,12 @@ class CandidatoDetail extends React.Component {
   constructor(){
     super()
     this.state={
+      open:false,
       value:'a',
-      candidato:{}
+      candidato:{},
+      asesor:{
+        candidato:false,
+      },
     }
   }
   componentWillMount(){
@@ -34,6 +38,26 @@ class CandidatoDetail extends React.Component {
   handleChange = (value) => {
     this.setState({value: value});
   };
+    handleOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleClose = () => {
+        this.setState({open: false});
+    };
+    handleTexto=(e)=>{
+      let field = e.target.name;
+      let asesor = this.state.asesor;
+      asesor[field] = e.target.value;
+      this.setState({asesor});
+      console.log(this.state.asesor)
+    };
+    editarAsesor=()=>{
+      api.updateCandidato(this.state.candidato.id, this.state.asesor).then(r=>{
+        toastr.success('Se cambió el status con éxito')
+         this.setState({candidato:r})
+      })
+    }
   render () {
     const candidato = this.state.candidato
     return(
@@ -42,9 +66,41 @@ class CandidatoDetail extends React.Component {
                 <GridList cellHeight="auto" cols={5}>
                   <GridTile cols={2} style={{padding:'0 1%'}}>
                       <h2>{candidato.nombre}</h2>
-                        <RaisedButton label="Completar Info" fullWidth={true}
-                          disabled={candidato.candidato?true:false  }/>
-                        <Dialog>
+                      {candidato.candidato?<RaisedButton label="Completar Info" fullWidth={true} onTouchTap={this.handleOpen}/>:''}
+                        <Dialog
+                            title="Completa para acreditar como Asesor"
+                            modal={false}
+                            open={this.state.open}
+                            onRequestClose={this.handleClose}>
+
+                          <GridList cellHeight={'auto'} cols={3}>
+                            <GridTile cols={1}>
+                              <TextField
+
+                                  hintText="Clave de Asesor"
+                                  floatingLabelText="Clave de Asesor"
+                                  name={"id_asesor"}
+                                  onChange={this.handleTexto}/>
+
+                            </GridTile>
+                            <GridTile cols={1}>
+                              <TextField
+                                  hintText="Tipo de Asesor"
+                                  floatingLabelText="Tipo de Asesor"
+                                  name={"tipo"}
+                                  onChange={this.handleTexto}/>
+
+                            </GridTile>
+                            <GridTile cols={1}>
+                              <TextField
+                                  hintText="Oficina"
+                                  floatingLabelText="Oficina"
+                                  name={"oficina"}
+                                  onChange={this.handleTexto}/>
+                            </GridTile>
+                            <RaisedButton fullWidth={true} onTouchTap={this.editarAsesor}/>
+                          </GridList>
+
 
                         </Dialog>
 
@@ -72,7 +128,7 @@ class CandidatoDetail extends React.Component {
                       <Tab
                         style={{color:'#57658e'}}
                         label="Archivos" value="a">
-                        <Paper zDepth={2} style={{width:100, height:100}}/>
+                        Archivos
                       </Tab>
                       <Tab
                         style={{color:'#57658e'}}

@@ -4,7 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import {GridList, GridTile} from 'material-ui/GridList';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
-import {Toolbar, ToolbarTitle} from 'material-ui/Toolbar';
+import {Toolbar, ToolbarTitle, ToolbarGroup} from 'material-ui/Toolbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
 import Checkbox from 'material-ui/Checkbox';
@@ -21,6 +21,7 @@ class NewPoliza extends Component{
   constructor(){
     super()
     this.state={
+      user:{},
       editar:true,
       domicilio:false,
       modalidad:'',
@@ -32,6 +33,13 @@ class NewPoliza extends Component{
       value:'',
       empresa:'',
       search:'',
+      search2:'',
+      asesoresobj:[{
+        username:'',
+        profile:{
+          asesorId:''
+        }
+      }],
       clientesobj:[
         {id:1,
         pnombre:'oswaldo'},
@@ -44,25 +52,37 @@ class NewPoliza extends Component{
   }
 
   componentWillMount(){
+    api.getProfile().then(r=>{
+      this.setState({user:r})
+      console.log()
+    })
     api.getClients().then(r=>{
-      this.setState({clientesobj:r})
+      this.setState({clientesobj:r});
       console.log(this.state.clientesobj)
+
+    })
+    api.getAsesores().then(r=>{
+      this.setState({asesoresobj:r});
+      console.log(this.state.asesoresobj)
 
     })
   }
   search=(event)=>{
     this.setState({search:event.target.value})
+  };
+  search2=(event)=>{
+    this.setState({search2:event.target.value})
 
-  }
+  };
   guardar=()=>{
     console.log(this.state.poliza)
-  }
+  };
   addDomicilio=(e,c)=>{
-    let field = 'addaddress'
+    let field = 'addaddress';
     let poliza = this.state.poliza;
-    poliza[field] = c
+    poliza[field] = c;
     this.setState({domicilio:c,poliza})
-  }
+  };
   handleTouchTap = (event) => {
      // This prevents ghost click.
      event.preventDefault();
@@ -72,90 +92,110 @@ class NewPoliza extends Component{
        anchorEl: event.currentTarget,
      });
    };
+   handleTouchTap2 = (event) => {
+      // This prevents ghost click.
+      event.preventDefault();
+
+      this.setState({
+        open2: true,
+        anchorEl: event.currentTarget,
+      });
+    };
    handleRequestClose = () => {
       this.setState({
         open: false,
+          open2: false,
       });
     };
     selectItem=(f,e)=>{
-      let nombre = f.rsocial?f.rsocial:f.pnombre+' '+f.amaterno+' '+f.apaterno
-      this.setState({selected:f, search:nombre})
-      let poliza = this.state.poliza
-      poliza['cliente'] = f.id
+      let nombre = f.rsocial?f.rsocial:f.pnombre+' '+f.amaterno+' '+f.apaterno;
+      this.setState({selected:f, search:nombre});
+      let poliza = this.state.poliza;
+      poliza['cliente'] = f.id;
       this.handleRequestClose()
-    }
+    };
+    selectItem2=(f,e)=>{
+        console.log(f)
+      let nombre = f.username;
+      this.setState({selected2:f, search2:nombre});
+      let poliza = this.state.poliza;
+      poliza['asesor'] = f.id;
+      this.setState({poliza})
+      this.handleRequestClose()
+    };
     //selectFieldsData :(
     handleChange = (event, index, value) => {
-      let field = 'pago'
+      let field = 'pago';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({value,poliza});
     }
     handleEmpresa = (event, index, value) => {
-      let field = 'empresa'
+      let field = 'empresa';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({empresa:value,poliza});
     }
     handleSector = (event, index, value) => {
-      let field = 'sector'
+      let field = 'sector';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({sector:value,poliza});
     }
     handleNextOption = (event, index, value) => {
-      let field = 'next'
+      let field = 'next';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({nextOption:value,poliza});
     }
     handleLastOption = (event, index, value) => {
-      let field = 'last'
+      let field = 'last';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({lastOption:value,poliza});
     }
     handleSeguroDaños = (event, index, value) => {
-      let field = 'daños'
+      let field = 'daños';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({segurodaños:value,poliza});
     }
     handleSubrama = (event, index, value) => {
-      let field = 'subrama'
+      let field = 'subrama';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({subrama:value,poliza});
-    }
+    };
     handleModalidad = (event, index, value) => {
-      let field = 'modalidad'
+      let field = 'modalidad';
       let poliza = this.state.poliza;
-      poliza[field] = value
+      poliza[field] = value;
       this.setState({modalidad:value,poliza});
-    }
+    };
     //textfields data
     handleText = (event, index) => {
-       let field = event.target.name
+       let field = event.target.name;
        let poliza = this.state.poliza;
-       poliza[field] = event.target.value
+       poliza[field] = event.target.value;
        this.setState({poliza});
-     }
+       console.log(this.state.poliza)
+     };
      //datePicker data
      handleDates =(e,val)=>{
-       let field = this.state.lafecha
+       let field = this.state.lafecha;
        let poliza = this.state.poliza;
-       poliza[field] = val
+       poliza[field] = val;
        this.setState({poliza});
 
-     }
+     };
      testing=(e)=>{
-       this.setState({lafecha:e.target.name})
+       this.setState({lafecha:e.target.name});
        //console.log(e.target.name,e.target.value)
-     }
+     };
 
      pasala=(a)=>{
-        this.state.vehiculos.push(a)
-      }
+        this.state.vehiculos.push(a);
+      };
       //modal
       handleOpen = () => {
        this.setState({openModal: true});
@@ -169,13 +209,24 @@ class NewPoliza extends Component{
     enviarPoliza=()=>{
       api.newPolicy(this.state.poliza).then(r=>{
         toastr.success('Tu Cliente se ha registrado con éxito');
-        this.setState({elId:r.id,editar:false})
-        console.log(r)
+        this.setState({elId:r.id,editar:false});
+        console.log(r);
       }).catch(e=>{
-        toastr.error('Hubo un problema, Intenta más tarde')
-        console.log(e)
+        toastr.error('Hubo un problema, Intenta más tarde');
+        console.log(e);
       })
-    }
+    };
+    newAdminPoliza=()=>{
+      api.newAdminPolicy(this.state.poliza).then(r=>{
+        toastr.success('Tu Cliente se ha registrado con éxito');
+        this.setState({elId:r.id,editar:false});
+        console.log(r);
+      }).catch(e=>{
+        toastr.error('Hubo un problema, Intenta más tarde');
+        console.log(e);
+      })
+    };
+
 
 
 
@@ -195,6 +246,21 @@ class NewPoliza extends Component{
             this.state.search.toLowerCase())!== -1
         }
       })
+      let asesoresfilt = this.state.asesoresobj.filter((asesor)=>{
+
+        if(asesor.username !== null){
+          return asesor.username.toLowerCase()
+                  .indexOf(this.state.search2.toLowerCase())!== -1
+              ||
+            asesor.profile.asesorId.toLowerCase()
+                .indexOf(this.state.search2.toLowerCase())!== -1
+        }// }else{
+        // return asesor.pnombre.toLowerCase().indexOf(
+        //   this.state.search.toLowerCase())!== -1 ||
+        //   asesor.idcliente.toLowerCase().indexOf(
+        //     this.state.search.toLowerCase())!== -1
+        // }
+      })
     return(
       <div >
         <Paper style={{maxWidth:'80%' ,
@@ -203,10 +269,56 @@ class NewPoliza extends Component{
         textAlign:'left',
         marginBottom: 25,
         }}>
+        <form>
         <Toolbar>
           <ToolbarTitle
               text="Datos Básicos"
           />
+
+        {this.state.user.is_staff?
+          <ToolbarGroup>
+            <div>
+              <TextField
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                disabled={this.state.editar?false:true}
+                hintText='Buscador de Asesores'
+                name='asesor'
+                value={this.state.search2}
+                onChange={this.search2}
+                fullWidth={true}
+                floatingLabelText={this.state.selected2?'ID: '+this.state.selected2.profile.asesorId:'ID Asesor'}
+                onTouchTap={this.handleTouchTap2}/>
+                <Popover
+                style={{width:'30%', height:'200px'}}
+                 open={this.state.open2}
+                 anchorEl={this.state.anchorEl}
+                 anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+                 targetOrigin={{horizontal: 'left', vertical: 'top'}}
+                 onRequestClose={this.handleRequestClose}
+               >
+                {asesoresfilt.map(f=>{
+                  return(
+                  <MenuItem key={f.id} onTouchTap={()=>this.selectItem2(f)}>
+                    <div style={{margin:0, position:'relative'}}>
+                      {f.username}
+                      <p
+                        style={{
+                          margin:0,
+                          fontSize:'.5rem',
+                          position:'absolute',
+                          color:'grey',
+                          top:-10, right:0}}>
+                        ID: {f.profile.asesorId}
+                      </p>
+                    </div>
+                  </MenuItem>
+                )
+                })}
+              </Popover>
+            </div>
+          </ToolbarGroup>:''}
+
 
 
         </Toolbar>
@@ -235,7 +347,7 @@ class NewPoliza extends Component{
                  >
                   {filtered.map(f=>{
                     return(
-                    <MenuItem onTouchTap={()=>this.selectItem(f)}>
+                    <MenuItem key={f.id} onTouchTap={()=>this.selectItem(f)}>
                       <div style={{margin:0, position:'relative'}}>
                         {f.rsocial?f.rsocial:f.pnombre+' '+f.apaterno+' '+f.amaterno}
                         <p
@@ -299,6 +411,7 @@ class NewPoliza extends Component{
               </GridTile>
               <GridTile cols={1}>
                  <DatePicker hintText="Portrait Dialog"
+                   disabled={this.state.editar?false:true}
                    name='apertura'
                    onChange={this.handleDates}
                    onTouchTap={this.testing}
@@ -595,7 +708,7 @@ class NewPoliza extends Component{
               style={{margin:'2% 0 '}}
               label='Guardar'
               fullWidth={true}
-              onTouchTap={this.enviarPoliza}/>
+              onTouchTap={this.state.user.is_staff?this.newAdminPoliza:this.enviarPoliza}/>
 
           </Toolbar>
           {/*cars form*/}
@@ -643,7 +756,7 @@ class NewPoliza extends Component{
               </div>
             </div>:''}
 
-
+          </form>
         </Paper>
 
       </div>

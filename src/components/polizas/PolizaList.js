@@ -137,8 +137,8 @@ class PolizaList extends Component{
           <RowDefinition>
             <ColumnDefinition id="id" title=" " customComponent={Detalle} />
             <ColumnDefinition id="idpoliza" title="ID de Poliza" customComponent={CustomColumn} />
-            <ColumnDefinition id={"asesor.first_name"} title="Asesor" customComponent={CustomColumn}/>
-            <ColumnDefinition id={"cliente.pnombre"} title="Cliente" customComponent={CustomColumn}/>
+            <ColumnDefinition id={"asesor.profile.asesorId"} title="Asesor" customComponent={CustomColumn}/>
+            <ColumnDefinition id={"cliente.idcliente"} title="Cliente" customComponent={CustomColumn}/>
             <ColumnDefinition id={"apertura"}  title="Fecha de registro" customComponent={CustomColumn2}/>
           </RowDefinition>
         </Griddle>

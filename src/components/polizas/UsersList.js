@@ -121,13 +121,13 @@ class UsersList extends Component{
           </TableBody>
         </Table>*/}
         <Griddle
-          data={this.state.usuarios.reverse()}
+          data={this.state.usuarios}
           plugins={[plugins.LocalPlugin]}
           styleConfig={griddleStyles}>
           <RowDefinition>
             <ColumnDefinition id="id" title="Aprobar" customComponent={Detalle} />
 
-            <ColumnDefinition id={"first_name"} title="Usuario" customComponent={CustomColumn}/>
+            <ColumnDefinition id={"username"} title="Usuario" customComponent={CustomColumn}/>
             <ColumnDefinition id="profile.tipo" title="Tipo" customComponent={CustomColumn}/>
             <ColumnDefinition id={"date_joined"}  title="Fecha de registro" customComponent={CustomColumn2}/>
           </RowDefinition>

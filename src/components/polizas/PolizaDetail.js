@@ -32,7 +32,9 @@ class PolizaDetail extends Component{
       openModal:false,
       poliza:{
         cliente:{},
-        asesor:{},
+        asesor:{
+          profile:{}
+        },
         recibo_poliza:[],
       },
       clientesobj:[
@@ -54,22 +56,37 @@ class PolizaDetail extends Component{
     api.getPolicy(this.props.match.params.polizaId).then(r=>{
       this.setState({poliza:r})
       console.log(this.state.user.id+'=>'+this.state.poliza.asesor.id)
-      if(!this.state.user.is_staff){
-        if(this.state.user.id!==this.state.poliza.asesor.id){
-          toastr.warning('Tu no eres asesor de esta poliza')
-          this.props.history.push('/polizas')
-        }
-      }
+
     })
+
 
     api.getVehicles(this.props.match.params.polizaId).then(r=>{
       this.setState({vehiculos:r})
 
     }).catch(e=>{
-
+      console.log(e)
     })
 
 
+  }
+    handleDates =(e,val)=>{
+        let field = this.state.lafecha;
+        let poliza = this.state.poliza;
+        poliza[field] = val;
+        this.setState({poliza});
+
+    };
+    testing=(e)=>{
+        this.setState({lafecha:e.target.name});
+        //console.log(e.target.name,e.target.value)
+    };
+  componentDidMount(){
+    if(!this.state.user.is_staff){
+      if(this.state.user.id!==this.state.poliza.asesor.id){
+        toastr.warning('Tu no eres asesor de esta poliza')
+        this.props.history.push('/polizas')
+      }
+    }
   }
 
 
@@ -107,10 +124,10 @@ class PolizaDetail extends Component{
 
   //datePicker data
   handleDates =(e,val)=>{
-    let field = this.state.lafecha
-    let elrecibo = this.state.elrecibo;
-    elrecibo[field] = val
-    this.setState({elrecibo,mientras:val});
+    let field = this.state.lafecha;
+    let updates = this.state.updates;
+    updates[field] = val
+    this.setState({updates,mientras:val});
 
   }
   testing=(e)=>{
@@ -158,7 +175,7 @@ class PolizaDetail extends Component{
           />
 
           <ToolbarTitle
-              text={'Asesor: '+this.state.poliza.asesor.first_name}
+              text={'Asesor: '+this.state.poliza.asesor.profile.asesorId}
           />
         {this.state.user.is_staff?<div style={{paddingTop:'2%'}}>
           <RaisedButton label="Editar" onTouchTap={this.editar}/>
@@ -221,13 +238,15 @@ class PolizaDetail extends Component{
             </GridTile>
             <GridTile cols={1}>
 
-               <TextField
+               <DatePicker
+                   onChange={this.handleDates}
+                   onTouchTap={this.testing}
+                   autoOk={true}
                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
-                 onChange={this.handleText}
                  floatingLabelText="Fecha"
                  name="apertura"
-                 value={moment(this.state.poliza.apertura).format('LL')}
+
                  disabled={this.state.editar}/>
             </GridTile>
             <GridTile cols={1}>
@@ -391,7 +410,7 @@ class PolizaDetail extends Component{
                             <TextField
                               floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                               underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
-                              value={'Alta: '+moment(v.alta).format('LL')}                              
+                              value={'Alta: '+moment(v.alta).format('LL')}
                               disabled={this.state.editar}
                               name="alta"
                             />
@@ -674,6 +693,7 @@ class PolizaDetail extends Component{
                   <Card>
                     <CardHeader
                       title={'Recibo #' +recibo.numero}
+                      subtitleColor={recibo.pagado?'green':'red'}
                       subtitle={recibo.pagado?'Pagado':'No Pagado'}
                       actAsExpander={true}
                       showExpandableButton={true}

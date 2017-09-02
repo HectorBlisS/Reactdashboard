@@ -48,6 +48,7 @@ class UserProfile extends Component {
           apertura:'',
           cliente:'',
         }],
+        noCliente:false
     };
   }
 
@@ -56,19 +57,21 @@ class UserProfile extends Component {
         const user = JSON.parse(localStorage.getItem('userToken'));
         if (!user){
             this.props.history.push('/login');
-        } else {
+        }else{
+
             api.getProfile()
             .then(r=>{
                 this.setState({user:r});
-                console.log(r);
+                //console.log(r);
             })
             .catch(e=>toastr.error("algo falló"));
 
             api.getMisPolizas().then(r=>{
-              this.setState({mispolizas:r})
-              console.log(this.state.mispolizas)
+              this.setState({mispolizas:r});
+              //console.log(this.state.mispolizas);
             }).catch(e=>{
-              toastr.error('no tienes')
+              //toastr.error('no tienes')
+                this.setState({nocliente:true});
             })
         }
 
@@ -84,17 +87,17 @@ class UserProfile extends Component {
 
     }).catch(e=>{
       toastr.error('naaa')
-      console.log(e)
-    })
+      //console.log(e)
+    });
     //match user client
     api.matchClient(this.state.datos).then(r=>{
       toastr.success('Tus polizas en seguida')
-      console.log(r)
+      //console.log(r)
     }).catch(e=>{
-      toastr.error('Ese no es tu Id de Cliente')
-    })
+      toastr.error('El id que ingresaste no coincide')
+    });
     this.componentWillMount()
-  }
+  };
   updateAsesorInfo=()=>{
     //update user info
     let asesor = this.state.datos
@@ -103,15 +106,15 @@ class UserProfile extends Component {
       toastr.success('Gracias por completar, Espera tu aprobación')
     }).catch(e=>{
       toastr.error('naaa')
-      console.log(e)
+      //console.log(e)
     })
-    //match user client
-    // api.matchClient(this.state.datos).then(r=>{
-    //   toastr.success('matched')
-    //   console.log(r)
-    // }).catch(e=>{
-    //   toastr.error('nel')
-    // })
+    //match user w asesor
+     api.matchAsesor(this.state.datos).then(r=>{
+       toastr.success('listo, espera tu aprobación')
+       console.log(r)
+     }).catch(e=>{
+       toastr.error('Ese no es tu Id :(')
+     })
   }
   //for modal
   handleOpen = () => {
@@ -135,8 +138,8 @@ class UserProfile extends Component {
      let datos = this.state.datos;
      datos[field] = event.target.value
      this.setState({datos});
-     console.log(this.state.datos)
-   }
+     //console.log(this.state.datos)
+   };
 
     render(){
         const {user} = this.state;
@@ -277,8 +280,8 @@ class UserProfile extends Component {
                 </div>
 		          </div>
 		          <div style={styles.slide}>
-		            {this.state.user.profile.clienteId===this.state.user.usuario.idcliente?
-                  '':
+		            {this.state.user.usuario && this.state.user.profile.clienteId===this.state.user.usuario.idcliente && this.state.user.usuario.idcliente !== null?
+                        <div><h2>No tienes productos asociados aún</h2></div>:
                   <div>
                     <h3>Para recibir información de tus productos completa tus datos:</h3>
                   <div>
@@ -289,13 +292,13 @@ class UserProfile extends Component {
                     /><br />
 
                   </div>
-                     <FlatButton label="Enviar" primary={true} onTouchTap={this.updateClienteInfo}
+                     <FlatButton label="Actualizar" primary={true} onTouchTap={this.updateClienteInfo}
                        />
                    </div>}
-                   <div className='tip' style={this.state.user.profile.clienteId===this.state.user.usuario.idcliente?{display:'block'}:{display:'none'}}>
-                       {this.state.mispolizas.map(poliza=>{
+                   <div className='tip' style={this.state.user.usuario && this.state.user.profile.clienteId===this.state.user.usuario.idcliente?{display:'block'}:{display:'none'}}>
+                       {this.state.mispolizas.map((poliza, i)=>{
                          return(
-                           <Card>
+                           <Card key={i}>
                             <CardHeader
 
                               actAsExpander={true}
@@ -371,7 +374,7 @@ class UserProfile extends Component {
                                       floatingLabelText="Domicilio"
                                       name="newaddress"
                                       disabled={true}
-                                      value={poliza.addaddress?poliza.cliente.calle+' '+poliza.cliente.noext+' '+poliza.cliente.colonia:poliza.newaddress}
+                                      value={poliza.addaddress ? poliza.cliente.calle+' '+poliza.cliente.noext+' '+poliza.cliente.colonia : poliza.newaddress}
                                       multiLine={true}
                                       rows={2}
 
@@ -486,7 +489,7 @@ class UserProfile extends Component {
                        Convviertete en el mejor asesor de tu zona, y obten el reconocimiento y los bonos que mereces.
                      </p>
                      <br />
-                   <iframe width="660" height="415" src="https://www.youtube.com/embed/z9BPMjL44Aw" frameborder="0" allowfullscreen title="Video"></iframe>
+                   <iframe width="660" height="415" src="https://www.youtube.com/embed/z9BPMjL44Aw" frameBorder="0" allowFullScreen title="Video"></iframe>
                      <div>
                       <br />
                         <div className='flex'>

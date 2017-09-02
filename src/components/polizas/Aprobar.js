@@ -22,13 +22,15 @@ class Aprobar extends React.Component {
 
   aprobar=()=>{
     api.updateTipo(this.props.id, {aprobado:!this.state.stat}).then(r=>{
-      toastr.success('Gracias por completar, Espera tu aprobación')
+      toastr.warning('Se ha cambiado el estado del usuario')
     }).catch(e=>{
       toastr.error('naaa')
       console.log(e)
     })
+
   }
   render () {
+    console.log(this.state.user.profile)
     return(
       <div>
       {this.state.user.profile.asesorId||this.state.user.profile.tipo==='asesor'?

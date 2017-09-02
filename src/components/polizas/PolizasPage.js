@@ -146,14 +146,16 @@ class PolizasPage extends Component {
                   Prospectos
               </MenuItem>
             </NavLink>
-            <NavLink to="/polizas/candidatos" style={{textDecoration:'none'}}>
-              <MenuItem leftIcon={<CandidatosI color={this.props.location.pathname==="/polizas/candidatos"?'#fff':''}/>}
-                style={this.props.location.pathname==="/polizas/candidatos"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
-                  Candidatos
-              </MenuItem>
-            </NavLink>
+
           {this.state.user.is_staff?
               <div>
+
+                <NavLink to="/polizas/candidatos" style={{textDecoration:'none'}}>
+                  <MenuItem leftIcon={<CandidatosI color={this.props.location.pathname==="/polizas/candidatos"?'#fff':''}/>}
+                    style={this.props.location.pathname==="/polizas/candidatos"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
+                      Candidatos
+                  </MenuItem>
+                </NavLink>
 
               <NavLink to="/polizas/asesores" style={{textDecoration:'none'}}>
                 <MenuItem leftIcon={<Port color={this.props.location.pathname==="/polizas/asesores"?'#fff':''}/>}

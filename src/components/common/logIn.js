@@ -146,8 +146,9 @@ checkPasswords = (e) => {
         })
         .catch(e=>{
             console.log(e.response);
-            if (e.response.data.non_field_errors){
-                toastr.error(e.response.data.non_field_errors);
+            console.log(typeof e.data)
+            if (e.data !== undefined ){
+                toastr.error(e.data.non_field_errors);
             } else {
                 toastr.error("No se pudo iniciar sesión, intenta de nuevo")
             }
