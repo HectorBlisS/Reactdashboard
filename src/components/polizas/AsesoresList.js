@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import api from '../../Api/Django';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
 import MainLoader from '../common/MainLoader';
+import {Link} from 'react-router-dom';
+import {RaisedButton} from 'material-ui';
 // import {
 //   Table,
 //   TableBody,
@@ -15,7 +17,13 @@ import moment from 'moment';
 
 
 
-
+const Detalle =({value})=>{
+  return(
+      <Link to={'/polizas/candidato/'+value}>
+        <RaisedButton label={'Detalle'}/>
+      </Link>
+  )
+}
 const CustomColumn = ({value}) => <p>{value}</p>
 const CustomClientes = ({value}) => {
   let v =value.size
@@ -70,7 +78,7 @@ class AsesoresList extends Component{
   }
   componentWillMount(){
     api.getAsesores().then(r=>{
-      this.setState({asesores:r, loading:false})
+      this.setState({asesores:r.results, next:r.next,prev:r.previous, loading:false})
       console.log(this.state.asesores)
     })//.then(r=>{this.dates()})
   }
@@ -122,10 +130,11 @@ class AsesoresList extends Component{
           plugins={[plugins.LocalPlugin]}
           styleConfig={griddleStyles}>
           <RowDefinition>
-            <ColumnDefinition id="asesorid" title="ID" customComponent={CustomColumn} />
+            <ColumnDefinition id="profile.asesorId" title="ID" customComponent={CustomColumn} />
             <ColumnDefinition id={"username"} title="Asesor" customComponent={CustomColumn}/>
             <ColumnDefinition id="cliente_asesor" title="Clientes" customComponent={CustomClientes}/>
             <ColumnDefinition id={"date_joined"}  title="Fecha de registro" customComponent={CustomColumn2}/>
+            <ColumnDefinition id={"asesor_user.id"}  title="Detalle" customComponent={Detalle}/>
           </RowDefinition>
         </Griddle>
 

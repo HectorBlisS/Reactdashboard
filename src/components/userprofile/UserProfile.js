@@ -281,7 +281,7 @@ class UserProfile extends Component {
 		          </div>
 		          <div style={styles.slide}>
 		            {this.state.user.usuario && this.state.user.profile.clienteId===this.state.user.usuario.idcliente && this.state.user.usuario.idcliente !== null?
-                        <div><h2>No tienes productos asociados aún</h2></div>:
+                        '':
                   <div>
                     <h3>Para recibir información de tus productos completa tus datos:</h3>
                   <div>
@@ -295,6 +295,8 @@ class UserProfile extends Component {
                      <FlatButton label="Actualizar" primary={true} onTouchTap={this.updateClienteInfo}
                        />
                    </div>}
+                      {this.state.mispolizas.length===0?
+                          <div><h2>No tienes productos asociados aún</h2></div>:''}
                    <div className='tip' style={this.state.user.usuario && this.state.user.profile.clienteId===this.state.user.usuario.idcliente?{display:'block'}:{display:'none'}}>
                        {this.state.mispolizas.map((poliza, i)=>{
                          return(
@@ -466,8 +468,8 @@ class UserProfile extends Component {
                                         floatingLabelText="Tipo"
                                         onChange={this.handleText}
 
-                                        name={poliza.next==='Daños'?'daños':'last'}
-                                        value={poliza.next==='Daños'?poliza.daños:poliza.last}
+                                        name={poliza.next==='Daños'?'danhos':'last'}
+                                        value={poliza.next==='Daños'?poliza.danhos:poliza.last}
                                         disabled={true}/>
                                     </GridTile>
                                   </GridList>

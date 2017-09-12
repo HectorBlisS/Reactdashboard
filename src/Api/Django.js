@@ -1,17 +1,17 @@
 
 import axios from 'axios';
-import FormData from 'form-data'
+import FormData from 'form-data';
 
 
-let debug = false;
+let debug = true;
 
 let clientesUrl = 'http://dipra.planb.com.mx/api/clientes/';
 let polizasUrl = 'http://dipra.planb.com.mx/api/polizas/';
 let policysUrl = 'http://dipra.planb.com.mx/api/policys/';
-let loginUrl = 'http://dipra.planb.com.mx//auth/token-auth/'
-let usersUrl = 'http://dipra.planb.com.mx/api/profiles/'
-let asesoresUrl = 'http://dipra.planb.com.mx/api/asesores/'
-let selfProfileUrl = 'http://dipra.planb.com.mx/auth/myprofile/'
+let loginUrl = 'http://dipra.planb.com.mx//auth/token-auth/';
+let usersUrl = 'http://dipra.planb.com.mx/api/profiles/';
+let asesoresUrl = 'http://dipra.planb.com.mx/api/asesores/';
+let selfProfileUrl = 'http://dipra.planb.com.mx/auth/myprofile/';
 let vehiclesFilteredUrl = 'http://dipra.planb.com.mx/api/vehiculospoliza/';
 let vehiclesUrl = 'http://dipra.planb.com.mx/api/vehicles/';
 let perfilesUrl = 'http://dipra.planb.com.mx/api/perfiles/';
@@ -23,6 +23,11 @@ let prospectosUrl = 'http://dipra.planb.com.mx/api/prospectos/';
 let candidatosUrl = 'http://dipra.planb.com.mx/api/candidatos/';
 let candidatoslistUrl = 'http://dipra.planb.com.mx/api/candidatoslist/';
 let adminpolizasUrl = 'http://dipra.planb.com.mx/api/adminpolizas/';
+let archivosUrl = 'http://dipra.planb.com.mx/api/archivos/';
+let archivosasesorUrl = 'http://dipra.planb.com.mx/api/archivosasesor/';
+let clavesUrl = 'http://dipra.planb.com.mx/api/claves/';
+let citasUrl = 'http://dipra.planb.com.mx/api/citas/';
+let cursosUrl = 'http://dipra.planb.com.mx/api/cursos/';
 
 
 if (debug){
@@ -44,13 +49,227 @@ if (debug){
     candidatosUrl = 'http://localhost:8000/api/candidatos/';
     candidatoslistUrl = 'http://localhost:8000/api/candidatoslist/';
     adminpolizasUrl = 'http://localhost:8000/api/adminpolizas/';
+    archivosUrl = 'http://localhost:8000/api/archivos/';
+    archivosasesorUrl = 'http://localhost:8000/api/archivosasesor/';
+    clavesUrl = 'http://localhost:8000/api/claves/';
+    citasUrl = 'http://localhost:8000/api/citas/';
+    cursosUrl = 'http://localhost:8000/api/cursos/';
 }
 
 
 
-
-
 const api = {
+    //Cursos de Asesor
+
+    newCurso:(clave)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+
+        return new Promise(function (resolve, reject) {
+
+            const instance = axios.create({
+                baseURL: cursosUrl,
+                //timeout: 2000,
+                headers: {
+                    'Content-Type':  'application/json',
+                    'Authorization': 'Token ' + userToken},
+                //data:data
+            });
+            instance.post('', clave)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    //Citas de Asesor
+
+    newCita:(clave)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+
+        return new Promise(function (resolve, reject) {
+
+            const instance = axios.create({
+                baseURL: citasUrl,
+                //timeout: 2000,
+                headers: {
+                    'Content-Type':  'application/json',
+                    'Authorization': 'Token ' + userToken},
+                //data:data
+            });
+            instance.post('', clave)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    //Claves de Asesor
+
+    newClave:(clave)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+
+        return new Promise(function (resolve, reject) {
+
+            const instance = axios.create({
+                baseURL: clavesUrl,
+                //timeout: 2000,
+                headers: {
+                    'Content-Type':  'application/json',
+                    'Authorization': 'Token ' + userToken},
+                //data:data
+            });
+            instance.post('', clave)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    //Archivos de asesor
+    getAsesorArchivos:(id)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: archivosasesorUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.get(id+'/')
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    getArchivos:()=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: archivosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.get()
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    getArchivo:(id)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: archivosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.get(id+'/')
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+        });
+    },
+    newArchivo:(archivo)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+        console.log(archivo.archivo)
+
+        return new Promise(function (resolve, reject) {
+            let data = new FormData()
+
+            data.append('archivo', archivo.archivo)
+            data.append('nombre',archivo.nombre)
+            data.append('tipo',archivo.tipo)
+            data.append('asesor',archivo.asesor)
+            const instance = axios.create({
+                baseURL: archivosUrl,
+                //timeout: 2000,
+                headers: {
+                    'Content-Type': undefined ,
+                    'Authorization': 'Token ' + userToken},
+                //data:data
+            });
+            instance.post('', data)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    deleteArchivo:(id)=>{
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: archivosUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.delete(id)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
+    //Candidatos de asesor
     updateCandidato: (id,datos) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -141,6 +360,7 @@ const api = {
                 });
         });
     },
+    //Prospectos de ciente
   getProspects: () => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -185,6 +405,7 @@ const api = {
                 });
         });
     },
+    //Recibos
   updateRecibo: (id,datos) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -209,6 +430,7 @@ const api = {
 
         });
     },
+
   getMisPolizas: () => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -233,6 +455,7 @@ const api = {
 
         });
     },
+    //Match cliente con usuario
   matchClient: (datos) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -257,6 +480,7 @@ const api = {
 
         });
     },
+    //match asesor con usuario
     matchAsesor: (datos) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -305,9 +529,13 @@ const api = {
 
         });
     },
-  getAsesores: () => {
+    //Asesores
+  getAsesores: (url) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
+      if(url){
+          asesoresUrl=url;
+      }
 
         return new Promise(function (resolve, reject) {
             const instance = axios.create({
@@ -329,6 +557,7 @@ const api = {
 
         });
     },
+    //Todos los usuarios
   getUsers: () => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -377,6 +606,7 @@ const api = {
 
           });
       },
+    //Vehiculos
   postVehicles: (vehicle) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
@@ -425,9 +655,13 @@ const api = {
 
         });
     },
-  getPolicys: () => {
+    //polizas
+  getPolicys: (url) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
+        if(url){
+          policysUrl=url;
+      }
 
         return new Promise(function (resolve, reject) {
             const instance = axios.create({
@@ -569,10 +803,13 @@ const api = {
 
         });
     },
-
-  getClients: () => {
+//Clientes
+  getClients: (url) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
+      if(url){
+          clientesUrl=url;
+      }
 
         return new Promise(function (resolve, reject) {
             const instance = axios.create({

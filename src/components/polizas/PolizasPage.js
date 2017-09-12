@@ -15,7 +15,7 @@ import Personitas from 'material-ui/svg-icons/action/supervisor-account';
 import CandidatosI from 'material-ui/svg-icons/action/assignment-ind';
 import Personitas2 from 'material-ui/svg-icons/social/group';
 import Personitas3 from 'material-ui/svg-icons/social/people-outline';
-
+import Per from 'material-ui/svg-icons/action/account-circle';
 import List from 'material-ui/svg-icons/av/library-books';
 import AddPolicy from 'material-ui/svg-icons/action/note-add';
 import AddUser from 'material-ui/svg-icons/social/person-add';
@@ -37,24 +37,24 @@ class PolizasPage extends Component {
     }
   }
   componentWillMount(){
-    const user = JSON.parse(localStorage.getItem('userToken'));
+        const user = JSON.parse(localStorage.getItem('userToken'));
 
 
-    if(!user){
-      this.props.history.push('/login');
-    }else{
-      api.getProfile()
-      .then(r=>{
-          this.setState({user:r});
-          if(!r.profile.aprobado){
-            this.props.history.push('/perfil');
-            toastr.warning('Aún no te han aprobado')
-          }
-          console.log(r);
-      })
-      .catch(e=>toastr.error("algo falló"));
-    }
-    console.log(this.props)
+        if(!user){
+          this.props.history.push('/login');
+        }else{
+          api.getProfile()
+          .then(r=>{
+              this.setState({user:r});
+              if(!r.profile.aprobado){
+                this.props.history.push('/perfil');
+                toastr.warning('Aún no te han aprobado')
+              }
+              console.log(r);
+          })
+          .catch(e=>toastr.error("algo falló"));
+        }
+        console.log(this.props)
 
   }
 
@@ -103,7 +103,7 @@ class PolizasPage extends Component {
           }
       />
     <div style={this.state.open?{padding:'5.4% 0 0 18%', transition:'all .5s ease' }:{paddingTop:'5.4%', transition:'all .5s ease'}}>
-        <PolizaSections match={this.props.match} location={this.props.location}/>
+        <PolizaSections match={this.props.match} location={this.props.location} user={this.state.user}/>
     </div>
       <Drawer
           width={200}
@@ -115,6 +115,12 @@ class PolizasPage extends Component {
           >
           <Subheader>Menú</Subheader>
 
+          <NavLink to="/polizas/perfil" style={{textDecoration:'none'}}>
+              <MenuItem leftIcon={<Per color={this.props.location.pathname==="/polizas/perfil"?'#fff':''}/>}
+                        style={this.props.location.pathname==="/polizas/perfil"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>
+                  Mi Perfil
+              </MenuItem>
+          </NavLink>
             <NavLink to="/polizas/nueva" style={{textDecoration:'none'}}>
               <MenuItem leftIcon={<AddPolicy color={this.props.location.pathname==="/polizas/nueva"?'#fff':''}/>}
                 style={this.props.location.pathname==="/polizas/nueva"?{backgroundColor:'rgb(87, 101, 142)', color:'#fff'}:{}}>

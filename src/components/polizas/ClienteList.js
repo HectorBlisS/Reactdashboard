@@ -44,10 +44,12 @@ const griddleStyles={
       boxShadow:'0 1px 0 0 rgb(224, 224, 224)',
     },
     PageDropdown:{
+        display:'none',
       margin:'1%',
       width:'5%'
     },
      Pagination:{
+        display:'none',
       margin:'2% 0'
      }
 
@@ -66,11 +68,26 @@ class ClienteList extends Component{
 
   componentWillMount(){
     api.getClients().then(r=>{
-      this.setState({clientes:r, loading:false})
+      this.setState({clientes:r.results,next:r.next, prev:r.previous, loading:false})
+        console.log(r)
       console.log(this.state.clientes)
 
-    }).then(r=>{this.dates()})
+    })//.then(r=>{this.dates()})
   }
+    nextPage=()=>{
+        api.getPolicys(this.state.next).then(r=>{
+            console.log(r)
+            this.setState({polizas:r.results.reverse(),loading:false,next:r.next,prev:r.previous})
+            console.log(this.state.polizas)
+        })
+    }
+    prevPage=()=>{
+        api.getPolicys(this.state.prev).then(r=>{
+            console.log(r)
+            this.setState({polizas:r.results.reverse(),loading:false,next:r.next,prev:r.previous})
+            console.log(this.state.polizas)
+        })
+    }
 
 
   dates=()=>{
@@ -141,6 +158,10 @@ class ClienteList extends Component{
           <ColumnDefinition id={"fecha_poliza"}  title="Fecha de registro" customComponent={CustomColumn2}/>
         </RowDefinition>
       </Griddle>
+          <div style={{display:'flex', justifyContent:'center', marginTop:'1%', marginBottom:'1%'}}>
+              <RaisedButton backgroundColor={'#57658e'} labelColor={'#fff'} label={'prev'} onTouchTap={this.prevPage} style={this.state.prev!== null ? {display:'block'}:{display:'none'}}/>
+              <RaisedButton backgroundColor={'#57658e'} labelColor={'#fff'} label={'next'} onTouchTap={this.nextPage} style={this.state.next!== null ? {display:'block'}:{display:'none'}}/>
+          </div>
       </div>
     );
   }

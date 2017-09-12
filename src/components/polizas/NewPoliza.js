@@ -6,6 +6,8 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import {Toolbar, ToolbarTitle, ToolbarGroup} from 'material-ui/Toolbar';
 import RaisedButton from 'material-ui/RaisedButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Popover from 'material-ui/Popover';
 import Checkbox from 'material-ui/Checkbox';
 import DatePicker from 'material-ui/DatePicker';
@@ -14,7 +16,6 @@ import Dialog from 'material-ui/Dialog';
 import api from '../../Api/Django';
 import toastr from 'toastr';
 import VehiculosForm from './VehiculosForm';
-
 
 
 class NewPoliza extends Component{
@@ -51,28 +52,43 @@ class NewPoliza extends Component{
     }
   }
 
+
+
+
+
   componentWillMount(){
     api.getProfile().then(r=>{
       this.setState({user:r})
       console.log()
     })
     api.getClients().then(r=>{
-      this.setState({clientesobj:r});
+      this.setState({clientesobj:r.results});
       console.log(this.state.clientesobj)
 
     })
     api.getAsesores().then(r=>{
-      this.setState({asesoresobj:r});
+      this.setState({asesoresobj:r.results});
       console.log(this.state.asesoresobj)
 
     })
   }
   search=(event)=>{
     this.setState({search:event.target.value})
+      console.log(this.state.search)
+      api.getClients('http://localhost:8000/api/clientes/?q='+ this.state.search).then(r=>{
+          this.setState({clientesobj:r.results});
+          console.log(this.state.clientesobj)
+
+      })
+
   };
   search2=(event)=>{
     this.setState({search2:event.target.value})
+      api.getAsesores('http://localhost:8000/api/asesores/?q='+ this.state.search2).then(r=>{
+          this.setState({asesoresobj:r.results});
+          console.log(this.state.asesoresobj)
 
+      })
   };
   guardar=()=>{
     console.log(this.state.poliza)
@@ -155,7 +171,7 @@ class NewPoliza extends Component{
       this.setState({lastOption:value,poliza});
     }
     handleSeguroDaños = (event, index, value) => {
-      let field = 'daños';
+      let field = 'danhos';
       let poliza = this.state.poliza;
       poliza[field] = value;
       this.setState({segurodaños:value,poliza});
@@ -184,9 +200,10 @@ class NewPoliza extends Component{
      handleDates =(e,val)=>{
        let field = this.state.lafecha;
        let poliza = this.state.poliza;
-       poliza[field] = val;
+       let editada = Date.parse(val)
+         editada = editada.toString()
+       poliza[field] = editada;
        this.setState({poliza});
-
      };
      testing=(e)=>{
        this.setState({lafecha:e.target.name});
@@ -226,6 +243,18 @@ class NewPoliza extends Component{
         console.log(e);
       })
     };
+    restart=()=>{
+        this.props.history.push('/polizas/nueva');
+        this.props.history.goBack();
+    }
+    buscarCliente=()=>{
+        let url = 'http://localhost:8000/api/clientes/?q=' + this.state.search
+        api.getClients().then(r=>{
+            this.setState({clientesobj:r.results});
+            console.log(this.state.clientesobj)
+
+        })
+    }
 
 
 
@@ -248,21 +277,22 @@ class NewPoliza extends Component{
       })
       let asesoresfilt = this.state.asesoresobj.filter((asesor)=>{
 
-        if(asesor.username !== null){
+
           return asesor.username.toLowerCase()
                   .indexOf(this.state.search2.toLowerCase())!== -1
               ||
             asesor.profile.asesorId.toLowerCase()
                 .indexOf(this.state.search2.toLowerCase())!== -1
-        }// }else{
-        // return asesor.pnombre.toLowerCase().indexOf(
-        //   this.state.search.toLowerCase())!== -1 ||
-        //   asesor.idcliente.toLowerCase().indexOf(
-        //     this.state.search.toLowerCase())!== -1
-        // }
+
+
       })
     return(
-      <div >
+      <div style={{position:'relative'}}>
+          <FloatingActionButton
+              backgroundColor={'rgb(87, 101, 142)'}
+              onTouchTap={this.restart} style={{position:'absolute', top:-10, right:60}}>
+              <ContentAdd />
+          </FloatingActionButton>
         <Paper style={{maxWidth:'80%' ,
         margin:'0 auto',
         marginTop:30,
@@ -272,7 +302,7 @@ class NewPoliza extends Component{
         <form>
         <Toolbar>
           <ToolbarTitle
-              text="Datos Básicos"
+              text="Datos Básicos(*Campos Requeridos)"
           />
 
         {this.state.user.is_staff?
@@ -287,7 +317,7 @@ class NewPoliza extends Component{
                 value={this.state.search2}
                 onChange={this.search2}
                 fullWidth={true}
-                floatingLabelText={this.state.selected2?'ID: '+this.state.selected2.profile.asesorId:'ID Asesor'}
+                floatingLabelText={this.state.selected2?'*ID: '+this.state.selected2.profile.asesorId:'*ID Asesor'}
                 onTouchTap={this.handleTouchTap2}/>
                 <Popover
                 style={{width:'30%', height:'200px'}}
@@ -297,9 +327,9 @@ class NewPoliza extends Component{
                  targetOrigin={{horizontal: 'left', vertical: 'top'}}
                  onRequestClose={this.handleRequestClose}
                >
-                {asesoresfilt.map(f=>{
+                {asesoresfilt.map((f,key)=>{
                   return(
-                  <MenuItem key={f.id} onTouchTap={()=>this.selectItem2(f)}>
+                  <MenuItem key={key} onTouchTap={()=>this.selectItem2(f)}>
                     <div style={{margin:0, position:'relative'}}>
                       {f.username}
                       <p
@@ -324,8 +354,8 @@ class NewPoliza extends Component{
         </Toolbar>
 
           <div style={{padding:'1%'}}>
-            <GridList cols={4} cellHeight='auto'>
-              <GridTile style={{padding:'1.5%'}} cols={2}>
+            <GridList cols={8} cellHeight='auto'>
+              <GridTile style={{padding:'1.5%'}} cols={4}>
                 <TextField
                   floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                   underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
@@ -335,7 +365,7 @@ class NewPoliza extends Component{
                   value={this.state.search}
                   onChange={this.search}
                   fullWidth={true}
-                  floatingLabelText={this.state.selected?'ID: '+this.state.selected.idcliente:'ID Cliente'}
+                  floatingLabelText={this.state.selected?'*ID: '+this.state.selected.idcliente:'*ID Cliente'}
                   onTouchTap={this.handleTouchTap}/>
                   <Popover
                   style={{width:'30%', height:'200px'}}
@@ -345,9 +375,9 @@ class NewPoliza extends Component{
                    targetOrigin={{horizontal: 'left', vertical: 'top'}}
                    onRequestClose={this.handleRequestClose}
                  >
-                  {filtered.map(f=>{
+                  {filtered.map((f,key)=>{
                     return(
-                    <MenuItem key={f.id} onTouchTap={()=>this.selectItem(f)}>
+                    <MenuItem key={key} onTouchTap={()=>this.selectItem(f)}>
                       <div style={{margin:0, position:'relative'}}>
                         {f.rsocial?f.rsocial:f.pnombre+' '+f.apaterno+' '+f.amaterno}
                         <p
@@ -371,12 +401,36 @@ class NewPoliza extends Component{
                   floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                   underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                   disabled={this.state.editar?false:true}
-                  name='idpoliza'
+                  name='emisor'
                   onChange={this.handleText}
-                  hintText="444455554444"
-                  floatingLabelText="Póliza"
+                  hintText="4444"
+                  floatingLabelText="*Emisor"
                 /><br />
               </GridTile>
+                <GridTile style={{padding:'3%'}}>
+
+                    <TextField
+                        floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                        underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                        disabled={this.state.editar?false:true}
+                        name='carpeta'
+                        onChange={this.handleText}
+                        hintText="5555"
+                        floatingLabelText="*Carpeta"
+                    /><br />
+                </GridTile>
+                <GridTile style={{padding:'3%'}}>
+
+                    <TextField
+                        floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                        underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                        disabled={this.state.editar?false:true}
+                        name='idpoliza'
+                        onChange={this.handleText}
+                        hintText="4455"
+                        floatingLabelText="*Póliza"
+                    /><br />
+                </GridTile>
               <GridTile style={{padding:'3%'}}>
 
                 <TextField
@@ -386,7 +440,7 @@ class NewPoliza extends Component{
                   name='cis'
                   onChange={this.handleText}
                   hintText="55665544"
-                  floatingLabelText="CIS"
+                  floatingLabelText="*CIS"
                 /><br />
               </GridTile>
             </GridList>
@@ -436,7 +490,7 @@ class NewPoliza extends Component{
                   disabled={this.state.editar?false:true}
                   name='pago'
                   id='pago'
-                 floatingLabelText="Forma de Pago"
+                 floatingLabelText="*Forma de Pago"
                  value={this.state.value}
                  onTouchTap={this.trie}
                  onChange={this.handleChange}
@@ -620,7 +674,7 @@ class NewPoliza extends Component{
                 this.state.nextOption==='Daños'?<div>
                 <SelectField
                   disabled={this.state.editar?false:true}
-                  name='daño'
+                  name='danhos'
                   fullWidth={true}
                  floatingLabelText="Daños"
                  value={this.state.segurodaños}
@@ -712,7 +766,7 @@ class NewPoliza extends Component{
 
           </Toolbar>
           {/*cars form*/}
-          {this.state.poliza.daños==='Autos y Camiones'?
+          {this.state.poliza.danhos==='Autos y Camiones'?
             <div>
               <GridList cols={1} cellHeight='auto' style={{padding:'1%'}}>
                 <GridTile>
@@ -735,9 +789,9 @@ class NewPoliza extends Component{
               </GridList>
               <div style={{padding:'1%'}}>
                 <h3>Vehículos Registrados</h3>
-                {this.state.vehiculos.map(v=>{
+                {this.state.vehiculos.map((v,key)=>{
                   return(
-                    <Card>
+                    <Card key={key}>
                       <CardHeader
                         title={v.marca}
                         subtitle={v.placa}

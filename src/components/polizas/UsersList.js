@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {SelectField, MenuItem} from 'material-ui';
 import api from '../../Api/Django';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
 import MainLoader from '../common/MainLoader';
@@ -14,6 +15,7 @@ import MainLoader from '../common/MainLoader';
 import 'moment/locale/es';
 import moment from 'moment';
 import Aprobar from './Aprobar';
+
 
 
 
@@ -36,6 +38,9 @@ const griddleStyles={
     Table:{width:'100%'},
     SettingsWrapper:{display:'none'},
     Filter:{
+      position:'absolute',
+        top:5,
+        left:10,
       padding:'1% 3%',
       width:'50%',
       margin:'2% 0',
@@ -68,7 +73,12 @@ class UsersList extends Component{
     super()
     this.state={
       loading:true,
-      usuarios:[]
+        search:'',
+      usuarios:[{
+        profile:{
+          tipo:''
+        }
+      }]
     }
   }
   componentWillMount(){
@@ -90,9 +100,18 @@ class UsersList extends Component{
       this.setState({usuarios});
     }
   }
+
+  onChange=(event, index, value)=>{
+    this.setState({search:value})
+  }
+
   render(){
+      let filtered = this.state.usuarios.filter((usuario)=>{
+          return usuario.profile.tipo.toLowerCase().indexOf(
+              this.state.search.toLowerCase())!== -1
+      })
     return(
-      <div>
+      <div style={{position:'relative', paddingTop:'10%'}}>
         {this.state.loading && <MainLoader/>}
         {/*<Table>
           <TableHeader>
@@ -120,10 +139,27 @@ class UsersList extends Component{
 
           </TableBody>
         </Table>*/}
+
+        <div style={{position:'absolute', right:10, top:10, textAlign:'left'}}>
+          <SelectField
+
+
+              value={this.state.search}
+              onChange={this.onChange}
+          >
+
+            <MenuItem value='' primaryText="Todos" />
+            <MenuItem value={'asesor'} primaryText="Asesor" />
+            <MenuItem value={'general'} primaryText="General" />
+            <MenuItem value={'cliente'} primaryText="Cliente" />
+
+          </SelectField>
+        </div>
         <Griddle
-          data={this.state.usuarios}
+          data={filtered}
           plugins={[plugins.LocalPlugin]}
-          styleConfig={griddleStyles}>
+          styleConfig={griddleStyles}
+          >
           <RowDefinition>
             <ColumnDefinition id="id" title="Aprobar" customComponent={Detalle} />
 
@@ -140,3 +176,6 @@ class UsersList extends Component{
 }
 
 export default UsersList;
+
+
+
