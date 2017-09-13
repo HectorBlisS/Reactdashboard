@@ -117,6 +117,30 @@ const api = {
 
         });
     },
+    updateCita: (id,datos) => {
+
+        const userToken = JSON.parse(localStorage.getItem('userToken'));
+
+        return new Promise(function (resolve, reject) {
+            const instance = axios.create({
+                baseURL: citasUrl,
+                //timeout: 2000,
+                headers: {'Content-Type': 'application/json',
+                    'Authorization': 'Token ' + userToken}
+            });
+            instance.patch(id+'/',datos)
+                .then(function (response) {
+
+                    resolve(response.data);
+                })
+                .catch(function (error) {
+                    console.log(error.response);
+                    reject(error);
+                });
+
+
+        });
+    },
     //Claves de Asesor
 
     newClave:(clave)=>{

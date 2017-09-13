@@ -27,7 +27,13 @@ class MiPerfil extends React.Component{
         this.state={
             user:{},
             asesor:{},
+            candidato:{
+                clave_asesor:[],
+                archivos_asesor:[]
+            },
             archivos:[],
+            clave:[],
+
             open:false,
         }
     }
@@ -41,9 +47,10 @@ class MiPerfil extends React.Component{
             api.getProfile()
                 .then(r=>{
                     this.setState({user:r,asesor:r.asesor_user});
-                    api.getAsesorArchivos(r.asesor_user.id).then(r=>{
-                        this.setState({archivos:r})
-                        console.log(this.state.archivos)
+                    console.log(this.state.user)
+                    api.getCandidato(r.asesor_user.id).then(r=>{
+                        this.setState({candidato:r})
+
                     })
                     if(!r.profile.aprobado){
                         this.props.history.push('/perfil');
@@ -151,7 +158,7 @@ class MiPerfil extends React.Component{
                                         label="Archivos" value="a">
 
                                         <List>
-                                            {this.state.archivos.map((archivo,key)=>{
+                                            {this.state.candidato.archivos_asesor.map((archivo,key)=>{
                                                 return(
                                                     <ListItem
                                                         key={key}
@@ -171,12 +178,27 @@ class MiPerfil extends React.Component{
 
                                         </List>
                                     </Tab>
+
                                     <Tab
                                         style={{color:'#57658e'}}
-                                        label="Metas" value="b">Metas</Tab>
-                                    <Tab
-                                        style={{color:'#57658e'}}
-                                        label="Clave" value="c">Clave</Tab>
+                                        label="Clave" value="b">
+                                        <List>
+                                            {this.state.candidato.clave_asesor.map((archivo,key)=>{
+                                                return(
+                                                    <ListItem
+                                                        key={key}
+                                                        primaryText={archivo.clave}
+                                                        secondaryText={archivo.clave_stat?'Válido':'No válido'}
+                                                        />
+
+
+
+                                                )
+                                            })}
+
+
+                                        </List>
+                                    </Tab>
 
 
 

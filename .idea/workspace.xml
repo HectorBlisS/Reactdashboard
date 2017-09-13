@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a6db8f6-ff57-4b2c-a784-9f41afded8f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Api/Django.js" afterPath="$PROJECT_DIR$/src/Api/Django.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/Aprobar.js" afterPath="$PROJECT_DIR$/src/components/polizas/Aprobar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/AsesoresList.js" afterPath="$PROJECT_DIR$/src/components/polizas/AsesoresList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/CandidatosList.js" afterPath="$PROJECT_DIR$/src/components/polizas/CandidatosList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/ClientDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/ClientDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/ClienteList.js" afterPath="$PROJECT_DIR$/src/components/polizas/ClienteList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" afterPath="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaList.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaSections.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaSections.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/UsersList.js" afterPath="$PROJECT_DIR$/src/components/polizas/UsersList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" afterPath="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/MiPerfil.js" afterPath="$PROJECT_DIR$/src/components/polizas/MiPerfil.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,8 +56,8 @@
       <file leaf-file-name="CandidatoDetail.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="349" column="75" lean-forward="false" selection-start-line="349" selection-start-column="75" selection-end-line="349" selection-end-column="75" />
+            <state relative-caret-position="237">
+              <caret line="362" column="37" lean-forward="false" selection-start-line="362" selection-start-column="37" selection-end-line="362" selection-end-column="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -90,8 +78,8 @@
       <file leaf-file-name="MiPerfil.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/MiPerfil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1339">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="237">
+              <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -102,8 +90,8 @@
       <file leaf-file-name="Django.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-683">
-              <caret line="53" column="52" lean-forward="true" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
+            <state relative-caret-position="338">
+              <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
               <folding>
                 <element signature="e#1#27#0" expanded="true" />
               </folding>
@@ -166,7 +154,6 @@
       <find>pestana</find>
       <find>postve</find>
       <find>datepi</find>
-      <find>patch</find>
       <find>updateasesor</find>
       <find>updatease</find>
       <find>match</find>
@@ -185,6 +172,7 @@
       <find>dialo</find>
       <find>getasesores</find>
       <find>handleDate</find>
+      <find>patch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,8 +205,8 @@
         <option value="$PROJECT_DIR$/src/components/polizas/PolizaList.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/AsesoresList.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
-        <option value="$PROJECT_DIR$/src/Api/Django.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/MiPerfil.js" />
+        <option value="$PROJECT_DIR$/src/Api/Django.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
       </list>
     </option>
@@ -407,18 +395,18 @@
       <workItem from="1504286616432" duration="2783000" />
       <workItem from="1504298328397" duration="50141000" />
       <workItem from="1504751889551" duration="17844000" />
-      <workItem from="1505145578151" duration="23632000" />
+      <workItem from="1505145578151" duration="30653000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108705000" />
+    <option name="totallyTimeSpent" value="115726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="726" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15726767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15726767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -833,30 +821,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-683">
-          <caret line="53" column="52" lean-forward="true" selection-start-line="53" selection-start-column="52" selection-end-line="53" selection-end-column="52" />
-          <folding>
-            <element signature="e#1#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/MiPerfil.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1339">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+        <state relative-caret-position="237">
+          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="349" column="75" lean-forward="false" selection-start-line="349" selection-start-column="75" selection-end-line="349" selection-end-column="75" />
+        <state relative-caret-position="237">
+          <caret line="362" column="37" lean-forward="false" selection-start-line="362" selection-start-column="37" selection-end-line="362" selection-end-column="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

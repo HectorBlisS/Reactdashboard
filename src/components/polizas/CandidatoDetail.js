@@ -1,5 +1,5 @@
 import React from 'react';
-import {GridList, GridTile, Tabs, Tab, List, ListItem, RaisedButton, Dialog, TextField, FloatingActionButton,SelectField,MenuItem, DatePicker} from 'material-ui';
+import {GridList, GridTile, Tabs, Tab, List, ListItem, RaisedButton, Dialog, TextField, FloatingActionButton,SelectField,MenuItem, DatePicker, Toggle} from 'material-ui';
 import api from '../../Api/Django';
 import 'moment/locale/es';
 import moment from 'moment';
@@ -33,9 +33,11 @@ class CandidatoDetail extends React.Component {
         newCita:false,
         newCurso:false,
         archivo:{},
+        upcita:{},
         clave:{},
         curso:{},
         cita:{},
+        asistio:'',
       value:'a',
         tipoDoc:'',
         tipoClave:'',
@@ -196,12 +198,21 @@ class CandidatoDetail extends React.Component {
     handleCloseCita = () => {
         this.setState({newCita: false});
     };
-    citaText=(e)=>{
+
+    selectAsistencia=(event, index, value) => {
+        let upcita = this.state.upcita
+        upcita['status'] = value
+        this.setState({asistio:value,upcita});
+
+    }
+    citaUpdateText=(e)=>{
+
         let field=e.target.name
-        let cita = this.state.cita
-        cita[field] = e.target.value
-        this.setState({cita});
-        console.log(this.state.cita)
+        let upcita = this.state.upcita
+        upcita[field] = e.target.value
+        upcita['id'] =parseInt(e.target.id)
+        this.setState({upcita});
+        console.log(this.state.upcita)
     }
     handleDateCita =(e,val)=>{
         let field = 'fecha';
@@ -211,6 +222,20 @@ class CandidatoDetail extends React.Component {
         cita[field] = editada;
         this.setState({cita});
     };
+    updateCita=(key)=>{
+        console.log(key)
+        api.updateCita(this.state.upcita.id,this.state.upcita).then(r=>{
+            let citas = this.state.citas
+            citas.splice(key,1)
+            citas.splice(key,0,r)
+            this.setState({citas})
+            // let citas = this.state.citas
+            //citas.push(r)
+            //this.setState({citas, newCita:false})
+        }).catch(e=>{
+            console.log(e)
+        })
+    }
     newCita=()=>{
         api.newCita(this.state.cita).then(r=>{
             let citas = this.state.citas
@@ -335,8 +360,7 @@ class CandidatoDetail extends React.Component {
                                      onRequestClose={this.handleCloseCita}
                                  >
                                      <DatePicker hintText="Fecha " autoOk={true} onChange={this.handleDateCita}/>
-
-                                     <TextField floatingLabelText='Comentarios' name="comentarios" multiLine={true} onChange={this.citaText}/>
+                                     
                                      <br/>
 
                                      <RaisedButton fullWidth={true} label={'Guardar'} onTouchTap={this.newCita}/>
@@ -347,8 +371,38 @@ class CandidatoDetail extends React.Component {
                                              <ListItem
                                                  key={key}
                                                  primaryText={moment(parseInt(cita.fecha)).format('LL')}
-                                                 secondaryText={cita.status}
-                                                 nestedItems={[<p>{cita.comentarios}</p>]}
+                                                 secondaryText={cita.status==='espera'?'En espera':cita.status==='si'?'Si Asistió':cita.status==='no'?'No Asistió':''}
+                                                 nestedItems={[<ListItem key={key} disabled={true}>
+                                                     {cita.status!=='espera'?
+                                                         <div>
+                                                             <p>{cita.comentarios}</p>
+                                                         </div>:
+                                                         <div>
+                                                             <GridList cellHeight={'auto'}>
+                                                                 <GridTile>
+                                                                     <TextField name="comentarios" onChange={this.citaUpdateText}
+                                                                                floatingLabelText="Comentarios"
+                                                                                id={cita.id}
+                                                                                multiLine={true}/>
+                                                                 </GridTile>
+                                                                 <GridTile>
+                                                                     <SelectField
+                                                                         floatingLabelText="¿Asistió?"
+                                                                         value={this.state.asistio}
+                                                                         onChange={this.selectAsistencia}
+                                                                     >
+                                                                         <MenuItem value={'si'} primaryText="Si" />
+                                                                         <MenuItem value={'no'} primaryText="No" />
+
+                                                                     </SelectField>
+                                                                 </GridTile>
+                                                             </GridList>
+
+
+                                                             <RaisedButton fullWidth={true} label={'Guardar'} onTouchTap={()=>this.updateCita(key)}/>
+                                                         </div>}
+
+                                                 </ListItem>]}
                                                  />
 
 
