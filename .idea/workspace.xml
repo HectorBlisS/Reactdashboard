@@ -3,21 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a6db8f6-ff57-4b2c-a784-9f41afded8f6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Api/Django.js" afterPath="$PROJECT_DIR$/src/Api/Django.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/common/logIn.js" afterPath="$PROJECT_DIR$/src/components/common/logIn.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/integrate/Integrate.js" afterPath="$PROJECT_DIR$/src/components/integrate/Integrate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/nav/Nav.css" afterPath="$PROJECT_DIR$/src/components/nav/Nav.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/Aprobar.js" afterPath="$PROJECT_DIR$/src/components/polizas/Aprobar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/AsesoresList.js" afterPath="$PROJECT_DIR$/src/components/polizas/AsesoresList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/ClienteList.js" afterPath="$PROJECT_DIR$/src/components/polizas/ClienteList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" afterPath="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaList.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/UsersList.js" afterPath="$PROJECT_DIR$/src/components/polizas/UsersList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" afterPath="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,8 +22,8 @@
       <file leaf-file-name="NewPoliza.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/NewPoliza.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="415" column="46" lean-forward="true" selection-start-line="415" selection-start-column="46" selection-end-line="415" selection-end-column="46" />
+            <state relative-caret-position="7695">
+              <caret line="528" column="0" lean-forward="false" selection-start-line="528" selection-start-column="0" selection-end-line="528" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -49,7 +34,7 @@
       <file leaf-file-name="VehiculosForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/VehiculosForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-356">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -61,8 +46,8 @@
       <file leaf-file-name="Django.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            <state relative-caret-position="330">
+              <caret line="22" column="64" lean-forward="true" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
               <folding>
                 <element signature="e#1#27#0" expanded="true" />
               </folding>
@@ -70,11 +55,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="firebase.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Api/firebase.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="PolizaDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="126" column="35" lean-forward="false" selection-start-line="126" selection-start-column="35" selection-end-line="126" selection-end-column="35" />
+            <state relative-caret-position="1935">
+              <caret line="143" column="35" lean-forward="false" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -85,7 +80,7 @@
       <file leaf-file-name="Aprobar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/Aprobar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="390">
               <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -97,7 +92,7 @@
       <file leaf-file-name="UserProfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/userprofile/UserProfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
+            <state relative-caret-position="1470">
               <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
               <folding />
             </state>
@@ -107,7 +102,7 @@
       <file leaf-file-name="CandidatoDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
+            <state relative-caret-position="555">
               <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -170,12 +165,12 @@
         <option value="$PROJECT_DIR$/src/components/integrate/Integrate.js" />
         <option value="$PROJECT_DIR$/src/components/nav/Nav.css" />
         <option value="$PROJECT_DIR$/src/components/nav/Nav.js" />
-        <option value="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/Aprobar.js" />
         <option value="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
         <option value="$PROJECT_DIR$/src/Api/Django.js" />
+        <option value="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
       </list>
     </option>
   </component>
@@ -218,39 +213,13 @@
         <subPane>
           <expand>
             <path>
-              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dipra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dipra" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="dipra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dipra" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="polizas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="userprofile" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -356,26 +325,28 @@
       <workItem from="1504286497596" duration="85000" />
       <workItem from="1504286616432" duration="2783000" />
       <workItem from="1504298328397" duration="7945000" />
+      <workItem from="1504718550857" duration="609000" />
+      <workItem from="1506097726786" duration="24000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25033000" />
+    <option name="totallyTimeSpent" value="25666000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="194" y="23" width="1324" height="726" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14876033" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14735226" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -417,16 +388,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/userprofile/UserProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/nav/Nav.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -452,9 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -489,9 +447,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1860">
           <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -520,9 +476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -557,9 +510,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2115">
           <caret line="141" column="5" lean-forward="false" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -739,9 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -754,7 +702,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/VehiculosForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-356">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -764,8 +712,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/NewPoliza.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="415" column="46" lean-forward="true" selection-start-line="415" selection-start-column="46" selection-end-line="415" selection-end-column="46" />
+        <state relative-caret-position="7695">
+          <caret line="528" column="0" lean-forward="false" selection-start-line="528" selection-start-column="0" selection-end-line="528" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -774,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="126" column="35" lean-forward="false" selection-start-line="126" selection-start-column="35" selection-end-line="126" selection-end-column="35" />
+        <state relative-caret-position="1935">
+          <caret line="143" column="35" lean-forward="false" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -784,7 +732,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/Aprobar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
+        <state relative-caret-position="390">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
@@ -794,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/userprofile/UserProfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
+        <state relative-caret-position="1470">
           <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
           <folding />
         </state>
@@ -802,7 +750,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
+        <state relative-caret-position="555">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -810,10 +758,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Api/firebase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="330">
+          <caret line="22" column="64" lean-forward="true" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
           <folding>
             <element signature="e#1#27#0" expanded="true" />
           </folding>
