@@ -3,6 +3,7 @@ import api from '../../Api/Django';
 import {GridList, GridTile, Dialog, RaisedButton, TextField, DatePicker} from 'material-ui';
 import Griddle, { plugins, RowDefinition, ColumnDefinition} from 'griddle-react';
 import {Link} from 'react-router-dom';
+import {SelectField, MenuItem} from 'material-ui';
 import toastr from 'toastr';
 import MainLoader from '../common/MainLoader';
 import 'moment/locale/es';
@@ -29,7 +30,7 @@ const Cita = ({value}) => {
     </div>
   )
 }
-const Comentario = ({value}) => <p>{value}</p>
+
 const CustomColumn2 = ({value}) => {
   moment.locale('es')
   let fecha = value
@@ -42,8 +43,11 @@ const griddleStyles={
     Table:{width:'100%'},
     SettingsWrapper:{display:'none'},
     Filter:{
+        position:'absolute',
+        top:5,
+        left:5,
       padding:'1% 3%',
-      width:'50%',
+      width:'30%',
       margin:'2% 0',
       borderRadius:'5px',
       borderColor:'rgb(224, 224, 224)',
@@ -72,6 +76,7 @@ class CandidatosList extends React.Component {
   constructor(){
     super()
     this.state={
+        search:'',
       loading:true,
       candidatos:[],
       open:false,
@@ -81,7 +86,7 @@ class CandidatosList extends React.Component {
 
   componentWillMount(){
     api.getCandidatos().then(r=>{
-      this.setState({candidatos:r, loading:false})
+      this.setState({candidatos:r.reverse(), loading:false})
       console.log(r)
     }).catch(e=>{
       console.log(e)
@@ -132,11 +137,41 @@ class CandidatosList extends React.Component {
     })
   }
 
+    onChange=(event, index, value)=>{
+        this.setState({search:value})
+    }
 
 
   render () {
+     let candidatos = this.state.candidatos.filter(candidato=>{
+         if(this.state.search===''){
+             return candidato
+         }else{
+             return (
+                 candidato.candidato===this.state.search
+             )
+         }
+
+
+     })
+
     return(
-      <div style={{padding:'1% 4%', position:'relative'}}>
+      <div style={{padding:'10% 4%', position:'relative'}}>
+          <div style={{position:'absolute', right:200, top:10, textAlign:'left'}}>
+              <SelectField
+
+
+                  value={this.state.search}
+                  onChange={this.onChange}
+              >
+
+                  <MenuItem value='' primaryText="Todos" />
+                  <MenuItem value={false} primaryText="Asesor" />
+                  <MenuItem value={true} primaryText="Candidato" />
+
+
+              </SelectField>
+          </div>
             {this.state.loading && <MainLoader/>}
             <div style={{position:'absolute', top:20, right:50}}>
               <RaisedButton
@@ -210,7 +245,7 @@ class CandidatosList extends React.Component {
                </Dialog>
             </div>
             <Griddle
-              data={this.state.candidatos.reverse()}
+              data={candidatos}
               plugins={[plugins.LocalPlugin]}
               styleConfig={griddleStyles}>
               <RowDefinition>

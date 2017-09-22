@@ -6,7 +6,7 @@ import toastr from 'toastr';
 import {GridList, GridTile} from 'material-ui';
 import moment from 'moment';
 import {Paper,Toolbar,ToolbarTitle,TextField,
-  Divider,RadioButton,RadioButtonGroup, MenuItem, DatePicker, SelectField} from 'material-ui';
+  Divider,RadioButton,RadioButtonGroup} from 'material-ui';
 
 
 class ClientDetail extends Component{
@@ -847,9 +847,9 @@ addPolicy=()=>{
             <Tab label="Polizas" value="b">
               <div style={{position:'relative'}}>
 
-                {this.state.cliente.poliza_cliente.map(poliza=>{
+                {this.state.cliente.poliza_cliente.map((poliza,key)=>{
                   return(
-                    <Card>
+                    <Card key={key}>
                      <CardHeader
                        title={'Poliza '+poliza.idpoliza}
                        actAsExpander={true}
@@ -1014,8 +1014,8 @@ addPolicy=()=>{
                              floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                              underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                              floatingLabelText="Tipo"
-                             name={poliza.next==='Daños'?'daños':'last'}
-                             value={poliza.next==='Daños'?poliza.daños:poliza.last}
+                             name={poliza.next==='Daños'?'danhos':'last'}
+                             value={poliza.next==='Daños'?poliza.danhos:poliza.last}
                              disabled={true}/>
                          </GridTile>
                        </GridList>

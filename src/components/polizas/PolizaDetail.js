@@ -69,10 +69,13 @@ class PolizaDetail extends Component{
 
 
   }
+
     handleDates =(e,val)=>{
         let field = this.state.lafecha;
         let poliza = this.state.poliza;
-        poliza[field] = val;
+        let editada = Date.parse(val)
+        editada = editada.toString()
+        poliza[field] = editada;
         this.setState({poliza});
 
     };
@@ -153,6 +156,7 @@ class PolizaDetail extends Component{
       toastr.success('Editada con éxito')
 
       this.setState({editar:true})
+        this.forceUpdate()
     })
   }
 
@@ -184,8 +188,8 @@ class PolizaDetail extends Component{
         </Toolbar>
 
         <div style={{padding:'1%'}}>
-          <GridList cols={4} cellHeight='auto'>
-            <GridTile style={{padding:'1.5%'}} cols={2}>
+          <GridList cols={8} cellHeight='auto'>
+            <GridTile style={{padding:'1.5%'}} cols={4}>
               <TextField
                 floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                 underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
@@ -196,16 +200,40 @@ class PolizaDetail extends Component{
                 disabled={this.state.editar}/>
 
             </GridTile>
+
             <GridTile style={{padding:'3%'}}>
 
               <TextField
                 floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
                 underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
                 onChange={this.handleText}
-                floatingLabelText="ID"
-                value={this.state.poliza.idpoliza}
-                name="idpoliza"
+                floatingLabelText="Emisor"
+                value={this.state.poliza.emisor}
+                name="emisor"
                 disabled={this.state.editar}/><br />
+
+            </GridTile>
+            <GridTile style={{padding:'3%'}}>
+
+              <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                  onChange={this.handleText}
+                  floatingLabelText="Carpeta"
+                  value={this.state.poliza.carpeta}
+                  name="carpeta"
+                  disabled={this.state.editar}/><br />
+            </GridTile>
+            <GridTile style={{padding:'3%'}}>
+
+              <TextField
+                  floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                  underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                  onChange={this.handleText}
+                  floatingLabelText="ID"
+                  value={this.state.poliza.idpoliza}
+                  name="idpoliza"
+                  disabled={this.state.editar}/><br />
             </GridTile>
             <GridTile style={{padding:'3%'}}>
 
@@ -238,16 +266,28 @@ class PolizaDetail extends Component{
             </GridTile>
             <GridTile cols={1}>
 
-               <DatePicker
-                   onChange={this.handleDates}
-                   onTouchTap={this.testing}
-                   autoOk={true}
-                 floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
-                 underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
-                 floatingLabelText="Fecha"
-                 name="apertura"
+                {!this.state.editar?
+                    <DatePicker
+                        onChange={this.handleDates}
+                        onTouchTap={this.testing}
+                        autoOk={true}
 
-                 disabled={this.state.editar}/>
+                        floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                        underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                        floatingLabelText="Fecha"
+                        name="apertura"
+                        />:
+                    <TextField
+                    floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                    underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                    onChange={this.handleText}
+                    floatingLabelText="Fecha"
+                    name="apertura"
+                    value={moment(this.state.poliza.apertura).format('LL')}
+                    disabled={this.state.editar}/>
+
+
+                }
             </GridTile>
             <GridTile cols={1}>
               <TextField
@@ -344,8 +384,8 @@ class PolizaDetail extends Component{
                 floatingLabelText="Tipo"
                 onChange={this.handleText}
 
-                name={this.state.poliza.next==='Daños'?'daños':'last'}
-                value={this.state.poliza.next==='Daños'?this.state.poliza.daños:this.state.poliza.last}
+                name={this.state.poliza.next==='Daños'?'danhos':'last'}
+                value={this.state.poliza.next==='Daños'?this.state.poliza.danhos:this.state.poliza.last}
                 disabled={this.state.editar}/>
             </GridTile>
           </GridList>
@@ -359,7 +399,7 @@ class PolizaDetail extends Component{
               onTouchTap={this.updatePoliza}/>
           </div>:''}
 
-          {this.state.poliza.daños==='Autos y Camiones'?
+          {this.state.poliza.danhos==='Autos y Camiones'?
 
             <div style={{padding:'1%'}}>
               <GridList cols={2} cellHeight='auto'>
@@ -386,9 +426,9 @@ class PolizaDetail extends Component{
               </GridList>
 
               <h3>Vehículos Registrados</h3>
-              {this.state.vehiculos.map(v=>{
+              {this.state.vehiculos.map((v,i)=>{
                 return(
-                  <Card>
+                  <Card key={i}>
                     <CardHeader
                       title={v.marca}
                       subtitle={v.modelo}
@@ -604,9 +644,9 @@ class PolizaDetail extends Component{
                             value={this.state.idRecibo}
                             onChange={this.handleIDrecibo}
                           >
-                            {this.state.poliza.recibo_poliza.map(re=>{
+                            {this.state.poliza.recibo_poliza.map((re,key)=>{
                               return(
-                                <MenuItem value={re.id} primaryText={'Recibo '+re.numero} />
+                                <MenuItem key={key} value={re.id} primaryText={'Recibo '+re.numero} />
                               )
                             })}
 
@@ -688,9 +728,9 @@ class PolizaDetail extends Component{
                         onTouchTap={this.pagado}/>
                     </div>
                 </Dialog>
-              {this.state.poliza.recibo_poliza.map(recibo=>{
+              {this.state.poliza.recibo_poliza.map((recibo,key)=>{
                 return(
-                  <Card>
+                  <Card key={key}>
                     <CardHeader
                       title={'Recibo #' +recibo.numero}
                       subtitleColor={recibo.pagado?'green':'red'}

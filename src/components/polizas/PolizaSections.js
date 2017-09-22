@@ -11,6 +11,7 @@ import UsersList from './UsersList';
 import Prospectos from './Prospectos';
 import CandidatosList from './CandidatosList';
 import CandidatoDetail from './CandidatoDetail';
+import MiPerfil from "./MiPerfil";
 
 
 class PolizaSections extends Component{
@@ -18,12 +19,18 @@ class PolizaSections extends Component{
   detail=()=>{
     return(<PolizaDetail location={this.props.location} match={this.props.match} history={this.props.history}/>)
   }
+  polizaList=()=>{
+      return(<PolizaList user={this.props.user} location={this.props.location} match={this.props.match} history={this.props.history}/>)
+  }
+  miPerfil=()=>{
+      return(<MiPerfil user={this.props.user}/>)
+  }
   
   render(){
     return(
       <div>
         <Route exct path={`${this.props.match.url}/clientes`} component={ClienteList}/>
-        <Route exact path={`${this.props.match.url}`} component={PolizaList}/>
+        <Route exact path={`${this.props.match.url}`} render={this.polizaList}/>
         <Route path={`${this.props.match.url}/nueva`} component={NewPoliza}/>
         <Route path={`${this.props.match.url}/detalle/:polizaId`} component={PolizaDetail}/>
         <Route path={`${this.props.match.url}/nuevo-cliente`} component={NewPolizaPage}/>
@@ -32,6 +39,7 @@ class PolizaSections extends Component{
         <Route path={`${this.props.match.url}/cliente/:clientId`} component={ClientDetail}/>
         <Route path={`${this.props.match.url}/prospectos`} component={Prospectos}/>
         <Route path={`${this.props.match.url}/candidatos`} component={CandidatosList}/>
+          <Route path={`${this.props.match.url}/perfil`} render={this.miPerfil}/>
         <Route path={`${this.props.match.url}/candidato/:candidatoId`} component={CandidatoDetail}/>
 
       </div>
