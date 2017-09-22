@@ -6,6 +6,7 @@ import CandidatoNav from './CandidatoNav';
 import CandidatoForm from './CandidatoForm';
 import CandidatoDetail from './CandidatoDetail';
 import {Route} from 'react-router-dom';
+import * as candidatosActions from '../../actions/candidatosActions';
 import './candidato.css';
 
 
@@ -13,7 +14,7 @@ class ReclutadorPage extends Component {
     constructor(props, context) {
         super(props, context);
         this.state={
-            candidatoLista:[],
+            candidatos:[],
             candidato:{},
             newCandidato:{}
 
@@ -21,11 +22,16 @@ class ReclutadorPage extends Component {
     }
 
 
+    componentWillReceiveProps(nextProps){
+        this.setState({candidatos:nextProps.candidatos});
+    }
+
+
     listaAndForm =()=>{
         return(
             <div style={{paddingTop:'74px'}}>
                 <CandidatoLista
-                    lista={this.state.candidatoLista}/>
+                    lista={this.state.candidatos}/>
 
             </div>
         )
@@ -37,6 +43,8 @@ class ReclutadorPage extends Component {
     };
 
     render() {
+        console.log(this.state.candidatos);
+        //console.log(this.state.candidatos);
         return (
             <div>
                 <CandidatoNav/>
@@ -56,15 +64,15 @@ class ReclutadorPage extends Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        state: state
+        candidatos: state.candidatos
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        //actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(candidatosActions, dispatch)
     }
 }
 
-//export default connect(mapStateToProps, mapDispatchToProps)(ReclutadorPage);
-export default ReclutadorPage
+export default connect(mapStateToProps, mapDispatchToProps)(ReclutadorPage);
+//export default ReclutadorPage

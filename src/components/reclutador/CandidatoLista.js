@@ -11,7 +11,7 @@ import {
 
 
 
-const Row =({candidato})=>(
+const ElRow =({candidato})=>(
     <TableRow>
         <TableRowColumn>{candidato.id}</TableRowColumn>
         <TableRowColumn>{candidato.nombre}</TableRowColumn>
@@ -41,9 +41,8 @@ const CandidatoLista = ({lista}) => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {lista.map(candidato=>{
-                        <Row candidato={candidato}/>
-                    })}
+                    {lista.map(c=><ElRow key={c.id} candidato={c}/>
+                    )}
                 </TableBody>
             </Table>
         </div>

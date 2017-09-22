@@ -11,9 +11,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import '../node_modules/moment/moment.js'
-
+import configureStore from './store/configureStore';
+import {Provider} from 'react-redux';
+import {loadCandidatos} from './actions/candidatosActions';
 
 injectTapEventPlugin();
+
+const store = configureStore();
+store.dispatch(loadCandidatos());
+
+
 
 
 
@@ -39,7 +46,13 @@ const WithRouter = () => (
     </BrowserRouter>
 );
 
+const WithProvider = () => (
+    <Provider store={store}>
+        <WithRouter/>
+    </Provider>
+);
 
-ReactDOM.render(<WithRouter />, document.getElementById('root'));
+
+ReactDOM.render(<WithProvider />, document.getElementById('root'));
 
 registerServiceWorker();

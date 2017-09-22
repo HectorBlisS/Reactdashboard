@@ -3,7 +3,7 @@ import axios from 'axios';
 import FormData from 'form-data';
 
 
-let debug = true;
+let debug = false;
 
 let clientesUrl = 'http://dipra.planb.com.mx/api/clientes/';
 let polizasUrl = 'http://dipra.planb.com.mx/api/polizas/';
@@ -353,7 +353,7 @@ const api = {
             });
             instance.get()
                 .then(function (response) {
-
+                        //console.log(response.data)
                         resolve(response.data);
                 })
                 .catch(function (error) {
