@@ -557,13 +557,16 @@ const api = {
   getAsesores: (url) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
+        let newasesoresUrl
       if(url){
-          asesoresUrl=url;
+          newasesoresUrl=url;
+      }else{
+          newasesoresUrl=asesoresUrl
       }
 
         return new Promise(function (resolve, reject) {
             const instance = axios.create({
-                baseURL: asesoresUrl,
+                baseURL: newasesoresUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
                     'Authorization': 'Token ' + userToken}
@@ -683,13 +686,16 @@ const api = {
   getPolicys: (url) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
+      let newpolicyUrl
         if(url){
-          policysUrl=url;
-      }
+            newpolicyUrl=url;
+        }else{
+            newpolicyUrl=policysUrl
+        }
 
         return new Promise(function (resolve, reject) {
             const instance = axios.create({
-                baseURL: policysUrl,
+                baseURL: newpolicyUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
                     'Authorization': 'Token ' + userToken}
@@ -831,13 +837,16 @@ const api = {
   getClients: (url) => {
 
         const userToken = JSON.parse(localStorage.getItem('userToken'));
+        let newclientesUrl
       if(url){
-          clientesUrl=url;
+          newclientesUrl=url;
+      }else{
+          newclientesUrl=clientesUrl
       }
 
         return new Promise(function (resolve, reject) {
             const instance = axios.create({
-                baseURL: clientesUrl,
+                baseURL: newclientesUrl,
                 //timeout: 2000,
                 headers: {'Content-Type': 'application/json',
                     'Authorization': 'Token ' + userToken}

@@ -46,7 +46,7 @@ class PolizasPage extends Component {
           api.getProfile()
           .then(r=>{
               this.setState({user:r});
-              if(!r.profile.aprobado){
+              if(r.profile.tipo==='asesor' && !r.profile.aprobado){
                 this.props.history.push('/perfil');
                 toastr.warning('Aún no te han aprobado')
               }

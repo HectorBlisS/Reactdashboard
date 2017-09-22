@@ -6,6 +6,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {Card,CardHeader, CardText} from 'material-ui/Card';
+import {IconButton} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import {Link} from 'react-router-dom';
 import Footer from '../footer/Footer';
@@ -16,6 +17,7 @@ import Dialog from 'material-ui/Dialog';
 import {GridList, GridTile} from 'material-ui/GridList';
 import 'moment/locale/es';
 import moment from 'moment';
+import Per from 'material-ui/svg-icons/action/account-circle';
 
 
 const styles = {
@@ -571,9 +573,16 @@ class UserProfile extends Component {
 		        </SwipeableViews>
 		        </div>
 
+                <div className='btn_float3'>
+                    <Link to="/polizas">
+                        <IconButton tooltip={'Reclutador'} touch={true}>
+                            <Per/>
+                        </IconButton>
+                    </Link>
+                </div>
 		        <div className='btn_float'>
 		         	<FloatingActionButton style={{backgroundColor:'#'}} backgroundColor={'#57658E'} >
-				        <FontAwesome name='download' />
+				        <FontAwesome name='download' style={{color: '#fff'}}/>
 				      </FloatingActionButton>
 				    </div>
             {this.state.user.profile.aprobado?

@@ -5,6 +5,8 @@ import moment from 'moment';
 import {Link} from 'react-router-dom';
 import toastr from 'toastr';
 import RaisedButton from 'material-ui/RaisedButton';
+import Search from 'material-ui/svg-icons/action/search';
+import Otro from 'material-ui/svg-icons/action/list';
 import { DatePicker, IconButton, TextField} from 'material-ui';
 import Info from 'material-ui/svg-icons/action/info';
 import Delete from 'material-ui/svg-icons/action/delete';
@@ -61,6 +63,7 @@ const griddleStyles={
     Table:{width:'100%'},
     SettingsWrapper:{display:'none'},
     Filter:{
+        display:'none',
       position:'absolute',
         top:-10,
         left:10,
@@ -268,9 +271,21 @@ class PolizaList extends Component{
 
           </TableBody>
         </Table>*/}
-        <TextField onChange={this.hsearch} hintText="Busca por carpeta, emisor, poliza, asesor ID, o cliente ID" value={this.state.buscador1}/>
-          <RaisedButton onTouchTap={this.mysearch} label={'Buscar'}/>
-          <RaisedButton onTouchTap={this.todos} label={'Todos'}/>
+        <div style={{position:'absolute', left:10, top:15, textAlign:'left', display:'flex', }}>
+            <TextField
+                floatingLabelFocusStyle={{color:'rgb(87, 101, 142)'}}
+                underlineFocusStyle={{borderColor:'rgb(87, 101, 142)'}}
+                onChange={this.hsearch}
+                hintText="Busca por carpeta, emisor, poliza, asesor ID, o cliente ID"
+                value={this.state.buscador1}/>
+            <IconButton onTouchTap={this.mysearch} tooltip="Buscar">
+                <Search/>
+            </IconButton>
+            <IconButton onTouchTap={this.todos} tooltip="Todos">
+                <Otro/>
+            </IconButton>
+
+        </div>
         <div style={{position:'absolute', right:10, top:0, textAlign:'left', display:'flex', }}>
           <DatePicker onChange={this.onChange} autoOk={true} hintText="Fecha de Inicio"/>
           <DatePicker onChange={this.onChange2} autoOk={true} hintText="Fecha Final"/>

@@ -3,12 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="1a6db8f6-ff57-4b2c-a784-9f41afded8f6" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 =======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Api/Django.js" afterPath="$PROJECT_DIR$/src/Api/Django.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/MiPerfil.js" afterPath="$PROJECT_DIR$/src/components/polizas/MiPerfil.js" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Api/Django.js" afterPath="$PROJECT_DIR$/src/Api/Django.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizaList.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizaList.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" afterPath="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/userprofile/UserProfile.css" afterPath="$PROJECT_DIR$/src/components/userprofile/UserProfile.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" afterPath="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes.js" afterPath="$PROJECT_DIR$/src/routes.js" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,9 +37,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PolizaList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaList.js">
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="7695">
               <caret line="528" column="0" lean-forward="false" selection-start-line="528" selection-start-column="0" selection-end-line="528" selection-end-column="0" />
@@ -35,16 +48,21 @@
             <state relative-caret-position="21">
               <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="28" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+            <state relative-caret-position="435">
+              <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
               <folding>
-                <element signature="e#4711#5082#0" expanded="false" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClienteList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/polizas/ClienteList.js">
+      <file leaf-file-name="ReclutadorPage.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/reclutador/ReclutadorPage.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -56,23 +74,31 @@
               <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
               <folding />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+            <state relative-caret-position="82">
+              <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientDetail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/polizas/ClientDetail.js">
+      <file leaf-file-name="CandidatoForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12611">
-              <caret line="849" column="54" lean-forward="false" selection-start-line="849" selection-start-column="51" selection-end-line="849" selection-end-column="54" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CandidatoDetail.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CandidatoDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="330">
               <caret line="22" column="64" lean-forward="true" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
@@ -80,6 +106,10 @@
             <state relative-caret-position="237">
               <caret line="362" column="37" lean-forward="false" selection-start-line="362" selection-start-column="37" selection-end-line="362" selection-end-column="37" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+            <state relative-caret-position="562">
+              <caret line="362" column="0" lean-forward="false" selection-start-line="362" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -87,6 +117,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="firebase.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Api/firebase.js">
@@ -100,11 +131,19 @@
             <state relative-caret-position="-49">
               <caret line="131" column="43" lean-forward="false" selection-start-line="131" selection-start-column="43" selection-end-line="131" selection-end-column="43" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+      <file leaf-file-name="PolizasPage.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizasPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="21" selection-end-column="53" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="PolizaDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaDetail.js">
@@ -121,13 +160,22 @@
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="CandidatoLista.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoLista.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Django.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
+      <file leaf-file-name="candidato.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/reclutador/candidato.css">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="390">
               <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
@@ -138,13 +186,19 @@
               <folding>
                 <element signature="e#1#27#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="120">
+              <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+              <folding />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UsersList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/polizas/UsersList.js">
+      <file leaf-file-name="CandidatoNav.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoNav.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="1470">
               <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
@@ -153,13 +207,21 @@
               <caret line="110" column="52" lean-forward="true" selection-start-line="109" selection-start-column="10" selection-end-line="110" selection-end-column="52" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
               <folding />
+=======
+            <state relative-caret-position="235">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewPoliza.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/polizas/NewPoliza.js">
+      <file leaf-file-name="CandidatoDetail.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoDetail.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="555">
               <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
@@ -170,15 +232,20 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="90">
+              <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+              <folding />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AsesoresList.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/polizas/AsesoresList.js">
+      <file leaf-file-name="CandidatosList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatosList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="80" column="68" lean-forward="false" selection-start-line="80" selection-start-column="68" selection-end-line="80" selection-end-column="68" />
+            <state relative-caret-position="30">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -191,12 +258,14 @@
       <list>
         <option value="Stateless React Component" />
         <option value="JavaScript File" />
+        <option value="React Redux Class" />
+        <option value="React Const" />
+        <option value="React Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loginUrl</find>
       <find>mis</find>
       <find>getmis</find>
       <find>mispoliz</find>
@@ -224,8 +293,9 @@
       <find>sube un</find>
       <find>dialo</find>
       <find>getasesores</find>
-      <find>handleDate</find>
       <find>patch</find>
+      <find>handleDate</find>
+      <find>getpo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -253,22 +323,35 @@
         <option value="$PROJECT_DIR$/src/components/polizas/Aprobar.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/CandidatosList.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/UsersList.js" />
-        <option value="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/PolizaSections.js" />
-        <option value="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/ClientDetail.js" />
-        <option value="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/ClienteList.js" />
-        <option value="$PROJECT_DIR$/src/components/polizas/PolizaList.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/AsesoresList.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
         <option value="$PROJECT_DIR$/src/components/polizas/MiPerfil.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Api/Django.js" />
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/components/polizas/NewPoliza.js" />
 =======
         <option value="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+        <option value="$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js" />
+        <option value="$PROJECT_DIR$/src/components/polizas/PolizaList.js" />
+        <option value="$PROJECT_DIR$/src/components/userprofile/UserProfile.css" />
+        <option value="$PROJECT_DIR$/src/components/userprofile/UserProfile.js" />
+        <option value="$PROJECT_DIR$/src/components/polizas/PolizasPage.js" />
+        <option value="$PROJECT_DIR$/src/components/polizas/PolizaDetail.js" />
+        <option value="$PROJECT_DIR$/src/Api/Django.js" />
+        <option value="$PROJECT_DIR$/src/components/reclutador/CandidatoForm.js" />
+        <option value="$PROJECT_DIR$/src/components/reclutador/CandidatoDetail.js" />
+        <option value="$PROJECT_DIR$/src/routes.js" />
+        <option value="$PROJECT_DIR$/src/components/reclutador/CandidatoLista.js" />
+        <option value="$PROJECT_DIR$/src/components/reclutador/candidato.css" />
+        <option value="$PROJECT_DIR$/src/components/reclutador/CandidatoNav.js" />
+        <option value="$PROJECT_DIR$/src/components/reclutador/ReclutadorPage.js" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
       </list>
     </option>
   </component>
@@ -283,10 +366,9 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="25" />
-    <option name="width" value="1312" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
     <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -307,7 +389,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -355,10 +436,25 @@
               <item name="polizas" type="462c0819:PsiDirectoryNode" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
             </path>
+            <path>
+              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="reclutador" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Reactdashboard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Reactdashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="userprofile" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -469,22 +565,32 @@
 =======
       <workItem from="1504298328397" duration="50141000" />
       <workItem from="1504751889551" duration="17844000" />
+<<<<<<< HEAD
       <workItem from="1505145578151" duration="30653000" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+      <workItem from="1505145578151" duration="36439000" />
+      <workItem from="1506096185255" duration="4585000" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="25666000" />
 =======
     <option name="totallyTimeSpent" value="115726000" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+    <option name="totallyTimeSpent" value="126097000" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="726" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14735226" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -494,6 +600,9 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
 =======
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15726767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15726767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -545,6 +654,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/components/nav/Nav.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -693,6 +803,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -813,6 +925,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -820,6 +933,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -831,6 +946,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -838,14 +954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/userprofile/UserProfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-72">
-          <caret line="584" column="41" lean-forward="true" selection-start-line="584" selection-start-column="41" selection-end-line="584" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -884,6 +992,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+<<<<<<< HEAD
           <folding />
         </state>
       </provider>
@@ -910,6 +1019,8 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+=======
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
         </state>
       </provider>
     </entry>
@@ -917,7 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,65 +1047,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizasPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-424">
-          <caret line="17" column="60" lean-forward="false" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/ClienteList.js">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="1935">
-          <caret line="143" column="35" lean-forward="false" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
-=======
         <state relative-caret-position="-386">
           <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatosList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-49">
-          <caret line="131" column="43" lean-forward="false" selection-start-line="131" selection-start-column="43" selection-end-line="131" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/UsersList.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="1935">
+          <caret line="143" column="35" lean-forward="false" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
+=======
+        <state relative-caret-position="-386">
+          <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+=======
         <state relative-caret-position="203">
           <caret line="110" column="52" lean-forward="true" selection-start-line="109" selection-start-column="10" selection-end-line="110" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/polizas/AsesoresList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="80" column="68" lean-forward="false" selection-start-line="80" selection-start-column="68" selection-end-line="80" selection-end-column="68" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/ClientDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12611">
+        <state relative-caret-position="12615">
           <caret line="849" column="54" lean-forward="false" selection-start-line="849" selection-start-column="51" selection-end-line="849" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/MiPerfil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/polizas/NewPoliza.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6120">
+          <caret line="425" column="79" lean-forward="true" selection-start-line="424" selection-start-column="24" selection-end-line="425" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/userprofile/UserProfile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/userprofile/UserProfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="2985">
           <caret line="199" column="5" lean-forward="false" selection-start-line="199" selection-start-column="5" selection-end-line="206" selection-end-column="7" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+        <state relative-caret-position="8355">
+          <caret line="576" column="38" lean-forward="false" selection-start-line="576" selection-start-column="38" selection-end-line="576" selection-end-column="38" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1003,20 +1127,27 @@
     <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaList.js">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="390">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
 =======
         <state relative-caret-position="21">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="28" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+        <state relative-caret-position="4230">
+          <caret line="295" column="25" lean-forward="false" selection-start-line="295" selection-start-column="25" selection-end-line="295" selection-end-column="25" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
           <folding>
-            <element signature="e#4711#5082#0" expanded="false" />
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#4847#5218#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/polizas/MiPerfil.js">
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaDetail.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="1470">
           <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
@@ -1024,8 +1155,12 @@
 =======
         <state relative-caret-position="237">
           <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
+=======
+        <state relative-caret-position="480">
+          <caret line="46" column="3" lean-forward="false" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
         </state>
@@ -1034,12 +1169,17 @@
     <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="555">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
 =======
         <state relative-caret-position="338">
           <caret line="125" column="30" lean-forward="false" selection-start-line="125" selection-start-column="30" selection-end-line="125" selection-end-column="30" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+        <state relative-caret-position="153">
+          <caret line="834" column="6" lean-forward="true" selection-start-line="834" selection-start-column="6" selection-end-line="834" selection-end-column="6" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
           <folding>
             <element signature="e#1#27#0" expanded="true" />
           </folding>
@@ -1047,14 +1187,22 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Api/firebase.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizaSections.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="33" column="53" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="53" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Api/Django.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1065,8 +1213,100 @@
         <state relative-caret-position="237">
           <caret line="362" column="37" lean-forward="false" selection-start-line="362" selection-start-column="37" selection-end-line="362" selection-end-column="37" />
 >>>>>>> d0e852210e16e79971a0415b5ffc9c71c87e303a
+=======
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/AsesoresList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="80" column="68" lean-forward="false" selection-start-line="80" selection-start-column="68" selection-end-line="80" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatoDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="362" column="0" lean-forward="false" selection-start-line="362" selection-start-column="0" selection-end-line="362" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/CandidatosList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="42" column="10" lean-forward="false" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
+>>>>>>> 34eb53bab9849a76ebe30b45045ab60a10b2fd76
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reclutador/candidato.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoLista.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/polizas/PolizasPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="21" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reclutador/CandidatoNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/reclutador/ReclutadorPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>

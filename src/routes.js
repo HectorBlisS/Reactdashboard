@@ -19,6 +19,7 @@ import PolizasPage from './components/polizas/PolizasPage';
 
 import Integrate from './components/integrate/Integrate';
 import UserProfile from './components/userprofile/UserProfile';
+import ReclutadorPage from './components/reclutador/ReclutadorPage';
 // <Route path='/roster' component={Roster}/>
 
 
@@ -39,6 +40,7 @@ const Routes = () => (
       <Route path='/perfil' component={UserProfile}/>
       <Route path='/app' component={Invitacion}/>
       <Route path='/asesor' component={AsesorProfile}/>
+          <Route path="/reclutador" component={ReclutadorPage}/>
     </Switch>
 );
 
