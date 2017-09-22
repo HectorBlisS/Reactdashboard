@@ -38,6 +38,13 @@
     left:90%;
     position: fixed;
 }
+.btn_float3{
+
+    position: absolute;
+    top:20%;
+    left:90%;
+    position: fixed;
+}
 .text_intro{
     padding: 5% 10%;
 }

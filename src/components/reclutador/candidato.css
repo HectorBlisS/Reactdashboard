@@ -1,0 +1,12 @@
+.candidato-tabla{
+    margin:0 auto;
+    max-width: 80%;
+}
+
+@media(max-width:600px){
+    .candidato-tabla{
+        max-width: 100%;
+        min-width: 700px;
+
+    }
+}

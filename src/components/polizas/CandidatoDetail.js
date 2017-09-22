@@ -360,7 +360,7 @@ class CandidatoDetail extends React.Component {
                                      onRequestClose={this.handleCloseCita}
                                  >
                                      <DatePicker hintText="Fecha " autoOk={true} onChange={this.handleDateCita}/>
-                                     
+
                                      <br/>
 
                                      <RaisedButton fullWidth={true} label={'Guardar'} onTouchTap={this.newCita}/>

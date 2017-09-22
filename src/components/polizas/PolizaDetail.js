@@ -50,11 +50,12 @@ class PolizaDetail extends Component{
 
     api.getProfile().then(r=>{
       this.setState({user:r})
-      console.log()
+
     })
 
     api.getPolicy(this.props.match.params.polizaId).then(r=>{
       this.setState({poliza:r})
+        console.log('la poliza',r)
       console.log(this.state.user.id+'=>'+this.state.poliza.asesor.id)
 
     })
