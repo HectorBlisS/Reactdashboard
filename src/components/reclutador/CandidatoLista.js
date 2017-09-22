@@ -8,12 +8,17 @@ import {
     TableRow,
     TableRowColumn,
 } from 'material-ui/Table';
+import {Link} from 'react-router-dom';
 
 
 
 const ElRow =({candidato})=>(
     <TableRow>
-        <TableRowColumn>{candidato.id}</TableRowColumn>
+        <TableRowColumn>
+            <Link to={`/reclutador/${candidato.id}`} >
+            {candidato.id}
+            </Link>
+            </TableRowColumn>
         <TableRowColumn>{candidato.nombre}</TableRowColumn>
         <TableRowColumn>{candidato.telefono}</TableRowColumn>
         <TableRowColumn>{candidato.correo}</TableRowColumn>

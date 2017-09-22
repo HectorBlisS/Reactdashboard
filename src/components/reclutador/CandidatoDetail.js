@@ -19,11 +19,7 @@ class CandidatoDetail extends Component {
     };
 
     render() {
-        console.log(this.props.match.params.candidatoId);
         const {candidato, candidatos} = this.state;
-        console.log(candidato);
-        console.log(candidatos);
-        console.log(this.props)
         return (
             <div style={{paddingTop:274}}>
                 <a
@@ -42,11 +38,14 @@ class CandidatoDetail extends Component {
 }
 
 function mapStateToProps(state, ownProps){
-    const id = ownProps.match.params.candidatoId;
-    return {
-        candidatos:state.candidatos,
-        candidato:state.candidatos.filter(c=> c.id == id )[0]
+    if (ownProps.match){
+        const id = ownProps.match.params.candidatoId;
+        return {
+            candidatos:state.candidatos,
+            candidato:state.candidatos.filter(c=> c.id == id )[0]
+        }
     }
+
 }
 
 function mapDispatchToProps(actions, dispatch){
