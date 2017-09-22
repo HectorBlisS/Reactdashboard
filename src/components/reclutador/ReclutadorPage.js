@@ -8,6 +8,7 @@ import CandidatoDetail from './CandidatoDetail';
 import {Route} from 'react-router-dom';
 import * as candidatosActions from '../../actions/candidatosActions';
 import './candidato.css';
+import toastr from 'toastr';
 
 
 class ReclutadorPage extends Component {
@@ -16,7 +17,8 @@ class ReclutadorPage extends Component {
         this.state={
             candidatos:[],
             candidato:{},
-            newCandidato:{}
+            newCandidato:{},
+            openForm:false
 
         }
     }
@@ -26,12 +28,32 @@ class ReclutadorPage extends Component {
         this.setState({candidatos:nextProps.candidatos});
     }
 
+    //Form Functions
+    handleOpenForm=()=>{
+      this.setState({openForm:true})
+    };
+    handleCloseForm=()=>{
+        this.setState({
+            openForm:false
+        })
+    };
+    saveCandidato=(c)=>{
+        this.props.actions.saveCandidato(c)
+            .then(()=>toastr.success('Se ha Guardado :)'));
+            this.handleCloseForm()
+    };
+
 
     listaAndForm =()=>{
         return(
             <div style={{paddingTop:'74px'}}>
                 <CandidatoLista
                     lista={this.state.candidatos}/>
+                <CandidatoForm
+                    open={this.state.openForm}
+                    handleOpen={this.handleOpenForm}
+                    handleClose={this.handleCloseForm}
+                    saveCandidato={this.saveCandidato}/>
 
             </div>
         )

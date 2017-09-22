@@ -32,7 +32,7 @@ const CandidatoLista = ({lista}) => {
                 <TableHeader>
                     <TableRow>
                         <TableHeaderColumn>ID</TableHeaderColumn>
-                        <TableHeaderColumn>Name</TableHeaderColumn>
+                        <TableHeaderColumn>Nombre</TableHeaderColumn>
                         <TableHeaderColumn>Teléfono</TableHeaderColumn>
                         <TableHeaderColumn>Correo</TableHeaderColumn>
                         <TableHeaderColumn>Reclutado</TableHeaderColumn>
