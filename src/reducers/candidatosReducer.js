@@ -6,6 +6,14 @@ export function candidatosReducer(state = [], action){
         case "SAVE_CANDIDATO_SUCCESS":
             return [...state, action.candidato];
 
+        case "UPDATE_CANDIDATO_SUCCESS":
+            return state.map(c=>{
+               if(c.id === action.candidato.id){
+                   return action.candidato
+               }
+               return c;
+            });
+
         default:
             return state;
     }

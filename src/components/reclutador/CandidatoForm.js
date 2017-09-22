@@ -15,6 +15,10 @@ class CandidatoForm extends React.Component {
         }
     };
 
+    componentWillReceiveProps(nP){
+        this.setState({candidato:nP.candidato});
+    }
+
     handleText=(e)=>{
         let field = e.target.name;
         let candidato = this.state.candidato;
@@ -34,6 +38,7 @@ class CandidatoForm extends React.Component {
     };
     render() {
         const {handleOpen, handleClose, open} = this.props;
+        const {candidato} = this.state;
         return (
             <div>
                 <FloatingActionButton
@@ -53,6 +58,7 @@ class CandidatoForm extends React.Component {
                     <GridList cols={2} cellHeight="auto">
                         <GridTile cols={1}>
                             <TextField
+                                value={candidato.nombre}
                                 floatingLabelFocusStyle={{color: 'rgb(87, 101, 142)'}}
                                 underlineFocusStyle={{borderColor: 'rgb(87, 101, 142)'}}
                                 hintText="Nombre"
@@ -63,6 +69,7 @@ class CandidatoForm extends React.Component {
                         </GridTile>
                         <GridTile cols={1}>
                             <TextField
+                                value={candidato.telefono}
                                 floatingLabelFocusStyle={{color: 'rgb(87, 101, 142)'}}
                                 underlineFocusStyle={{borderColor: 'rgb(87, 101, 142)'}}
                                 hintText="Teléfono"
@@ -80,7 +87,7 @@ class CandidatoForm extends React.Component {
                                         underlineFocusStyle={{borderColor: 'rgb(87, 101, 142)'}}
                                         name='fecha_reclutamiento'
                                         onChange={this.handleDates}
-
+                                        value={new Date(candidato.fecha_reclutamiento)}
                                         autoOk={true}
                                         floatingLabelText="Fecha de Reclutamiento"/>
                         </GridTile>
@@ -92,7 +99,10 @@ class CandidatoForm extends React.Component {
                                 floatingLabelText="Correo"
                                 name="correo"
                                 onChange={this.handleText}
-                                fullWidth={true}/>
+                                fullWidth={true}
+                                value={candidato.correo}
+
+                            />
 
                         </GridTile>
                     </GridList>

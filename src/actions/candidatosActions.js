@@ -8,6 +8,10 @@ export function saveCandidatoSuccess(candidato){
     return {type:"SAVE_CANDIDATO_SUCCESS", candidato}
 }
 
+export function updateCandidatoSuccess(candidato){
+    return {type:"UPDATE_CANDIDATO_SUCCESS", candidato}
+}
+
 export function loadCandidatos(){
     return function(dispatch, getState){
         api.getCandidatos()
@@ -23,12 +27,25 @@ export function loadCandidatos(){
 
 export function saveCandidato(candidato){
     return function(dispatch, getState){
-        return api.newCandidato(candidato)
-            .then(c=>{
-                dispatch(saveCandidatoSuccess(c));
-                return true
+        if(candidato.id){
+            return api.updateCandidato(candidato.id, candidato)
+                .then(c=>{
+                    dispatch(updateCandidatoSuccess(c));
+                    return true
+                })
+                .catch(e=>{
+                    console.log(e);
+                    return false
+                });
+        }else{
+            return api.newCandidato(candidato)
+                .then(c=>{
+                    dispatch(saveCandidatoSuccess(c));
+                    return true
 
-            }).catch(e=>console.log(e))
+                }).catch(e=>console.log(e))
+        }
+
     }
 }
 

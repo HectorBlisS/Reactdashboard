@@ -16,7 +16,12 @@ class ReclutadorPage extends Component {
         super(props, context);
         this.state={
             candidatos:[],
-            candidato:{},
+            candidato:{
+                nombre:'',
+                telefono:'',
+                correo:'',
+                fecha_reclutamiento:''
+            },
             newCandidato:{},
             openForm:false
 
@@ -43,26 +48,33 @@ class ReclutadorPage extends Component {
             this.handleCloseForm()
     };
 
+    setCandidato = (candidato) => {
+        this.setState({candidato});
+        this.handleOpenForm();
+        console.log("perro: ", this.state.candidato);
+    };
 
     listaAndForm =()=>{
         return(
             <div style={{paddingTop:'74px'}}>
                 <CandidatoLista
                     lista={this.state.candidatos}/>
-                <CandidatoForm
-                    open={this.state.openForm}
-                    handleOpen={this.handleOpenForm}
-                    handleClose={this.handleCloseForm}
-                    saveCandidato={this.saveCandidato}/>
 
             </div>
         )
     };
-    candidatoDetail =()=>{
+
+    renderDetail = ({match}) => {
         return(
-            <CandidatoDetail/>
-        )
+            <CandidatoDetail
+                match={match}
+                setCandidato={this.setCandidato}
+            />
+        );
+
     };
+
+
 
     render() {
         console.log(this.state.candidatos);
@@ -71,8 +83,17 @@ class ReclutadorPage extends Component {
             <div>
                 <CandidatoNav/>
 
-                <Route path={`${this.props.match.url}`} render={this.listaAndForm}/>
-                <Route path={`${this.props.match.url}/:candidatoId`} render={this.candidatoDetail}/>
+                <Route exact path={`${this.props.match.url}`} render={this.listaAndForm}/>
+                <Route path={`${this.props.match.url}/:candidatoId`} children={this.renderDetail}/>
+
+                <CandidatoForm
+                    candidato={this.state.candidato}
+                    open={this.state.openForm}
+                    handleOpen={this.handleOpenForm}
+                    handleClose={this.handleCloseForm}
+                    saveCandidato={this.saveCandidato}
+                />
+
 
 
 
