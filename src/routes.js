@@ -17,6 +17,10 @@ import {
 } from 'react-router-dom';
 import PolizasPage from './components/polizas/PolizasPage';
 
+//experimento con paginacion
+import PaginationPage from './components/PaginationPage';
+
+
 import Integrate from './components/integrate/Integrate';
 import UserProfile from './components/userprofile/UserProfile';
 import ReclutadorPage from './components/reclutador/ReclutadorPage';
@@ -41,6 +45,8 @@ const Routes = () => (
       <Route path='/app' component={Invitacion}/>
       <Route path='/asesor' component={AsesorProfile}/>
           <Route path="/reclutador" component={ReclutadorPage}/>
+        {/*experimento con paginacion*/}
+        <Route path="/pagination" component={PaginationPage} />
     </Switch>
 );
 

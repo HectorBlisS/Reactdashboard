@@ -14,11 +14,14 @@ import '../node_modules/moment/moment.js'
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
 import {loadCandidatos} from './actions/candidatosActions';
+ //experimento con paginacion
+import {loadClientes} from './actions/clientesActions';
 
 injectTapEventPlugin();
 
 const store = configureStore();
 store.dispatch(loadCandidatos());
+store.dispatch(loadClientes());
 
 
 
