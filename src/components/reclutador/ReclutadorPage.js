@@ -69,6 +69,7 @@ class ReclutadorPage extends Component {
             <CandidatoDetail
                 match={match}
                 setCandidato={this.setCandidato}
+                saveCandidato={this.saveCandidato}
             />
         );
 
@@ -84,7 +85,7 @@ class ReclutadorPage extends Component {
                 <CandidatoNav/>
 
                 <Route exact path={`${this.props.match.url}`} render={this.listaAndForm}/>
-                <Route path={`${this.props.match.url}/:candidatoId`} children={this.renderDetail}/>
+                <Route path={`${this.props.match.url}/:candidatoId`} children={this.renderDetail} />
 
                 <CandidatoForm
                     candidato={this.state.candidato}

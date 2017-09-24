@@ -1,6 +1,7 @@
 import React from 'react';
 import {GridList, GridTile, Dialog, FloatingActionButton, TextField, DatePicker, RaisedButton} from 'material-ui';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import Close from 'material-ui/svg-icons/navigation/close';
 
 
 
@@ -50,7 +51,12 @@ class CandidatoForm extends React.Component {
                     <ContentAdd/>
                 </FloatingActionButton>
                 <Dialog
-                    title="Agrega un Prospecto"
+                    title={<div style={{position:'relative'}}>
+                        {candidato.id?<h5>Edita los Datos</h5>:<h5>Agrega un Prospecto</h5>}
+                        <Close
+                            style={{position:'absolute', top:10, right:10,cursor:'pointer'}}
+                            onTouchTap={handleClose}/>
+                    </div>}
                     modal={false}
                     open={open}
                     onRequestClose={handleClose}
@@ -87,7 +93,7 @@ class CandidatoForm extends React.Component {
                                         underlineFocusStyle={{borderColor: 'rgb(87, 101, 142)'}}
                                         name='fecha_reclutamiento'
                                         onChange={this.handleDates}
-                                        value={new Date(candidato.fecha_reclutamiento)}
+                                        value={candidato.fecha_reclutamiento === ''?'':new Date(candidato.fecha_reclutamiento)}
                                         autoOk={true}
                                         floatingLabelText="Fecha de Reclutamiento"/>
                         </GridTile>
@@ -111,7 +117,7 @@ class CandidatoForm extends React.Component {
 
                             <RaisedButton
                                 backgroundColor="rgb(87, 101, 142)"
-                                label="Agregar"
+                                label={candidato.id?"Guardar":"Agregar"}
                                 fullWidth={true}
                                 labelColor="#FFF"
                                 onTouchTap={this.addCandidato}/>
